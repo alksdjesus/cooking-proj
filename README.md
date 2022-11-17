@@ -1,2 +1,2 @@
 # cooking-proj
-New repo for Cooking AI Project using React
+Double click home for the website to function as planned.
