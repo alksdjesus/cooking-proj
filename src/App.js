@@ -1,19 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {Component} from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from './screens/home';
+import Search from './screens/search';
+import Feed from './screens/feed';
+import Profile from './screens/profile';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <ul class="w3-navbar w3-black">
-          <li><a href="./screens/feed.js">Feed</a></li>
-          <li><a href="./screens/search.js">Search</a></li>
-          <li><a href="./screens/saved.js">Saved</a></li>
-          <li><a href="./screens/settings.js">Settings</a></li>
-        </ul>
-      </header>
+class App extends Component { 
+
+  render() { 
+
+  //  const HomeComponent = () => (<Home/>);
+
+    return (
+    <div>
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Home/>}>
+      </Route>
+      <Route path='/search' element={<Search/>}>
+      </Route>
+      <Route path='/feed' element={<Feed/>}>
+      </Route>
+      <Route path='/profile' element={<Profile/>}>
+      </Route>
+    </Routes>
+    </BrowserRouter>
     </div>
-  );
+    )
+
+  }
 }
 
 export default App;
