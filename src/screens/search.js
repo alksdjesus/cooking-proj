@@ -1,171 +1,55 @@
-import React, {Component, useState} from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import MealList from '../components/itemlist';
 
-// class Search extends Component {
-//     constructor(props) {
-//       super(props);
-//       this.state = {
-//         data: [],
+function Search() {
 
-//     //   isLoading: true,
-//     //   searchText: '',
-//     //   apiKey: '&apiKey=3f0cc431643b4e64ac67118fd14f646b',
-//     //   baseSearchURL: 'https://api.spoonacular.com/recipes/complexSearch?number=10&query=',
-//         someLink: "https://api.spoonacular.com/recipes/complexSearch?number=10&query=berry&apiKey=3f0cc431643b4e64ac67118fd14f646b"
+  const [mealData, setMealData] = useState(null);
+  const [calories, setCalories] = useState(2000);
 
-//       };
-  
-//     //   this.handleChange = this.handleChange.bind(this);
-//     //   this.handleSubmit = this.handleSubmit.bind(this);
-//         this.getRecipes = this.getRecipes.bind(this);
-//     }
-
-//     getRecipes = () => {
-//         console.log(this.state.someLink)
-//         this.setState({someLink: "hi"})
-//         console.log(this.state.someLink)
-    //     fetch("https://reactnative.dev/movies.json")
-    //     .then(res => res.json())
-    //     .then(
-    //         (result) => {
-    //         this.setState({
-    //             data: result.movies
-    //         });
-    //         },
-    //         // Note: it's important to handle errors here
-    //         // instead of a catch() block so that we don't swallow
-    //         // exceptions from actual bugs in components.
-    //         (error) => {
-    //         this.setState({
-    //             error
-    //         });
-    //         }
-    //   )
+  // const [isLoading, setLoading] = useState(true)
+  var [searchText, setText] = useState(null)
+  // var [data, setData] = useState([])
+  const [apiKey, setKey] = useState('&apiKey=e0ba8f96837748dc9473f52b42c3b8a8')
+  const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/complexSearch?number=10&query=')
+  var [someLink, setLink] = useState('test')
 
 
-//         // this.setState({someLink: 'hi'})
-//         // console.log(this.state.someLink);
-//       }
-
-//     handleChange(event) {
-//       this.setState({searchText: event.target.value});
-//     }
-  
-//     // handleSubmit(event) {
-//     //     event.preventDefault();
-//     //     this.getRecipes();
-//     // }
-  
-//     render() {
-//       return (
-//         <form onSubmit={this.getRecipes}>
-//           <label>
-//             Name:
-//             <input type="search" value={this.state.searchText} onChange={this.handleChange} />
-//           </label>
-//           <input type="submit" value="Search" />
-//         </form>
-//       );
-//     }
-//   }
-
-// export default Search;
-
-// class Search extends React.Component {
-//     constructor(props) {
-//       super(props);
-//       this.state = {
-//         data: [],
-//         searchText: '',
-//         someLink: 'https://api.spoonacular.com/recipes/complexSearch?number=10&query=berry&apiKey=3f0cc431643b4e64ac67118fd14f646b'
-//       };
-//       this.handleChange = this.handleChange.bind(this);
-
-//     }
-
-//     getRecipes = ({state, event}) => {
-//         console.log(this.state.someLink)
-//         this.setState({someLink: 'hi'})
-//         console.log(this.state.someLink)
-//         event.preventDefault();
-//     }
-
-//     handleChange(event) {
-//         this.setState({searchText: event.target.value});
-//     }
-//     render() {
-//       return (
-//         <div>
-//             <form onSubmit={event => this.getRecipes(event)}>
-//                 <h1>{this.state.someLink}</h1>
-//                 <label>
-//                     Name:
-//                 <input type="search" value={this.state.searchText} onChange={this.handleChange} />
-//                 </label>
-//                 <input type="submit" value="Search" />
-//             </form>
-//         </div>
-//       );
-//     }
-//   }
-
-
-// export default Search;
-
-function Search (props) { 
-    var [someLink, setLink] = useState('text')
-    var [searchText, setText] = useState('')
-    let [data, setData] = useState([])
-    var [apiKey, setKey] = useState('&apiKey=3f0cc431643b4e64ac67118fd14f646b')
-    var [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/complexSearch?number=10&query=')
-    const [error, setError] = useState(null);
-
-    function getRecipes (event) { 
-        setLink(someLink = baseSearchURL + searchText + apiKey)
-        console.log(props)
-        event.preventDefault()
-
-        axios.get(`https://reactnative.dev/movies.json`)
-        .then(res => {
-            setData(data= res.movies);
-        //   this.setState({ persons });
-        })
-
-    //     fetch('https://reactnative.dev/movies.json')
-    //     .then(res => res.json())
-    //     .then(
-    //         (result) => {
-    //         setData(data = result)
-    //         },
-    //         // Note: it's important to handle errors here
-    //         // instead of a catch() block so that we don't swallow
-    //         // exceptions from actual bugs in components.
-    //         (error) => {
-    //         this.setState({
-    //             error
-    //         });
-    //         }
-    //   )
-
-      console.log(data)
-
+   async function getRecipes()  {
+    setLink(someLink = (baseSearchURL + searchText + apiKey))
+     try {
+      const response = await fetch(someLink)
+      const json = await response.json()
+      setMealData(json)
+    } catch (error) {
+      console.error(error)
+    } finally {
+      // setLoading(false)
     }
+    
+  }
 
-    function handleChange(event) {
-        setText(searchText = event.target.value);
-    }
+  function onTextChange (event) { 
+    setText(searchText = event.target.value)
+  }
 
-    return (
+  return (
+
+    <div>
         <div>
-            <h1>{someLink}</h1>
-            <form onSubmit={getRecipes}>
-                <label>Name:</label>
-                <input type="search" value={searchText} onChange={handleChange} />
-                <input type='submit' value="search"/>
-            </form> 
+          <input
+            placeholder="Search for a recipe!"
+            onChange={onTextChange}  
+            />
         </div>
-    )
+        <div>
+            <button
+              onClick={getRecipes}
+              title= "Search"
+            />
+        </div>
+        {mealData && <MealList mealData={mealData} />}
+    </div>
+  );
+};
 
-}
-
-export default Search;
+export default Search
