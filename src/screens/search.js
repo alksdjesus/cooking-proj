@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import MealList from '../components/itemlist';
 import './search.css'
 import {Link} from 'react-router-dom';
+import Home from './home';
+
 
 
 function Search() {
@@ -12,7 +14,7 @@ function Search() {
   // const [isLoading, setLoading] = useState(true)
   var [searchText, setText] = useState(null)
   // var [data, setData] = useState([])
-  const [apiKey, setKey] = useState('&apiKey=a14c2e19acc243e2b3c680b226ec1736')
+  const [apiKey, setKey] = useState('&apiKey=fae16b4cf7154ded861807518e0e18c1')
   const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/complexSearch?number=10&query=')
   var [someLink, setLink] = useState('test')
 
@@ -39,6 +41,7 @@ function Search() {
 
     <div>
         <div>
+          <Home/>
           <input
             placeholder="Search for a recipe!"
             onChange={onTextChange}  

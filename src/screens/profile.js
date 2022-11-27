@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import Home from './home';
 
 
 class Profile extends Component {
@@ -7,11 +8,8 @@ class Profile extends Component {
     return (
 
       <div>
-        <img src="https://picsum.photos/200/200" alt="bank"/>
+        <Home/>
         <h1>Profile</h1>
-
-        <Link to="/">Home</Link>
-
       </div>
     )
   }
