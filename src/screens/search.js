@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import MealList from '../components/itemlist';
+import './search.css'
+import {Link} from 'react-router-dom';
+
 
 function Search() {
 
@@ -9,7 +12,7 @@ function Search() {
   // const [isLoading, setLoading] = useState(true)
   var [searchText, setText] = useState(null)
   // var [data, setData] = useState([])
-  const [apiKey, setKey] = useState('&apiKey=e0ba8f96837748dc9473f52b42c3b8a8')
+  const [apiKey, setKey] = useState('&apiKey=a14c2e19acc243e2b3c680b226ec1736')
   const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/complexSearch?number=10&query=')
   var [someLink, setLink] = useState('test')
 
@@ -40,14 +43,13 @@ function Search() {
             placeholder="Search for a recipe!"
             onChange={onTextChange}  
             />
+            <button  onClick={getRecipes}>
+             Search
+            </button>
+            <Link to="/">Home</Link>
+            <br/>
         </div>
-        <div>
-            <button
-              onClick={getRecipes}
-              title= "Search"
-            />
-        </div>
-        {mealData && <MealList mealData={mealData} />}
+        {mealData && <MealList mealData={mealData} sender={"search"}  />}
     </div>
   );
 };

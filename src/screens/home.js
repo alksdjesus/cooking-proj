@@ -19,8 +19,6 @@ class Home extends Component {
         <Link to="/feed">Feed</Link>
         <br/>
         <Link to="/profile">Profile</Link>
-
-
       </div>
     )
   }

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
+import {Link} from 'react-router-dom';
 
 export default function Meal({ meal }) {
   const [imageUrl, setImageUrl] = useState("");
 
   return (
     <article>
-      <h1>{meal.title}</h1>
+        <Link to="/recipe">{meal.title}</Link>
+        <br/>
       {/* <img src={imageUrl} alt="recipe" /> */}
       <ul className="instructions">
         <li>Preparation time: {meal.readyInMinutes} minutes</li>
