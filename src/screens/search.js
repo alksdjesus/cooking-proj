@@ -14,7 +14,7 @@ function Search() {
   // const [isLoading, setLoading] = useState(true)
   var [searchText, setText] = useState(null)
   // var [data, setData] = useState([])
-  const [apiKey, setKey] = useState('&apiKey=fae16b4cf7154ded861807518e0e18c1')
+  const [apiKey, setKey] = useState('&apiKey=2b88b64f62be4259acb37fa4d63be27d')
   const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/complexSearch?number=10&query=')
   var [someLink, setLink] = useState('test')
 

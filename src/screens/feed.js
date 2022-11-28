@@ -7,7 +7,7 @@ function Feed() {
 
   const [mealData, setMealData] = useState(null);
 
-  const [apiKey, setKey] = useState('&apiKey=fae16b4cf7154ded861807518e0e18c1')
+  const [apiKey, setKey] = useState('&apiKey=2b88b64f62be4259acb37fa4d63be27d')
   const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/random?number=1')
   var [someLink, setLink] = useState('test')
 
