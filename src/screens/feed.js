@@ -1,34 +1,14 @@
-// import React, {Component} from 'react';
-// import {Link} from 'react-router-dom';
-
-
-// class Feed extends Component {
-//   render() {
-//     return (
-
-//       <div>
-//         <img src="https://picsum.photos/200/200" alt="bank"/>
-//         <h1>Feed</h1>
-
-//         <Link to="/">Home</Link>
-
-//       </div>
-//     )
-//   }
-// }
-
-// export default Feed;
-
 import React, { useEffect, useState } from 'react';
 import MealList from '../components/itemlist';
 import {Link} from 'react-router-dom';
+import Home from './home';
 
 function Feed() {
 
   const [mealData, setMealData] = useState(null);
 
-  const [apiKey, setKey] = useState('&apiKey=a14c2e19acc243e2b3c680b226ec1736')
-  const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/random?number=5')
+  const [apiKey, setKey] = useState('&apiKey=2b88b64f62be4259acb37fa4d63be27d')
+  const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/random?number=1')
   var [someLink, setLink] = useState('test')
 
 
@@ -59,7 +39,7 @@ function Feed() {
   return (
     <div>
       <div>
-        <Link to="/">Home</Link>
+      <Home/>
         <button onClick={getRecipes}>Load New Recipes</button>
       </div>
         {mealData && <MealList mealData={mealData} sender={"feed"}/>}
