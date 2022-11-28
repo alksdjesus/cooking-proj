@@ -14,7 +14,7 @@ const Navbar = () => {
     <>
       <Nav>
         <NavTitle to='/'>
-          <img src={require('../images/logo.svg')} alt='logo' />
+          <img src={require('../images/logo.png')} alt='logo' />
         </NavTitle>
         <Bars />
         <NavMenu>
