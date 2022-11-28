@@ -1,0 +1,26 @@
+.container {
+    flex: 1;
+    margin-top: 115px;
+    margin-left: 3.75%;
+    margin-right: 3.75%;
+}
+
+.title {
+    font-size: 44px;
+    color: #000;
+    text-align: left;
+    font-family: 'Raleway';
+    font-weight: 700;
+    float: left;
+    margin-right: 30px;
+}
+
+.summary {
+    font-size: 20px;
+    color: #000;
+    text-align: left;
+    font-family: 'Inter';
+    font-weight: 500;
+    float: left;
+    margin-right: 50%;
+}

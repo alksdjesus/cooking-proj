@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import MealList from '../components/itemlist';
-import './search.css'
+import './search.css';
+import './allpages.css';
 import {Link} from 'react-router-dom';
-import Home from './home';
-
-
 
 function Search() {
 
@@ -38,21 +36,23 @@ function Search() {
   }
 
   return (
-
-    <div>
-        <div>
-          <Home/>
-          <input
-            placeholder="Search for a recipe!"
-            onChange={onTextChange}  
-            />
-            <button  onClick={getRecipes}>
-             Search
-            </button>
-            <Link to="/">Home</Link>
-            <br/>
-        </div>
+    <div className='container'>
+      <div className='title'>
+        Search
+      </div>
+      <input 
+        type="text"
+        placeholder="Enter ingredients/recipe"
+        onChange={onTextChange}  
+      />
+      <input
+        type="image"
+        src={require("../images/search.png")}
+        onClick={getRecipes}
+      />
+      <div>
         {mealData && <MealList mealData={mealData} sender={"search"}  />}
+      </div>
     </div>
   );
 };

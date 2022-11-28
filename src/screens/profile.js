@@ -1,18 +1,31 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import Home from './home';
+import './allpages.css';
 
 
-class Profile extends Component {
-  render() {
+function Profile () {
     return (
-
-      <div>
-        <Home/>
-        <h1>Profile</h1>
-      </div>
+      <div className='container'>
+        <div className='title'>
+          Settings
+        </div>
+        <br></br>
+        <br></br>
+        <br></br>
+        <Link to="/profile">
+          <h1>Edit Profile</h1>
+        </Link>
+        <Link to="/profile">
+          Change Dietary Restrictions
+        </Link>
+        <Link to="/profile">
+          Change Accessible Cookware
+        </Link>
+        <Link to="/profile">
+          Sign Out
+        </Link>
+    </div>
     )
-  }
 }
 
 export default Profile;

@@ -1,22 +1,23 @@
 import React from "react";
 import {Link} from 'react-router-dom';
-
+import './item.css';
 
 export default function Meal({ meal }) {
 
-
-
   return (
-    <div>
-      <Link to="/recipe" state={{ meal }}>{meal.title}</Link>
-      <ul className="instructions">
-        <li>Preparation time: {meal.readyInMinutes} minutes</li>
-        <li>Number of servings: {meal.servings}</li>
-      </ul>
-    </div>
-
-    
-
+      <div className="recipe_container">
+        <Link to="/recipe" state={{ meal }}>
+          <img className="recipe_img" src={meal.image}/>
+        </Link>
+        <div className="recipe">
+          <div className="name">
+            {meal.title}
+          </div>
+          <div className="recipe_details">
+            Prep time: {meal.readyInMinutes} min. <br></br>
+            No. of servings: {meal.servings}
+          </div>
+        </div>
+      </div>
   );
 }
-
