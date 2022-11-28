@@ -63,27 +63,20 @@ export default function Recipe() {
   // inst = inst.replaceAll('\n', '\n\n')
 
       return (
-        <div className='container'>
-        <div className='title'>
-          {mealData.title}
-        </div>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <img className="img" src={mealData.image} alt={mealData.title} width="700"/>
-        <br></br>
-        <br></br>
-        <div className='summary'>
-          {mealData.summary}
-        </div>
+        <><Home/><article className="all-browsers">
+          <h1>{mealData.title}</h1>
+          <h1>{mealData.summary}</h1>
+        </article>
+        <article>
+        <img className="img" src={mealData.image} alt={mealData.title}/>
+          </article>
         {/* <article>
           <h2>{desc}</h2>
           </article>
         <article>
           <h2>{inst}</h2>
           </article> */}
-          </div>
+          </>
       );
 
 
