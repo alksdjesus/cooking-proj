@@ -14,21 +14,21 @@ const Navbar = () => {
     <>
       <Nav>
         <NavTitle to='/'>
-          <img src={require('../images/logo.png')} alt='logo' />
+          <img src={require('../images/logo1.png')} alt='logo' height="32" />
         </NavTitle>
         <Bars />
         <NavMenu>
           <NavLink to='/feed' activeStyle>
-            FEED
+            Feed
           </NavLink>
           <NavLink to='/search' activeStyle>
-            SEARCH
+            Search
           </NavLink>
           <NavLink to='/saved' activeStyle>
-            SAVED
+            Saved
           </NavLink>
-          <NavLink to='/settings' activeStyle>
-            SETTINGS
+          <NavLink to='/profile' activeStyle>
+            Profile
           </NavLink>
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
