@@ -6,7 +6,7 @@ import Search from './screens/search';
 import Feed from './screens/feed';
 import Profile from './screens/profile';
 import Recipe from './screens/recipe';
-import { fetchData, putData} from './components/awsfunctions'
+// import { fetchData, putData} from './components/awsfunctions'
 
 
 

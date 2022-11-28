@@ -54,28 +54,27 @@ export default function Recipe() {
     }
   }
 
-  // var desc = meal.summary
+  var desc = mealData.summary
   // desc = desc.replace(/\s*\<.*?\>\s*/g, ' ');
   // desc = desc.split('.')[0] + '.';
 
-  // var inst = meal.instructions
+  var inst = mealData.instructions
   // inst = inst.replace(/\s*\<.*?\>\s*/g, ' ');
   // inst = inst.replaceAll('\n', '\n\n')
 
       return (
         <><Home/><article className="all-browsers">
           <h1>{mealData.title}</h1>
-          <h1>{mealData.summary}</h1>
         </article>
         <article>
         <img className="img" src={mealData.image} alt={mealData.title}/>
           </article>
-        {/* <article>
+        <article>
           <h2>{desc}</h2>
           </article>
         <article>
           <h2>{inst}</h2>
-          </article> */}
+          </article>
           </>
       );
 
