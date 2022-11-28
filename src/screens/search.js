@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import MealList from '../components/itemlist';
-import './search.css'
 import {Link} from 'react-router-dom';
 import Home from './home';
 
