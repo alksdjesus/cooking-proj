@@ -1,0 +1,21 @@
+.container {
+    flex: 1;
+    margin-top: 115px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.title {
+    font-size: 40px;
+    color: #000;
+    text-align: left;
+    font-family: 'Inter';
+    font-weight: 700;
+    float: left;
+    margin-right: 30px;
+}
+
+.button {
+    color: orange;
+    margin-left: 50px;
+}

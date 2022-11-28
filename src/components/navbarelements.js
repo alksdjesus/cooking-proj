@@ -99,9 +99,9 @@ export const NavBtn = styled.nav`
 `;
 
 export const NavBtnLink = styled(Link)`
-  color: #fff;
+  color: #000;
   border-radius: 4px;
-  background: #ff0;
+  background: #fff;
   padding: 10px 22px;
   outline: none;
   border: none;
@@ -128,6 +128,23 @@ export const RecipeBtn = styled(Link)`
   margin-vertical: 10;
   margin-horizontal: 20;
   margin-top: 90;
+`;
+
+export const FeedButton = styled.button`
+  background-color: #FFA500;
+  color: #000;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  width: auto;
+  height: auto;
+  font-size: 14px;
+  padding: 8px 10px;
+  border-radius: 30px;
+  border-width: 0px;
+  margin: 9px 0px;
+  cursor: pointer;
+  align-content: center;
+  float: left;
 `;
 
 export const SearchButton = styled.button`

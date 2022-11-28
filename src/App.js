@@ -15,7 +15,6 @@ class App extends Component {
       <Router> 
         <Navbar />
         <Routes>
-          <Route path='/' element={<Home/>}/>
           <Route path='/feed' element={<Feed/>}/>
           <Route path='/search' element={<Search/>}/>
           <Route path='/profile' element={<Profile/>}/>

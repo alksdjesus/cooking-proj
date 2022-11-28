@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import MealList from '../components/itemlist';
 import {Link} from 'react-router-dom';
 import Home from './home';
+import './allpages.css';
+import { FeedButton } from '../components/navbarElements';
 
 function Feed() {
 
@@ -37,12 +39,19 @@ function Feed() {
   }
 
   return (
-    <div>
-      <div>
-      <Home/>
-        <button onClick={getRecipes}>Load New Recipes</button>
+    <div className='container'>
+      <div className='title'>
+        Feed
       </div>
-        {mealData && <MealList mealData={mealData} sender={"feed"}/>}
+      <div className='button'>
+        <FeedButton onClick={getRecipes}>Refresh</FeedButton>
+      </div>
+      <br></br>
+      <br></br>
+      <br></br>
+      <div>
+      {mealData && <MealList mealData={mealData} sender={"feed"}/>}
+      </div>
     </div>
   );
 };

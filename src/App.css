@@ -19,18 +19,18 @@
 }
 
 .all-browsers {
-  margin: 0;
-  padding: 15px;
-  font-size: larger;
+  margin-top: 0px;
+  margin-left: 50px;
+  margin-right: 50px;
+  padding: 20px;
   border: 40px;
   border-top-style: solid;
   border-top: #ffffff;
 }
 
 .all-browsers > h1, .browser {
-  margin: 10px;
-  padding: 5px;
-  color: #ffffff;
+  font-size: 24px;
+  color: #000;
 }
 
 .browser {
@@ -39,6 +39,7 @@
 
 .browser > h2, p {
   margin: 4px;
+  color: yellow;
   font-size: 90%;
 }
 
