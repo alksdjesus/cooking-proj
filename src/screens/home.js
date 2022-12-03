@@ -16,7 +16,6 @@ class Home extends Component {
           <a href="/profile">Profile</a></h1>
         </nav>
         </article>
-        <h2>Home</h2>
       </div>
     )
   }
