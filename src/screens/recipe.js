@@ -21,12 +21,10 @@
 
 import React, { useEffect, useState } from 'react';
 import {useLocation} from "react-router-dom";
-import '../App.css'
-import Home from "./home";
 
 
 export default function Recipe() {
-
+  
   const location = useLocation();
   const meal = location.state.meal
 
@@ -63,7 +61,8 @@ export default function Recipe() {
   // inst = inst.replaceAll('\n', '\n\n')
 
       return (
-        <><Home/><article className="all-browsers">
+        <>
+        <article className="all-browsers">
           <h1>{mealData.title}</h1>
           <h1>{mealData.summary}</h1>
         </article>

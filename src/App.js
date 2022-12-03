@@ -1,34 +1,77 @@
 import './App.css';
-import React, {Component} from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './screens/home';
-import Search from './screens/search';
-import Feed from './screens/feed';
-import Profile from './screens/profile';
-import Recipe from './screens/recipe';
-import { fetchData, putData} from './components/awsfunctions'
+import { BrowserRouter, NavLink, Route, Switch} from "react-router-dom";
+import Home from "./screens/Home";
+import Feed from "./screens/Feed";
+import Search from "./screens/Search";
+import Profile from "./screens/Profile";
+import Recipe from "./screens/Recipe";
+import Register from "./screens/Register";
+import Login from "./screens/Login";
+import PublicRoute from "./routes/PublicRoute";
+import PrivateRoute from "./routes/PrivateRoute";
+import React, { useState, useEffect } from "react";
+import { getUser, getToken, setUserSession, resetUserSession } from "./service/AuthService";
+import axios from "axios";
 
+const verifyTokenAPIURL = 'https://gzcxszjnze.execute-api.us-east-1.amazonaws.com/prod/verify';
 
+function App() {
 
-class App extends Component { 
+  const [isAuthenicating, setAuthenicating] = useState(true);
 
+  useEffect(() => {
+    const token = getToken();
+    if (token === 'undefined' || token === undefined || token === null || !token) {
+      return;
+    }
 
+    const requestBody = {
+      user: getUser(),
+      token: token
+    }
 
-  render() { 
-    return (
-      <div> 
-          <BrowserRouter>
-            <Routes>
-              <Route path='/' element={<Home/>}/>
-              <Route path='/search' element={<Search/>}/>
-              <Route path='/feed' element={<Feed/>}/>
-              <Route path='/profile' element={<Profile/>}/>
-              <Route path='/recipe' element={<Recipe/>}/>
-            </Routes>
-          </BrowserRouter>
-      </div>
-    )
+    axios.post(verifyTokenAPIURL, requestBody).then(response => {
+      setUserSession(response.data.user, response.data.token);
+      setAuthenicating(false);
+    }).catch(() => {
+      resetUserSession();
+      setAuthenicating(false);
+    })
+  }, []);
+
+  const token = getToken();
+  if (isAuthenicating && token) {
+    return <div className="content">Authenicating...</div>
   }
+
+  return (
+    <div className="App">
+      <BrowserRouter>
+      <div className="header">
+        <NavLink exact activeClassName="active" to="/">Home</NavLink>
+        <NavLink activeClassName="active" to="/register">Register</NavLink>
+        <NavLink activeClassName="active" to="/login">Login</NavLink>
+        <NavLink activeClassName="active" to="/feed">Feed </NavLink>
+        <NavLink activeClassName="active" to="/search">Search </NavLink>
+        <NavLink activeClassName="active" to="/profile">Profile </NavLink>
+        <NavLink activeClassName="active" to="/recipe">Recipe </NavLink>
+
+      </div>
+      <div className="content">
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <PublicRoute path="/register" component={Register}/>
+          <PublicRoute path="/login" component={Login}/>
+          <PrivateRoute path="/feed" component={Feed}/>
+          <PrivateRoute path="/search" component={Search}/>
+          <PrivateRoute path="/profile" component={Profile}/>
+          <PrivateRoute path="/recipe" component={Recipe}/>
+
+        </Switch>
+      </div>
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;

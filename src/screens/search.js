@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import MealList from '../components/itemlist';
 import './search.css'
-import {Link} from 'react-router-dom';
-import Home from './home';
+// import {Link} from 'react-router-dom';
 
 
 
@@ -41,7 +40,7 @@ function Search() {
 
     <div>
         <div>
-          <Home/>
+          {/* <Home/> */}
           <input
             placeholder="Search for a recipe!"
             onChange={onTextChange}  
@@ -49,8 +48,8 @@ function Search() {
             <button  onClick={getRecipes}>
              Search
             </button>
-            <Link to="/">Home</Link>
-            <br/>
+            {/* <Link to="/">Home</Link> */}
+            {/* <br/> */}
         </div>
         {mealData && <MealList mealData={mealData} sender={"search"}  />}
     </div>

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MealList from '../components/itemlist';
-import {Link} from 'react-router-dom';
-import Home from './home';
 
-function Feed() {
+const Feed = () => {
 
   const [mealData, setMealData] = useState(null);
 
@@ -39,7 +37,6 @@ function Feed() {
   return (
     <div>
       <div>
-      <Home/>
         <button onClick={getRecipes}>Load New Recipes</button>
       </div>
         {mealData && <MealList mealData={mealData} sender={"feed"}/>}
@@ -48,3 +45,15 @@ function Feed() {
 };
 
 export default Feed;
+
+// import React from 'react';
+
+// const Feed = () => {
+//   return (
+//     <div>
+//       This is the Feed page!
+//     </div>
+//   )
+// }
+
+// export default Feed;

@@ -1,18 +1,19 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import Home from './home';
+import { getUser, resetUserSession } from '../service/AuthService';
 
 
-class Profile extends Component {
-  render() {
-    return (
-
-      <div>
-        <Home/>
-        <h1>Profile</h1>
-      </div>
-    )
+const Profile = (props) => {
+  const logoutHandler = () => {
+    resetUserSession();
+    props.history.push('/login');
   }
+
+  return (
+    <div>
+      <h1>Profile Page</h1>
+      <input type="button" value="Logout" onClick={logoutHandler} />
+    </div>
+  )
 }
 
 export default Profile;
