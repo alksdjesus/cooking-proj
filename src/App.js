@@ -1,10 +1,10 @@
 import './App.css';
 import { BrowserRouter, NavLink, Route, Switch} from "react-router-dom";
-import Home from "./screens/Home";
-import Feed from "./screens/Feed";
-import Search from "./screens/Search";
-import Profile from "./screens/Profile";
-import Recipe from "./screens/Recipe";
+import Home from "./screens/home";
+import Feed from "./screens/feed";
+import Search from "./screens/search";
+import Profile from "./screens/profile";
+import Recipe from "./screens/recipe";
 import Register from "./screens/Register";
 import Login from "./screens/Login";
 import PublicRoute from "./routes/PublicRoute";
