@@ -10,7 +10,7 @@ function Feed() {
 
   const [mealData, setMealData] = useState(null);
 
-  const [apiKey, setKey] = useState('&apiKey=2b88b64f62be4259acb37fa4d63be27d')
+  const [apiKey, setKey] = useState('&apiKey=affe55df0130465780b612e83f9b8895')
   const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/random?number=1')
   var [someLink, setLink] = useState('test')
 
@@ -39,14 +39,16 @@ function Feed() {
     
   }
 
+  /*<div>
+    <FeedButton onClick={getRecipes}>Refresh</FeedButton>
+  </div>*/
+
   return (
     <div className='container'>
       <div className='title'>
         Feed
       </div>
-      <div>
-        <FeedButton onClick={getRecipes}>Refresh</FeedButton>
-      </div>
+      
       <br></br>
       <br></br>
       <br></br>

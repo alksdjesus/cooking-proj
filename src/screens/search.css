@@ -2,11 +2,12 @@
 input[type="text"] {
     margin: 7px 0px;
     background: white;
-    padding: 12px;
+    padding: 10px;
+    padding-left: 13px;
     border-radius: 50px;
     border-width: 2px;
     border-color: black;
-    width: 35%;
+    width: 30%;
     font-family: 'Inter';
     font-size: 15px;
 }
@@ -14,7 +15,7 @@ input[type="text"] {
 input[type="image"] {
     margin-left: -52px;
     margin-bottom: -12px;
-    width: 27px;
+    width: 25px;
     background: white;
     padding: 5px;
 }

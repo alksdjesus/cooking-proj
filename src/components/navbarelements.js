@@ -6,30 +6,28 @@ export const Nav = styled.nav`
   position: fixed;
   top: 0;
   background: orange;
-  height: 70px;
+  height: 60px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   //padding: 0.5rem calc((100vw - 1000px) / 2);
   z-index: 10;
-  border-bottom: 2px solid orange;
   /* Third Nav */
   /* justify-content: flex-start; */
 `;
 
 export const NavLink = styled(Link)`
   font-color: #000;
-  font-size: 26px;
+  font-size: 24px;
   display: flex;
   align-items: center;
   text-decoration: none;
-  padding: 0 4.5rem;
-  height: 100%;
+  padding: 0 2rem;
+  height: 95%;
   cursor: pointer;
   font-family: 'Alexandria', sans-serif;
   font-weight: 400;
-  transition: all 0.2s ease-in-out;
-  border-bottom: 2px solid orange;
+  //transition: all 0.2s ease-in-out;
   &.active {
     //font-weight: 700;
     //background: #e69500;
@@ -51,8 +49,8 @@ export const NavTitle = styled(Link)`
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;
-  font-family: 'Montserrat', sans-serif;;
-  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
   margin-left: 3%;
 `;
 

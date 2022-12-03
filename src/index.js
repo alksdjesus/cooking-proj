@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import * as AWS from 'aws-sdk';
+/*import * as AWS from 'aws-sdk';
 import { ConfigurationOptions } from 'aws-sdk';
 
 
@@ -13,7 +13,7 @@ const configuration: ConfigurationOptions = {
   accessKeyId: 'AKIAVX5ION7F5JVSBO42'
 }
 
-AWS.config.update(configuration)
+AWS.config.update(configuration)*/
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

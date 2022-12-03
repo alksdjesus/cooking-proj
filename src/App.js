@@ -6,9 +6,7 @@ import Feed from './screens/feed';
 import Saved from './screens/saved';
 import Profile from './screens/profile';
 import Recipe from './screens/recipe';
-import { fetchData, putData} from './components/awsfunctions'
-
-
+//import { fetchData, putData} from './components/awsfunctions'
 import Navbar from './components/navbar';
 
 class App extends Component { 
