@@ -23,7 +23,7 @@ export const NavLink = styled(Link)`
   align-items: center;
   text-decoration: none;
   padding: 0 2rem;
-  height: 95%;
+  height: 100%;
   cursor: pointer;
   font-family: 'Alexandria', sans-serif;
   font-weight: 400;
@@ -32,10 +32,13 @@ export const NavLink = styled(Link)`
     //font-weight: 700;
     //background: #e69500;
     transition: all 0.2s ease-in-out;
-    border-bottom: 3px solid black;
+    border-bottom: 2.5px solid black;
+    height: 56px;
+    margin-top: 2.5px;
   }
   &:hover {
     transition: all 0.2s ease-in-out;
+    text-decoration: none;
     //background: #e69500;
   }
 `;
@@ -46,12 +49,12 @@ export const NavTitle = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  padding: 0 1rem;
+  padding: 0 0rem;
   height: 100%;
   cursor: pointer;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-  margin-left: 3%;
+  margin-left: 3.75%;
 `;
 
 export const Bars = styled(FaBars)`
@@ -60,7 +63,7 @@ export const Bars = styled(FaBars)`
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;
-    top: 0;
+    top: -6px;
     right: 0;
     transform: translate(-100%, 75%);
     font-size: 1.8rem;

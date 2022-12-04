@@ -21,7 +21,8 @@
 
 import React, { useEffect, useState } from 'react';
 import {useLocation} from "react-router-dom";
-import '../App.css'
+import './allpages.css'
+import './recipe.css'
 import Home from "./home";
 
 
@@ -71,12 +72,12 @@ export default function Recipe() {
         <br></br>
         <br></br>
         <br></br>
-        <img className="img" src={mealData.image} alt={mealData.title} width="700"/>
-        <br></br>
-        <br></br>
         <div className='summary'>
           {mealData.summary}
         </div>
+        <img className="img" src={mealData.image} alt={mealData.title} width="450" float='left'/>
+        <br></br>
+        <br></br>
         {/* <article>
           <h2>{desc}</h2>
           </article>

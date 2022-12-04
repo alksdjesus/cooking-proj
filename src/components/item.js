@@ -10,9 +10,11 @@ export default function Meal({ meal }) {
           <img className="recipe_img" src={meal.image}/>
         </Link>
         <div className="recipe">
-          <div className="name">
-            {meal.title}
-          </div>
+          <Link to="/recipe" state={{ meal }}>
+            <div className="name">
+              {meal.title}
+            </div>
+          </Link>
           <div className="recipe_details">
             Prep time: {meal.readyInMinutes} min. <br></br>
             No. of servings: {meal.servings}

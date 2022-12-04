@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './allpages.css';
+import './settings.css'
 
 
 function Profile () {
@@ -12,18 +13,20 @@ function Profile () {
         <br></br>
         <br></br>
         <br></br>
-        <Link to="/profile">
-          <h1>Edit Profile</h1>
-        </Link>
-        <Link to="/profile">
-          Change Dietary Restrictions
-        </Link>
-        <Link to="/profile">
-          Change Accessible Cookware
-        </Link>
-        <Link to="/profile">
-          Sign Out
-        </Link>
+        <div className='menu'>
+          <Link to="/profile">
+            <div className='selection'>Edit Profile</div>
+          </Link>
+          <Link to="/profile">
+            <div className='selection'>Change Dietary Restrictions</div>
+          </Link>
+          <Link to="/profile">
+            <div className='selection'>Change Accessible Cookware</div>
+          </Link>
+          <Link to="/profile">
+            <div className='selection'>Sign Out</div>
+          </Link>
+        </div>
     </div>
     )
 }

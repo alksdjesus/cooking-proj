@@ -15,12 +15,18 @@
     margin-right: 30px;
 }
 
-.summary {
-    font-size: 20px;
-    color: #000;
-    text-align: left;
-    font-family: 'Inter';
-    font-weight: 500;
-    float: left;
-    margin-right: 50%;
+a:link { 
+    text-decoration: none; 
+}
+
+a:visited { 
+    text-decoration: none; 
+}
+
+a:hover { 
+    text-decoration: underline; 
+}
+
+a:active { 
+    text-decoration: underline; 
 }
