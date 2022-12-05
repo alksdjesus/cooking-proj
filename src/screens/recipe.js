@@ -65,26 +65,18 @@ export default function Recipe() {
 
       return (
         <div className='container'>
-        <div className='title'>
-          {mealData.title}
-        </div>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <div className='summary'>
-          {mealData.summary}
-        </div>
-        <img className="img" src={mealData.image} alt={mealData.title} width="450" float='left'/>
-        <br></br>
-        <br></br>
-        {/* <article>
-          <h2>{desc}</h2>
-          </article>
-        <article>
-          <h2>{inst}</h2>
-          </article> */}
+          <div className='recipe_title'>
+            {mealData.title}
           </div>
+          <div className='sum_img'>
+            <div className='summary_container'>
+              <div className='summary'>
+                {mealData.summary}
+              </div>
+            </div>
+            <img className="img" src={mealData.image} alt={mealData.title}/>
+          </div>
+        </div>
       );
 
 

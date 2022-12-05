@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import MealList from '../components/itemlist';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Home from './home';
 import './allpages.css';
-import { FeedButton } from '../components/navbarElements';
 import '../components/item.css';
 
 function Feed() {
@@ -48,7 +47,6 @@ function Feed() {
       <div className='title'>
         Feed
       </div>
-      
       <br></br>
       <br></br>
       <br></br>

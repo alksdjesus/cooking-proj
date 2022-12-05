@@ -22,11 +22,11 @@ export const NavLink = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  padding: 0 2rem;
+  padding: 0 1.75rem;
   height: 100%;
   cursor: pointer;
   font-family: 'Alexandria', sans-serif;
-  font-weight: 400;
+  font-weight: 300;
   //transition: all 0.2s ease-in-out;
   &.active {
     //font-weight: 700;

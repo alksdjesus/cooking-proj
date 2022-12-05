@@ -1,5 +1,5 @@
 
-.title {
+.recipe_title {
     font-size: 44px;
     color: #000;
     text-align: left;
@@ -7,34 +7,51 @@
     font-weight: 700;
     float: left;
     margin-right: 30px;
+    margin-bottom: 30px;
+}
+
+.sum_img {
+    display: flex;
+    align-items: center;
+    width: 85%;
+    margin-bottom: 30px;
+}
+
+.summary_container {
+    flex: 1;
+    width: 100%;
 }
 
 .summary {
-    font-size: 20px;
+    font-size: 17px;
     color: #000;
     text-align: left;
     font-family: 'Raleway', sans-serif;
-    font-weight: 500;
+    font-weight: 400;
     float: left;
-    margin-right: 50%;
+    margin-right: 50px;
 }
 
 img {
+    float: right;
+}
+
+.ingredients {
+    font-size: 17px;
+    color: #000;
+    text-align: left;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
     float: left;
+    margin-right: 50px;
 }
 
-a:link { 
-    text-decoration: none; 
-}
-
-a:visited { 
-    text-decoration: none; 
-}
-
-a:hover { 
-    text-decoration: underline; 
-}
-
-a:active { 
-    text-decoration: underline; 
+.directions {
+    font-size: 17px;
+    color: #000;
+    text-align: left;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    float: left;
+    margin-right: 50px;
 }
