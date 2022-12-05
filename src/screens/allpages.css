@@ -1,6 +1,6 @@
 .container {
     flex: 1;
-    margin-top: 115px;
+    margin-top: 100px;
     margin-left: 3.75%;
     margin-right: 3.75%;
 }
@@ -15,7 +15,7 @@
 }
 
 .login_container {
-    margin-top: 115px;
+    margin-top: 100px;
     height: 100%;
     align-content: center;
    /*background-image: url("../images/login.jpg");
