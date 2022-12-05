@@ -7,7 +7,7 @@ import {
   NavBtn,
   NavBtnLink,
   NavTitle
-} from './NavbarElements';
+} from './navbarelelements';
 
 const Navbar = () => {
   return (
