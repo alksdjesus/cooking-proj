@@ -9,10 +9,11 @@ class Home extends Component {
       <div>
         <article className='all-browsers'>
         <nav>
-         <h1><a href="/">Home</a> |
-          <a href="/Feed/">Feed</a> | 
-          <a href="/Search/">Search</a> | 
-          <a href="/Profile/">Profile</a></h1>
+         <h1>
+          <a href="/">Home</a> |
+          <a href="/feed">Feed</a> | 
+          <a href="/search">Search</a> | 
+          <a href="/profile">Profile</a></h1>
         </nav>
         </article>
       </div>

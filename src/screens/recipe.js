@@ -21,7 +21,8 @@
 
 import React, { useEffect, useState } from 'react';
 import {useLocation} from "react-router-dom";
-import '../App.css'
+import './allpages.css'
+import './recipe.css'
 import Home from "./home";
 
 
@@ -63,20 +64,27 @@ export default function Recipe() {
   // inst = inst.replaceAll('\n', '\n\n')
 
       return (
-        <><Home/><article className="all-browsers">
-          <h1>{mealData.title}</h1>
-          <h1>{mealData.summary}</h1>
-        </article>
-        <article>
-        <img className="img" src={mealData.image} alt={mealData.title}/>
-          </article>
+        <div className='container'>
+        <div className='title'>
+          {mealData.title}
+        </div>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <div className='summary'>
+          {mealData.summary}
+        </div>
+        <img className="img" src={mealData.image} alt={mealData.title} width="450" float='left'/>
+        <br></br>
+        <br></br>
         {/* <article>
           <h2>{desc}</h2>
           </article>
         <article>
           <h2>{inst}</h2>
           </article> */}
-          </>
+          </div>
       );
 
 

@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import MealList from '../components/itemlist';
-import './search.css'
+import './search.css';
+import './allpages.css';
 import {Link} from 'react-router-dom';
-import Home from './home';
-
-
 
 function Search() {
 
@@ -14,7 +12,7 @@ function Search() {
   // const [isLoading, setLoading] = useState(true)
   var [searchText, setText] = useState(null)
   // var [data, setData] = useState([])
-  const [apiKey, setKey] = useState('&apiKey=2b88b64f62be4259acb37fa4d63be27d')
+  const [apiKey, setKey] = useState('&apiKey=affe55df0130465780b612e83f9b8895')
   const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/complexSearch?number=10&query=')
   var [someLink, setLink] = useState('test')
 
@@ -38,21 +36,23 @@ function Search() {
   }
 
   return (
-
-    <div>
-        <div>
-          <Home/>
-          <input
-            placeholder="Search for a recipe!"
-            onChange={onTextChange}  
-            />
-            <button  onClick={getRecipes}>
-             Search
-            </button>
-            <Link to="/">Home</Link>
-            <br/>
-        </div>
+    <div className='container'>
+      <div className='title'>
+        Search
+      </div>
+      <input 
+        type="text"
+        placeholder="Enter ingredients/recipe"
+        onChange={onTextChange}  
+      />
+      <input
+        type="image"
+        src={require("../images/search.png")}
+        onClick={getRecipes}
+      />
+      <div>
         {mealData && <MealList mealData={mealData} sender={"search"}  />}
+      </div>
     </div>
   );
 };

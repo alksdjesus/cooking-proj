@@ -1,0 +1,32 @@
+.container {
+    flex: 1;
+    margin-top: 115px;
+    margin-left: 3.75%;
+    margin-right: 3.75%;
+}
+
+.title {
+    font-size: 44px;
+    color: #000;
+    text-align: left;
+    font-family: 'Raleway';
+    font-weight: 700;
+    float: left;
+    margin-right: 30px;
+}
+
+a:link { 
+    text-decoration: none; 
+}
+
+a:visited { 
+    text-decoration: none; 
+}
+
+a:hover { 
+    text-decoration: underline; 
+}
+
+a:active { 
+    text-decoration: underline; 
+}

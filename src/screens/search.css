@@ -1,8 +1,21 @@
-button { 
-    background-color: aqua;
+
+input[type="text"] {
+    margin: 7px 0px;
+    background: white;
+    padding: 10px;
+    padding-left: 13px;
+    border-radius: 50px;
+    border-width: 2px;
+    border-color: black;
+    width: 30%;
+    font-family: 'Inter';
+    font-size: 15px;
 }
 
-input { 
-    background-color: blueviolet;
-    width: 1000
+input[type="image"] {
+    margin-left: -45px;
+    margin-bottom: -10px;
+    width: 23px;
+    background: white;
+    padding: 5px;
 }
