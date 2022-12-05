@@ -5,6 +5,12 @@ import axios from 'axios';
 const updateAPIURL = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo';
 
 const Profile = (props) => {
+
+  //getting loggind in user
+  const user = getUser();
+  const username = user !== 'undefined' && user ? user.username : '';
+
+
   const [name, setName] = useState('');
   const [message, setMessage] = useState(null);
 
