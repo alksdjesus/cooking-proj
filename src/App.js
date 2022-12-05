@@ -1,30 +1,76 @@
 import './App.css';
-import React, {Component} from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Search from './screens/search';
-import Feed from './screens/feed';
-import Saved from './screens/saved';
-import Profile from './screens/profile';
-import Recipe from './screens/recipe';
-//import { fetchData, putData} from './components/awsfunctions'
-import Navbar from './components/navbar';
+import { BrowserRouter as Router, NavLink, Route, Switch} from "react-router-dom";
+import Home from "./screens/home";
+import Feed from "./screens/feed";
+import Search from "./screens/search";
+import Profile from "./screens/profile";
+import Recipe from "./screens/recipe";
+import Register from "./screens/Register";
+import Login from "./screens/Login";
+import PublicRoute from "./routes/PublicRoute";
+import PrivateRoute from "./routes/PrivateRoute";
+import React, { useState, useEffect } from "react";
+import { getUser, getToken, setUserSession, resetUserSession } from "./service/AuthService";
+import axios from "axios";
 
-class App extends Component { 
-  render() { 
-    return (
-      <Router> 
-        <Navbar />
-        <Routes>
-          <Route path='/' element={<Feed/>}/>
-          <Route path='/feed' element={<Feed/>}/>
-          <Route path='/search' element={<Search/>}/>
-          <Route path='/saved' element={<Saved/>}/>
-          <Route path='/profile' element={<Profile/>}/>
-          <Route path='/recipe' element={<Recipe/>}/>
-        </Routes>
-      </Router>
-    )
+const verifyTokenAPIURL = 'https://gzcxszjnze.execute-api.us-east-1.amazonaws.com/prod/verify';
+
+function App() {
+
+  const [isAuthenicating, setAuthenicating] = useState(true);
+
+  useEffect(() => {
+    const token = getToken();
+    if (token === 'undefined' || token === undefined || token === null || !token) {
+      return;
+    }
+
+    const requestBody = {
+      user: getUser(),
+      token: token
+    }
+
+    axios.post(verifyTokenAPIURL, requestBody).then(response => {
+      setUserSession(response.data.user, response.data.token);
+      setAuthenicating(false);
+    }).catch(() => {
+      resetUserSession();
+      setAuthenicating(false);
+    })
+  }, []);
+
+  const token = getToken();
+  if (isAuthenicating && token) {
+    return <div className="content">Authenicating...</div>
   }
+
+  return (
+    <div className="App">
+      <Router>
+        <Navbar />
+        <div className="header">
+          <NavLink exact activeClassName="active" to="/">Home</NavLink>
+          <NavLink activeClassName="active" to="/register">Register</NavLink>
+          <NavLink activeClassName="active" to="/login">Login</NavLink>
+          <NavLink activeClassName="active" to="/feed">Feed </NavLink>
+          <NavLink activeClassName="active" to="/search">Search </NavLink>
+          <NavLink activeClassName="active" to="/profile">Profile </NavLink>
+          <NavLink activeClassName="active" to="/recipe">Recipe </NavLink>
+        </div>
+        <div className="content">
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <PublicRoute path="/register" component={Register}/>
+            <PublicRoute path="/login" component={Login}/>
+            <PrivateRoute path="/feed" component={Feed}/>
+            <PrivateRoute path="/search" component={Search}/>
+            <PrivateRoute path="/profile" component={Profile}/>
+            <PrivateRoute path="/recipe" component={Recipe}/>
+          </Switch>
+        </div>
+      </Router>
+    </div>
+  );
 }
 
 export default App;

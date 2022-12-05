@@ -5,7 +5,7 @@ import Home from './home';
 import './allpages.css';
 import '../components/item.css';
 
-function Feed() {
+const Feed = () => {
 
   const [mealData, setMealData] = useState(null);
 
@@ -58,3 +58,15 @@ function Feed() {
 };
 
 export default Feed;
+
+// import React from 'react';
+
+// const Feed = () => {
+//   return (
+//     <div>
+//       This is the Feed page!
+//     </div>
+//   )
+// }
+
+// export default Feed;

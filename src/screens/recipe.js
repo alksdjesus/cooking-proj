@@ -27,7 +27,7 @@ import Home from "./home";
 
 
 export default function Recipe() {
-
+  
   const location = useLocation();
   const meal = location.state.meal
 
