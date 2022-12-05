@@ -1,5 +1,5 @@
 {
-  "name": "cookingAI",
+  "name": "cooking-proj",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,11 +8,13 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "0.21.1",
     "cra-template": "^1.1.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.6.0",
     "react-router-dom": "5.2.0",
-    "react-scripts": "^4.0.3",
-    "web-vitals": "^1.1.1"
+    "react-scripts": "5.0.1",
+    "styled-components": "^5.3.6",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",

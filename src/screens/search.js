@@ -41,7 +41,7 @@ function Search() {
         Search
       </div>
       <input 
-        type="text"
+        type="search"
         placeholder="Enter ingredients/recipe"
         onChange={onTextChange}  
       />

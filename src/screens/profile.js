@@ -1,14 +1,19 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import {Link} from 'react-router-dom';
 import './allpages.css';
 import './settings.css'
-import React, {Component, useState} from 'react';
 import { getUser, resetUserSession } from '../service/AuthService';
 import axios from 'axios';
 
 const updateAPIURL = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo';
 
 const Profile = (props) => {
+
+  //getting loggind in user
+  const user = getUser();
+  const username = user !== 'undefined' && user ? user.username : '';
+
+
   const [name, setName] = useState('');
   const [message, setMessage] = useState(null);
 
@@ -42,12 +47,17 @@ const Profile = (props) => {
   }
 
   return (
-    <div>
+    <div className='container'>
       <form onSubmit={submitHandler}>
-      <h1>Edit Profile</h1>
-      Name: <input type="text" value={name} onChange={event => setName(event.target.value)} /> <br/>
-      Email: <input type="text"/>
-      Username: <input type="text"/>
+      <div className='title'>
+      Edit Profile
+      </div>
+      <br></br>
+      <br></br>
+      <br></br>
+      Name: <input type="login" value={name} onChange={event => setName(event.target.value)} /> <br/>
+      Email: <input type="login"/> <br/>
+      Username: <input type="login"/> <br/>
       Ingredients:
       <select>
         <option value=""></option>

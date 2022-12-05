@@ -1,12 +1,13 @@
 import './App.css';
-import { BrowserRouter as Router, NavLink, Route, Switch} from "react-router-dom";
-import Home from "./screens/home";
+import { BrowserRouter, NavLink, Route, Switch} from "react-router-dom";
 import Feed from "./screens/feed";
 import Search from "./screens/search";
 import Profile from "./screens/profile";
+import Saved from "./screens/saved";
 import Recipe from "./screens/recipe";
-import Register from "./screens/Register";
-import Login from "./screens/Login";
+import Register from "./screens/register";
+import Navbar from './components/navbar';
+import Login from "./screens/login";
 import PublicRoute from "./routes/PublicRoute";
 import PrivateRoute from "./routes/PrivateRoute";
 import React, { useState, useEffect } from "react";
@@ -46,7 +47,7 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
+      <BrowserRouter>
         <Navbar />
         <div className="header">
           <NavLink exact activeClassName="active" to="/">Home</NavLink>
@@ -55,20 +56,22 @@ function App() {
           <NavLink activeClassName="active" to="/feed">Feed </NavLink>
           <NavLink activeClassName="active" to="/search">Search </NavLink>
           <NavLink activeClassName="active" to="/profile">Profile </NavLink>
+          <NavLink activeClassName="active" to="/saved">Saved </NavLink>
           <NavLink activeClassName="active" to="/recipe">Recipe </NavLink>
         </div>
         <div className="content">
           <Switch>
-            <Route exact path="/" component={Home}/>
+            <Route exact path="/" component={Feed}/>
             <PublicRoute path="/register" component={Register}/>
             <PublicRoute path="/login" component={Login}/>
             <PrivateRoute path="/feed" component={Feed}/>
             <PrivateRoute path="/search" component={Search}/>
             <PrivateRoute path="/profile" component={Profile}/>
+            <PrivateRoute path="/saved" component={Saved}/>
             <PrivateRoute path="/recipe" component={Recipe}/>
           </Switch>
         </div>
-      </Router>
+      </BrowserRouter>
     </div>
   );
 }

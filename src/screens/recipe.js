@@ -23,7 +23,6 @@ import React, { useEffect, useState } from 'react';
 import {useLocation} from "react-router-dom";
 import './allpages.css'
 import './recipe.css'
-import Home from "./home";
 
 
 export default function Recipe() {

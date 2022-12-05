@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { setUserSession } from '../service/AuthService'
+import './allpages.css'
 
 const loginAPIUrl = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/login';
 
@@ -35,12 +36,14 @@ const Login = (props) => {
   }
 
   return (
-    <div>
+    <div className='login_container'>
       <form onSubmit={submitHandler}>
-        <h5>Login</h5>
-        username: <input type="text" value={username} onChange={event => setUsername(event.target.value)} /> <br/>
-        password: <input type="password" value={password} onChange={event => setPassword(event.target.value)} /> <br/>
-        <input type="submit" value="Login" />
+        <div className='login'>
+          Login
+        </div>
+        <input type="login" placeholder="Username" value={username} onChange={event => setUsername(event.target.value)} /> <br/>
+        <input type="login" placeholder="Password" value={password} onChange={event => setPassword(event.target.value)} /> <br/>
+        <input type="submit" value="LOGIN" />
       </form>
       {errorMessage && <p className="message">{errorMessage}</p>}
     </div>

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MealList from '../components/itemlist';
 import { Link } from 'react-router-dom';
-import Home from './home';
 import './allpages.css';
 import '../components/item.css';
 
