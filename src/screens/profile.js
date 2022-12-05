@@ -1,5 +1,4 @@
-import React, {Component, useState} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component, useState } from 'react';
 import './allpages.css';
 import './settings.css'
 import { getUser, resetUserSession } from '../service/AuthService';
@@ -14,7 +13,9 @@ const Profile = (props) => {
   const username = user !== 'undefined' && user ? user.username : '';
 
 
-  const [name, setName] = useState('');
+  // const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [bio, setBio] = useState('');
   const [message, setMessage] = useState(null);
 
   const logoutHandler = () => {
@@ -24,17 +25,62 @@ const Profile = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    if (name.trim() === '') {
-      setMessage('All fields are required');
-      return;
-    }
+    
     setMessage(null);
     
-    const requestBody = {
-      username: "mingmar",
-      updateKey: "name",
-      updateValue: "mingmar"
+    // const requestBody = {
+    //   username: username,
+    //   updateKey: "name",
+    //   updateValue: name
+    // }
+    // axios.patch(updateAPIURL, requestBody).then(response => {
+    //   setMessage('Info Updated');
+    // }).catch(error => {
+    //   if (error.response.status === 401) {
+    //     setMessage(error.response.data.message);
+    //   } else {
+    //     setMessage('sorry....the backend server is down!! please try again later');
+    //   }
+    // })
+
+    // if (name !== '') {
+    //   submitName();
+    // }
+
+    if (bio !== '') {
+      submitBio();
     }
+
+    if (email !== '') {
+      submitEmail();
+    }
+  }
+
+//   const submitName = () => {
+//     const requestBody = {
+//       username: username,
+//       updateKey: "name",
+//       updateValue: name
+//     }
+
+//     axios.patch(updateAPIURL, requestBody).then(response => {
+//       setMessage('Info Updated');
+//     }).catch(error => {
+//       if (error.response.status === 401) {
+//         setMessage(error.response.data.message);
+//       } else {
+//         setMessage('sorry....the backend server is down!! please try again later');
+//       }
+//   })
+// }
+
+  const submitBio = () => {
+    const requestBody = {
+      username: username,
+      updateKey: "bio",
+      updateValue: bio
+    }
+
     axios.patch(updateAPIURL, requestBody).then(response => {
       setMessage('Info Updated');
     }).catch(error => {
@@ -43,8 +89,28 @@ const Profile = (props) => {
       } else {
         setMessage('sorry....the backend server is down!! please try again later');
       }
-    })
-  }
+  })
+}
+
+  const submitEmail = () => {
+    const requestBody = {
+      username: username,
+      updateKey: "email",
+      updateValue: email
+    }
+
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+  })
+}
+
+//<input type="profile" placeholder="Name" value={name} onChange={event => setName(event.target.value)} /> <br/>
 
   return (
     <div className='profile_container'>
@@ -52,9 +118,9 @@ const Profile = (props) => {
         <div className='profile'>
           Edit Profile
         </div>
-        <input type="profile" placeholder="Name" value={name} onChange={event => setName(event.target.value)} /> <br/>
-        <input type="profile" placeholder="Email"/> <br/>
-        <input type="profile" placeholder="Username"/> <br/>
+
+        <input type="bio" placeholder="Bio" value={bio} onChange={event => setBio(event.target.value)} /> <br/>
+        <input type="profile" placeholder="Email" value={email} onChange={event => setEmail(event.target.value)}/> <br/>
         Ingredients:
         <select>
           <option value=""></option>

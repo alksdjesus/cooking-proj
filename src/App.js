@@ -6,6 +6,7 @@ import Profile from "./screens/profile";
 import Saved from "./screens/saved";
 import Settings from "./screens/settings";
 import Recipe from "./screens/recipe";
+import Create from "./screens/create";
 import Register from "./screens/register";
 import Navbar from './components/navbar';
 import Login from "./screens/login";
@@ -60,6 +61,7 @@ function App() {
           <NavLink activeClassName="active" to="/saved">Saved </NavLink>
           <NavLink activeClassName="active" to="/settings">Settings </NavLink>
           <NavLink activeClassName="active" to="/recipe">Recipe </NavLink>
+          <NavLink activeClassName="active" to="/create">Create </NavLink>
         </div>
         <div className="content">
           <Switch>
@@ -72,6 +74,7 @@ function App() {
             <PrivateRoute path="/saved" component={Saved}/>
             <PrivateRoute path="/settings" component={Settings}/>
             <PrivateRoute path="/recipe" component={Recipe}/>
+            <PrivateRoute path="/create" component={Create}/>
           </Switch>
         </div>
       </BrowserRouter>

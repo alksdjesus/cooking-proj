@@ -6,11 +6,6 @@ import axios from 'axios';
 
 function Settings () {
 
-  const logoutHandler = () => {
-    resetUserSession();
-    props.history.push('/login');
-  }
-
   return (
     <div className='container'>
       <div className='title'>
@@ -26,15 +21,20 @@ function Settings () {
         <Link to="/profile">
           <div className='selection'>Change Dietary Restrictions</div>
         </Link>
+        <Link to="/create">
+          <div className='selection'>Create A New Recipe</div>
+        </Link>
         <Link to="/profile">
-          <div className='selection'>Change Accessible Cookware</div>
+          <div className='selection'>Created Recipes</div>
         </Link>
         <Link to="/login">
-          <div className='selection' onClick={logoutHandler}>Sign Out</div>
+          <div className='selection'>Sign Out</div>
         </Link>
       </div>
   </div>
   )
 }
+
+//onClick={logoutHandler}
 
 export default Settings;

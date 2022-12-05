@@ -118,6 +118,20 @@ input[type="profile"] {
     font-size: 15px;
 }
 
+input[type="bio"] {
+    margin: 10px 0px;
+    background: white;
+    padding: 10px;
+    padding-left: 13px;
+    border-radius: 20px;
+    border-width: 1.75px;
+    border-color: black;
+    width: 250px;
+    /*height: 200px;*/
+    font-family: 'Inter';
+    font-size: 15px;
+}
+
 input[type="submit"] {
     background-color: #FFA500;
     color: #000;
