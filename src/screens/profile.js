@@ -11,7 +11,9 @@ const Profile = (props) => {
   const username = user !== 'undefined' && user ? user.username : '';
 
 
-  const [name, setName] = useState('');
+  // const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [bio, setBio] = useState('');
   const [message, setMessage] = useState(null);
 
   const logoutHandler = () => {
@@ -21,17 +23,62 @@ const Profile = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    if (name.trim() === '') {
-      setMessage('All fields are required');
-      return;
-    }
+    
     setMessage(null);
     
-    const requestBody = {
-      username: "mingmar",
-      updateKey: "name",
-      updateValue: "mingmar"
+    // const requestBody = {
+    //   username: username,
+    //   updateKey: "name",
+    //   updateValue: name
+    // }
+    // axios.patch(updateAPIURL, requestBody).then(response => {
+    //   setMessage('Info Updated');
+    // }).catch(error => {
+    //   if (error.response.status === 401) {
+    //     setMessage(error.response.data.message);
+    //   } else {
+    //     setMessage('sorry....the backend server is down!! please try again later');
+    //   }
+    // })
+
+    // if (name !== '') {
+    //   submitName();
+    // }
+
+    if (bio !== '') {
+      submitBio();
     }
+
+    if (email !== '') {
+      submitEmail();
+    }
+  }
+
+//   const submitName = () => {
+//     const requestBody = {
+//       username: username,
+//       updateKey: "name",
+//       updateValue: name
+//     }
+
+//     axios.patch(updateAPIURL, requestBody).then(response => {
+//       setMessage('Info Updated');
+//     }).catch(error => {
+//       if (error.response.status === 401) {
+//         setMessage(error.response.data.message);
+//       } else {
+//         setMessage('sorry....the backend server is down!! please try again later');
+//       }
+//   })
+// }
+
+  const submitBio = () => {
+    const requestBody = {
+      username: username,
+      updateKey: "bio",
+      updateValue: bio
+    }
+
     axios.patch(updateAPIURL, requestBody).then(response => {
       setMessage('Info Updated');
     }).catch(error => {
@@ -40,16 +87,34 @@ const Profile = (props) => {
       } else {
         setMessage('sorry....the backend server is down!! please try again later');
       }
-    })
-  }
+  })
+}
+
+  const submitEmail = () => {
+    const requestBody = {
+      username: username,
+      updateKey: "email",
+      updateValue: email
+    }
+
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+  })
+}
 
   return (
     <div>
       <form onSubmit={submitHandler}>
       <h1>Edit Profile</h1>
-      Name: <input type="text" value={name} onChange={event => setName(event.target.value)} /> <br/>
-      Email: <input type="text"/>
-      Username: <input type="text"/>
+      {/* Name: <input type="text" value={name} onChange={event => setName(event.target.value)} /> <br/> */}
+      Bio: <input type="text" value={bio} onChange={event => setBio(event.target.value)} /> <br/>
+      Email: <input type="text" value={email} onChange={event => setEmail(event.target.value)}/> <br/>
       Ingredients:
       <select>
         <option value=""></option>
@@ -57,7 +122,7 @@ const Profile = (props) => {
         <option value="beef">Beef</option>
         <option value="cabbage">Cabbage</option>
         <option value="milk">Milk</option>
-      </select>
+      </select> <br/>
       Dietary Restrictions: dropdown menu
       <select>
         <option value=""></option>
@@ -65,8 +130,8 @@ const Profile = (props) => {
         <option value="pescatarian">Pescatarian</option>
         <option value="vegan">Vegan</option>
         <option value="gluten-free">Gluten-Free</option>
-      </select>
-      Recipes: list of recipes
+      </select> <br/>
+      Recipes: list of recipes <br/>
       <input type="submit" value="Save Changes" />
       </form>
       <input type="button" value="Logout" onClick={logoutHandler} />

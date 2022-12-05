@@ -5,6 +5,7 @@ import Feed from "./screens/feed";
 import Search from "./screens/search";
 import Profile from "./screens/profile";
 import Recipe from "./screens/recipe";
+import Create from "./screens/create";
 import Register from "./screens/Register";
 import Login from "./screens/Login";
 import PublicRoute from "./routes/PublicRoute";
@@ -55,6 +56,7 @@ function App() {
         <NavLink activeClassName="active" to="/search">Search </NavLink>
         <NavLink activeClassName="active" to="/profile">Profile </NavLink>
         <NavLink activeClassName="active" to="/recipe">Recipe </NavLink>
+        <NavLink activeClassName="active" to="/create">Create </NavLink>
 
       </div>
       <div className="content">
@@ -66,6 +68,7 @@ function App() {
           <PrivateRoute path="/search" component={Search}/>
           <PrivateRoute path="/profile" component={Profile}/>
           <PrivateRoute path="/recipe" component={Recipe}/>
+          <PrivateRoute path="/create" component={Create}/>
 
         </Switch>
       </div>
