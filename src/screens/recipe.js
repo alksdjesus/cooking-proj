@@ -21,8 +21,8 @@
 
 import React, { useEffect, useState } from 'react';
 import {useLocation} from "react-router-dom";
-import './allpages.css'
-import './recipe.css'
+import '../css/allpages.css'
+import '../css/recipe.css'
 
 
 export default function Recipe() {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MealList from '../components/itemlist';
-import './search.css';
-import './allpages.css';
+import '../css/search.css';
+import '../css/allpages.css';
 import {Link} from 'react-router-dom';
 
 function Search() {

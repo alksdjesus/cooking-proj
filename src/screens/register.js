@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './allpages.css';
+import '../css/allpages.css';
+import '../css/login.css'
 
 const registerUrl = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/register';
 
@@ -47,7 +48,7 @@ const Register = () => {
           <input type="login" placeholder="Email" value={email} onChange={event => setEmail(event.target.value)} /> <br/>
           <input type="login" placeholder="Username" value={username} onChange={event => setUsername(event.target.value)} /> <br/>
           <input type="login" placeholder="Password" value={password} onChange={event => setPassword(event.target.value)} /> <br/>
-          <input type="submit" value="REGISTER" />
+          <input type="submit" value="Register" />
         </form>
       </div>
       {message && <p className="message">{message}</p>}

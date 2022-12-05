@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
-import './allpages.css';
-import './settings.css'
+import '../css/allpages.css';
+import '../css/profile.css';
 import { getUser, resetUserSession } from '../service/AuthService';
 import axios from 'axios';
 
@@ -137,9 +137,10 @@ const Profile = (props) => {
           <option value="pescatarian">Pescatarian</option>
           <option value="vegan">Vegan</option>
           <option value="gluten-free">Gluten-Free</option>
+          <option value="lactose-intol">Lactose-Intolerant</option>
         </select>
         <br/>
-        <input type="submit" value="SAVE CHANGES" /> <br/>
+        <input type="submit" value="Save Changes" /> <br/>
       </form>
     </div>
   )

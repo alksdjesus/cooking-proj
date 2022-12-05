@@ -1,0 +1,43 @@
+
+.login_container {
+    margin-top: 100px;
+    height: 100%;
+    align-content: center;
+   /*background-image: url("../images/login.jpg");
+    background-size: cover;*/
+}
+
+.login {
+    font-size: 44px;
+    color: #000;
+    text-align: center;
+    font-family: 'Raleway';
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+input[type="login"] {
+    margin: 6px 0px;
+    background: white;
+    padding: 10px;
+    padding-left: 13px;
+    border-radius: 50px;
+    border-width: 1.75px;
+    border-color: black;
+    width: 200px;
+    font-family: 'Inter';
+    font-size: 15px;
+}
+
+input[type="password"] {
+    margin: 6px 0px;
+    background: white;
+    padding: 10px;
+    padding-left: 13px;
+    border-radius: 50px;
+    border-width: 1.75px;
+    border-color: black;
+    width: 200px;
+    font-family: 'Inter';
+    font-size: 15px;
+}

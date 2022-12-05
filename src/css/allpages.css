@@ -1,0 +1,70 @@
+.container {
+    flex: 1;
+    margin-top: 100px;
+    margin-left: 3.75%;
+    margin-right: 3.75%;
+}
+
+.title {
+    font-size: 44px;
+    color: #000;
+    text-align: left;
+    font-family: 'Raleway';
+    font-weight: 700;
+    float: left;
+}
+
+form {
+    font-family: 'Inter', sans-serif;
+    height: 100%;
+    text-align: center;
+}
+
+.form_container {
+    text-align: left;
+}
+
+input[type="submit"] {
+    background-color: #FFA500;
+    color: #000;
+    font-family: 'Alexandria', sans-serif;
+    font-weight: 400;
+    width: auto;
+    font-size: 15px;
+    padding: 10px 16px;
+    border-radius: 30px;
+    border-width: 0px;
+    margin: 15px 0px;
+    cursor: pointer;
+}
+
+input[type="button"] {
+    background-color: #FFA500;
+    color: #000;
+    font-family: 'Alexandria', sans-serif;
+    font-weight: 400;
+    width: auto;
+    font-size: 15px;
+    padding: 10px 16px;
+    border-radius: 30px;
+    border-width: 0px;
+    margin: 0px 10px;
+    align-content: left;
+    cursor: pointer;
+}
+
+a:link { 
+    text-decoration: none; 
+}
+
+a:visited { 
+    text-decoration: none; 
+}
+
+a:hover { 
+    text-decoration: underline; 
+}
+
+a:active { 
+    text-decoration: underline; 
+}

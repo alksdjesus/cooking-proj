@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
-import './allpages.css';
-import './settings.css'
-import { getUser, resetUserSession } from '../service/AuthService';
-import axios from 'axios';
+import '../css/allpages.css';
+import '../css/settings.css'
 
 function Settings () {
 
@@ -18,20 +16,17 @@ function Settings () {
         <Link to="/profile">
           <div className='selection'>Edit Profile</div>
         </Link>
-        <Link to="/profile">
-          <div className='selection'>Change Dietary Restrictions</div>
-        </Link>
         <Link to="/create">
           <div className='selection'>Create A New Recipe</div>
         </Link>
-        <Link to="/profile">
+        <Link to="/create">
           <div className='selection'>Created Recipes</div>
         </Link>
         <Link to="/login">
           <div className='selection'>Sign Out</div>
         </Link>
       </div>
-  </div>
+    </div>
   )
 }
 

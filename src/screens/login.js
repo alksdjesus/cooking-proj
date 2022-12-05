@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { setUserSession } from '../service/AuthService'
 import { Link } from 'react-router-dom';
-import './allpages.css'
+import '../css/allpages.css'
+import '../css/login.css'
 
 const loginAPIUrl = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/login';
 
@@ -44,9 +45,9 @@ const Login = (props) => {
         </div>
         <input type="login" placeholder="Username" value={username} onChange={event => setUsername(event.target.value)} /> <br/>
         <input type="password" placeholder="Password" value={password} onChange={event => setPassword(event.target.value)} /> <br/>
-        <input type="submit" value="LOGIN" />
+        <input type="submit" value="Login" />
         <Link to="/register">
-          <input type="button" value="REGISTER" />
+          <input type="button" value="Register" />
         </Link>
       </form>
       {errorMessage && <p className="message">{errorMessage}</p>}

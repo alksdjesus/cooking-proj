@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import MealList from '../components/itemlist';
 import { Link } from 'react-router-dom';
-import './allpages.css';
-import '../components/item.css';
+import '../css/allpages.css';
+import '../css/item.css';
 
 const Feed = () => {
 

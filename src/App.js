@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, NavLink, Route, Switch} from "react-router-dom";
+import { BrowserRouter, NavLink, Route, Switch } from "react-router-dom";
 import Feed from "./screens/feed";
 import Search from "./screens/search";
 import Profile from "./screens/profile";
@@ -48,37 +48,31 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Navbar />
-        <div className="header">
-          <NavLink exact activeClassName="active" to="/">Home</NavLink>
-          <NavLink activeClassName="active" to="/register">Register</NavLink>
-          <NavLink activeClassName="active" to="/login">Login</NavLink>
-          <NavLink activeClassName="active" to="/feed">Feed </NavLink>
-          <NavLink activeClassName="active" to="/search">Search </NavLink>
-          <NavLink activeClassName="active" to="/profile">Profile </NavLink>
-          <NavLink activeClassName="active" to="/saved">Saved </NavLink>
-          <NavLink activeClassName="active" to="/settings">Settings </NavLink>
-          <NavLink activeClassName="active" to="/recipe">Recipe </NavLink>
-          <NavLink activeClassName="active" to="/create">Create </NavLink>
-        </div>
-        <div className="content">
-          <Switch>
-            <Route exact path="/" component={Login}/>
-            <PublicRoute path="/register" component={Register}/>
-            <PublicRoute path="/login" component={Login}/>
-            <PrivateRoute path="/feed" component={Feed}/>
-            <PrivateRoute path="/search" component={Search}/>
-            <PrivateRoute path="/profile" component={Profile}/>
-            <PrivateRoute path="/saved" component={Saved}/>
-            <PrivateRoute path="/settings" component={Settings}/>
-            <PrivateRoute path="/recipe" component={Recipe}/>
-            <PrivateRoute path="/create" component={Create}/>
-          </Switch>
-        </div>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <NavLink exact activeClassName="active" to="/"> Home </NavLink>
+      <NavLink activeClassName="active" to="/register"> Register </NavLink>
+      <NavLink activeClassName="active" to="/login"> Login </NavLink>
+      <NavLink activeClassName="active" to="/feed"> Feed </NavLink>
+      <NavLink activeClassName="active" to="/search"> Search </NavLink>
+      <NavLink activeClassName="active" to="/profile"> Profile </NavLink>
+      <NavLink activeClassName="active" to="/saved"> Saved </NavLink>
+      <NavLink activeClassName="active" to="/settings"> Settings </NavLink>
+      <NavLink activeClassName="active" to="/recipe"> Recipe </NavLink>
+      <NavLink activeClassName="active" to="/create"> Create </NavLink>
+      <Switch>
+        <Route exact path="/" component={ Login }/>
+        <PublicRoute path="/register" component={ Register }/>
+        <PublicRoute path="/login" component={ Login }/>
+        <PrivateRoute path="/feed" component={ Feed }/>
+        <PrivateRoute path="/search" component={ Search }/>
+        <PrivateRoute path="/profile" component={ Profile }/>
+        <PrivateRoute path="/saved" component={ Saved }/>
+        <PrivateRoute path="/settings" component={ Settings }/>
+        <PrivateRoute path="/recipe" component={ Recipe }/>
+        <PrivateRoute path="/create" component={ Create }/>
+      </Switch>
+    </BrowserRouter>
   );
 }
 

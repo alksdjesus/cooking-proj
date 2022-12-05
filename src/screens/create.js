@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import './allpages.css';
-import './settings.css'
+import '../css/allpages.css';
+import '../css/settings.css'
 import React, {Component, useState} from 'react';
 import { getUser, resetUserSession } from '../service/AuthService';
 import axios from 'axios';
