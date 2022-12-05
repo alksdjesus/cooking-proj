@@ -47,39 +47,38 @@ const Profile = (props) => {
   }
 
   return (
-    <div className='container'>
-      <form onSubmit={submitHandler}>
-      <div className='title'>
-      Edit Profile
-      </div>
-      <br></br>
-      <br></br>
-      <br></br>
-      Name: <input type="login" value={name} onChange={event => setName(event.target.value)} /> <br/>
-      Email: <input type="login"/> <br/>
-      Username: <input type="login"/> <br/>
-      Ingredients:
-      <select>
-        <option value=""></option>
-        <option value="rice">Rice</option>
-        <option value="beef">Beef</option>
-        <option value="cabbage">Cabbage</option>
-        <option value="milk">Milk</option>
-      </select>
-      Dietary Restrictions: dropdown menu
-      <select>
-        <option value=""></option>
-        <option value="vegetarian">Vegetarian</option>
-        <option value="pescatarian">Pescatarian</option>
-        <option value="vegan">Vegan</option>
-        <option value="gluten-free">Gluten-Free</option>
-      </select>
-      Recipes: list of recipes
-      <input type="submit" value="Save Changes" />
+    <div className='profile_container'>
+      <form onSubmit={submitHandler} align="left">
+        <div className='profile'>
+          Edit Profile
+        </div>
+        <input type="profile" placeholder="Name" value={name} onChange={event => setName(event.target.value)} /> <br/>
+        <input type="profile" placeholder="Email"/> <br/>
+        <input type="profile" placeholder="Username"/> <br/>
+        Ingredients:
+        <select>
+          <option value=""></option>
+          <option value="rice">Rice</option>
+          <option value="beef">Beef</option>
+          <option value="cabbage">Cabbage</option>
+          <option value="milk">Milk</option>
+        </select>
+        <br/>
+        Dietary Restrictions:
+        <select>
+          <option value=""></option>
+          <option value="vegetarian">Vegetarian</option>
+          <option value="pescatarian">Pescatarian</option>
+          <option value="vegan">Vegan</option>
+          <option value="gluten-free">Gluten-Free</option>
+        </select>
+        <br/>
+        <input type="submit" value="SAVE CHANGES" /> <br/>
       </form>
-      <input type="button" value="Logout" onClick={logoutHandler} />
     </div>
   )
 }
+
+//<input type="button" value="Logout" onClick={logoutHandler}/>
 
 export default Profile;

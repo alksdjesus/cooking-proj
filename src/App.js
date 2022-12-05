@@ -4,10 +4,11 @@ import Feed from "./screens/feed";
 import Search from "./screens/search";
 import Profile from "./screens/profile";
 import Saved from "./screens/saved";
+import Settings from "./screens/settings";
 import Recipe from "./screens/recipe";
-import Register from "./screens/Register";
+import Register from "./screens/register";
 import Navbar from './components/navbar';
-import Login from "./screens/Login";
+import Login from "./screens/login";
 import PublicRoute from "./routes/PublicRoute";
 import PrivateRoute from "./routes/PrivateRoute";
 import React, { useState, useEffect } from "react";
@@ -57,17 +58,19 @@ function App() {
           <NavLink activeClassName="active" to="/search">Search </NavLink>
           <NavLink activeClassName="active" to="/profile">Profile </NavLink>
           <NavLink activeClassName="active" to="/saved">Saved </NavLink>
+          <NavLink activeClassName="active" to="/settings">Settings </NavLink>
           <NavLink activeClassName="active" to="/recipe">Recipe </NavLink>
         </div>
         <div className="content">
           <Switch>
-            <Route exact path="/" component={Feed}/>
+            <Route exact path="/" component={Login}/>
             <PublicRoute path="/register" component={Register}/>
             <PublicRoute path="/login" component={Login}/>
             <PrivateRoute path="/feed" component={Feed}/>
             <PrivateRoute path="/search" component={Search}/>
             <PrivateRoute path="/profile" component={Profile}/>
             <PrivateRoute path="/saved" component={Saved}/>
+            <PrivateRoute path="/settings" component={Settings}/>
             <PrivateRoute path="/recipe" component={Recipe}/>
           </Switch>
         </div>

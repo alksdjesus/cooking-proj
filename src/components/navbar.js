@@ -7,7 +7,7 @@ import {
   NavBtn,
   NavBtnLink,
   NavTitle
-} from './navbarelelements';
+} from './navbarElelements';
 
 const Navbar = () => {
   return (
@@ -27,8 +27,8 @@ const Navbar = () => {
           <NavLink to='/saved' activeStyle>
             Saved
           </NavLink>
-          <NavLink to='/profile' activeStyle>
-            Profile
+          <NavLink to='/settings' activeStyle>
+            Settings
           </NavLink>
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
