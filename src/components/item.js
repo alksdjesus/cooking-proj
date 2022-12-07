@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from 'react-router-dom';
-import './item.css';
+import '../css/item.css';
 
 export default function Meal({ meal }) {
 

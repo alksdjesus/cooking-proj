@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import MealList from '../components/itemlist';
-import './search.css';
-import './allpages.css';
+import '../css/search.css';
+import '../css/allpages.css';
 import {Link} from 'react-router-dom';
 
 function Search() {
@@ -41,7 +41,7 @@ function Search() {
         Search
       </div>
       <input 
-        type="text"
+        type="search"
         placeholder="Enter ingredients/recipe"
         onChange={onTextChange}  
       />

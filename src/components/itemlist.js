@@ -1,6 +1,6 @@
 import React from "react";
 import Meal from "./item";
-import './item.css';
+import '../css/item.css';
 
 export default function MealList({ mealData, sender }) {
 

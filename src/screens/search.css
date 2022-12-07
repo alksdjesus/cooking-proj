@@ -1,6 +1,7 @@
 
-input[type="text"] {
+input[type="search"] {
     margin: 7px 0px;
+    margin-left: 50px;
     background: white;
     padding: 10px;
     padding-left: 13px;
@@ -13,9 +14,9 @@ input[type="text"] {
 }
 
 input[type="image"] {
-    margin-left: -45px;
+    margin-left: -44px;
     margin-bottom: -10px;
-    width: 23px;
+    width: 22px;
     background: white;
     padding: 5px;
 }

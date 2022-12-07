@@ -21,13 +21,12 @@
 
 import React, { useEffect, useState } from 'react';
 import {useLocation} from "react-router-dom";
-import './allpages.css'
-import './recipe.css'
-import Home from "./home";
+import '../css/allpages.css'
+import '../css/recipe.css'
 
 
 export default function Recipe() {
-
+  
   const location = useLocation();
   const meal = location.state.meal
 
@@ -65,26 +64,18 @@ export default function Recipe() {
 
       return (
         <div className='container'>
-        <div className='title'>
-          {mealData.title}
-        </div>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <div className='summary'>
-          {mealData.summary}
-        </div>
-        <img className="img" src={mealData.image} alt={mealData.title} width="450" float='left'/>
-        <br></br>
-        <br></br>
-        {/* <article>
-          <h2>{desc}</h2>
-          </article>
-        <article>
-          <h2>{inst}</h2>
-          </article> */}
+          <div className='recipe_title'>
+            {mealData.title}
           </div>
+          <div className='sum_img'>
+            <div className='summary_container'>
+              <div className='summary'>
+                {mealData.summary}
+              </div>
+            </div>
+            <img className="img" src={mealData.image} alt={mealData.title}/>
+          </div>
+        </div>
       );
 
 

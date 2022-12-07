@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import MealList from '../components/itemlist';
-import {Link} from 'react-router-dom';
-import Home from './home';
-import './allpages.css';
-import { FeedButton } from '../components/navbarElements';
-import '../components/item.css';
+import { Link } from 'react-router-dom';
+import '../css/allpages.css';
+import '../css/item.css';
 
-function Feed() {
+const Feed = () => {
 
   const [mealData, setMealData] = useState(null);
 
@@ -48,7 +46,6 @@ function Feed() {
       <div className='title'>
         Feed
       </div>
-      
       <br></br>
       <br></br>
       <br></br>
@@ -60,3 +57,15 @@ function Feed() {
 };
 
 export default Feed;
+
+// import React from 'react';
+
+// const Feed = () => {
+//   return (
+//     <div>
+//       This is the Feed page!
+//     </div>
+//   )
+// }
+
+// export default Feed;
