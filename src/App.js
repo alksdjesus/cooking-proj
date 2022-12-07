@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, NavLink, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, NavLink, Route, Switch } from "react-router-dom";
 import Feed from "./screens/feed";
 import Search from "./screens/search";
 import Profile from "./screens/profile";
@@ -47,32 +47,42 @@ function App() {
     return <div className="content">Authenicating...</div>
   }
 
+  /*const LoginContainer = () => (
+    <div className="container">
+      <Route exact path="/" render={() => <Redirect to="/login" />} />
+      <Route path="/login" component={ Login } />
+    </div>
+  )
+
+  const DefaultContainer = () => (
+    <div>
+      <Route exact path="/" render={() => <Redirect to="/login" />} />
+      <Route path="/login" component={ Login } />
+    </div>
+  )*/
+
   return (
-    <BrowserRouter>
-      <Navbar />
-      <NavLink exact activeClassName="active" to="/"> Home </NavLink>
-      <NavLink activeClassName="active" to="/register"> Register </NavLink>
-      <NavLink activeClassName="active" to="/login"> Login </NavLink>
-      <NavLink activeClassName="active" to="/feed"> Feed </NavLink>
-      <NavLink activeClassName="active" to="/search"> Search </NavLink>
-      <NavLink activeClassName="active" to="/profile"> Profile </NavLink>
-      <NavLink activeClassName="active" to="/saved"> Saved </NavLink>
-      <NavLink activeClassName="active" to="/settings"> Settings </NavLink>
-      <NavLink activeClassName="active" to="/recipe"> Recipe </NavLink>
-      <NavLink activeClassName="active" to="/create"> Create </NavLink>
-      <Switch>
-        <Route exact path="/" component={ Login }/>
-        <PublicRoute path="/register" component={ Register }/>
-        <PublicRoute path="/login" component={ Login }/>
-        <PrivateRoute path="/feed" component={ Feed }/>
-        <PrivateRoute path="/search" component={ Search }/>
-        <PrivateRoute path="/profile" component={ Profile }/>
-        <PrivateRoute path="/saved" component={ Saved }/>
-        <PrivateRoute path="/settings" component={ Settings }/>
-        <PrivateRoute path="/recipe" component={ Recipe }/>
-        <PrivateRoute path="/create" component={ Create }/>
-      </Switch>
-    </BrowserRouter>
+    <div className='App'>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={ Login }/>
+          <PublicRoute path="/login" component={ Login }/>
+          <div>
+            <Navbar />
+            <Route exact path="/" component={ Login }/>
+            <PublicRoute path="/register" component={ Register }/>
+            <PublicRoute path="/login" component={ Login }/>
+            <PrivateRoute path="/feed" component={ Feed }/>
+            <PrivateRoute path="/search" component={ Search }/>
+            <PrivateRoute path="/profile" component={ Profile }/>
+            <PrivateRoute path="/saved" component={ Saved }/>
+            <PrivateRoute path="/settings" component={ Settings }/>
+            <PrivateRoute path="/recipe" component={ Recipe }/>
+            <PrivateRoute path="/create" component={ Create }/>
+          </div>
+        </Switch>
+      </Router>
+    </div>
   );
 }
 

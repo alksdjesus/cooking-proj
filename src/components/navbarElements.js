@@ -6,14 +6,14 @@ export const Nav = styled.nav`
   position: fixed;
   top: 0;
   background: orange;
-  height: 60px;
+  height: 5.5%;
   width: 100%;
   display: flex;
   justify-content: space-between;
   //padding: 0.5rem calc((100vw - 1000px) / 2);
   z-index: 10;
   /* Third Nav */
-  /* justify-content: flex-start; */
+  justify-content: flex-start;
 `;
 
 export const NavLink = styled(Link)`
@@ -22,7 +22,7 @@ export const NavLink = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  padding: 0 1.75rem;
+  padding: 0 1.6rem;
   height: 100%;
   cursor: pointer;
   font-family: 'Alexandria', sans-serif;
@@ -31,13 +31,13 @@ export const NavLink = styled(Link)`
   &.active {
     //font-weight: 700;
     //background: #e69500;
-    transition: all 0.2s ease-in-out;
+    //transition: all 0.2s ease-in-out;
     border-bottom: 2.5px solid black;
-    height: 56px;
+    height: 90%;
     margin-top: 2.5px;
   }
   &:hover {
-    transition: all 0.2s ease-in-out;
+    //transition: all 0.2s ease-in-out;
     text-decoration: none;
     //background: #e69500;
   }
@@ -50,6 +50,7 @@ export const NavTitle = styled(Link)`
   align-items: center;
   text-decoration: none;
   padding: 0 0rem;
+  padding-right: 23.7%;
   height: 100%;
   cursor: pointer;
   font-family: 'Montserrat', sans-serif;

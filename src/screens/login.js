@@ -38,18 +38,23 @@ const Login = (props) => {
   }
 
   return (
-    <div className='login_container'>
-      <form onSubmit={submitHandler}>
-        <div className='login'>
-          Login
+    <div className='login_background'>
+      <div className='title_container'>
+        <img className="login_title" src={require("../images/logo.png")}/>
+        <div className='login_container'>
+          <div className='login'>
+            Login
+          </div>
+          <form onSubmit={submitHandler}>
+            <input type="login" placeholder="Username" value={username} onChange={event => setUsername(event.target.value)} /> <br/>
+            <input type="password" placeholder="Password" value={password} onChange={event => setPassword(event.target.value)} /> <br/>
+            <input type="submit" value="Log In" />
+            <Link to="/register">
+              <input type="button" value="Register" />
+            </Link>
+          </form>
         </div>
-        <input type="login" placeholder="Username" value={username} onChange={event => setUsername(event.target.value)} /> <br/>
-        <input type="password" placeholder="Password" value={password} onChange={event => setPassword(event.target.value)} /> <br/>
-        <input type="submit" value="Login" />
-        <Link to="/register">
-          <input type="button" value="Register" />
-        </Link>
-      </form>
+      </div>
       {errorMessage && <p className="message">{errorMessage}</p>}
     </div>
   )

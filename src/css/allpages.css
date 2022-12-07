@@ -17,11 +17,13 @@
 form {
     font-family: 'Inter', sans-serif;
     height: 100%;
-    text-align: center;
+    align-content: center;
+    justify-content: center;
 }
 
 .form_container {
-    text-align: left;
+    align-content: center;
+    justify-content: center;
 }
 
 input[type="submit"] {

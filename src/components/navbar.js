@@ -27,6 +27,9 @@ const Navbar = () => {
           <NavLink to='/saved' activeStyle>
             Saved
           </NavLink>
+          <NavLink to='/profile' activeStyle>
+            Profile
+          </NavLink>
           <NavLink to='/settings' activeStyle>
             Settings
           </NavLink>
