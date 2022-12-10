@@ -50,6 +50,7 @@ function Search() {
         src={require("../images/search.png")}
         onClick={getRecipes}
       />
+      <br/><br/><br/>
       <div>
         {mealData && <MealList mealData={mealData} sender={"search"}  />}
       </div>

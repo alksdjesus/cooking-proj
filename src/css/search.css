@@ -11,11 +11,14 @@ input[type="search"] {
     width: 30%;
     font-family: 'Inter';
     font-size: 15px;
+    float: left;
 }
 
 input[type="image"] {
+    float: left;
     margin-left: -44px;
-    margin-bottom: -10px;
+    margin-top: 12px;
+    align-items: center;
     width: 22px;
     background: white;
     padding: 5px;
