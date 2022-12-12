@@ -32,7 +32,7 @@ const Diet = (props) => {
           <option value="lactose-intol">Lactose-Intolerant</option>
         </select>
         <br/>
-        <input type="submit" value="Save Changes" /> <br/>
+        <input type="submit" value="Save" /> <br/>
       </form>
     </div>
   )

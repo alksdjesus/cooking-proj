@@ -47,22 +47,34 @@ input[type="login"] {
     padding: 10px;
     padding-left: 13px;
     border-radius: 50px;
-    border-width: 1.75px;
-    border-color: black;
+    border-width: 2px;
+    border-color: #A6A6A6;
+    outline: none;
     width: 200px;
     font-family: 'Inter';
     font-size: 15px;
+    border-style: solid;
+}
+
+input[type="login"]:focus {
+    border: 2px solid gray;
 }
 
 input[type="password"] {
-    margin: 6px 0px;
+    margin: 6px 0px 25px 0px;
     background: white;
     padding: 10px;
     padding-left: 13px;
     border-radius: 50px;
-    border-width: 1.75px;
-    border-color: black;
+    border-width: 2px;
+    border-color: #A6A6A6;
+    outline: none;
     width: 200px;
     font-family: 'Inter';
     font-size: 15px;
+    border-style: solid;
+}
+
+input[type="password"]:focus {
+    border: 2px solid gray;
 }

@@ -6,7 +6,7 @@ export const Nav = styled.nav`
   position: fixed;
   top: 0;
   background: orange;
-  height: 7vh;
+  height: 5vh;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -18,7 +18,7 @@ export const Nav = styled.nav`
 
 export const NavLink = styled(Link)`
   font-color: #000;
-  font-size: 120%;
+  font-size: 2.25vh;
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -33,7 +33,7 @@ export const NavLink = styled(Link)`
     //background: #e69500;
     //transition: all 0.2s ease-in-out;
     border-bottom: 2.5px solid black;
-    height: 90%;
+    height: 88%;
     margin-top: 2.5px;
   }
   &:hover {
@@ -164,16 +164,26 @@ export const SearchButton = styled.button`
 `;
 
 export const SaveButton = styled.button`
-  background-color: #FFA500;
-  color: #000;
-  font-family: Montserrat_500Medium;
-  width: 90px;
-  font-size: 18px;
-  padding: 10px 10px;
-  border-radius: 30px;
-  border-width: 0px;
+  background-color: white;
+  color: black;
+  font-family: Alexandria, sans-serif;
+  font-weight: 400;
+  width: auto;
+  font-size: 17px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border-width: 2px;
+  border-color: black;
+  outline: none;
+  border-style: solid;
   margin: 10px 0px;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background-color: black;
+    color: white;
+  }
 `;
 
 export const Recipe = styled.nav`

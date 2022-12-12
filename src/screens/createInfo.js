@@ -65,7 +65,7 @@ const Create = (props) => {
         <input type="profile" placeholder="Picture" value={pic} onChange={event => setPic(event.target.value)}/> <br/>
         <input type="profile" placeholder="Ingredients" value={ingredients} onChange={event => setIngredients(event.target.value)}/> <br/>
         <input type="profile" placeholder="Directions" value={steps} onChange={event => setSteps(event.target.value)}/> <br/>
-        <input type="submit" value="Save Changes" />
+        <input type="submit" value="Save" />
       </form>
     </div>
   )
