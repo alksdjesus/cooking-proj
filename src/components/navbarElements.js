@@ -6,7 +6,7 @@ export const Nav = styled.nav`
   position: fixed;
   top: 0;
   background: orange;
-  height: 5.5%;
+  height: 7vh;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -18,7 +18,7 @@ export const Nav = styled.nav`
 
 export const NavLink = styled(Link)`
   font-color: #000;
-  font-size: 24px;
+  font-size: 120%;
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -64,7 +64,7 @@ export const Bars = styled(FaBars)`
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;
-    top: -6px;
+    top: -25%;
     right: 0;
     transform: translate(-100%, 75%);
     font-size: 1.8rem;

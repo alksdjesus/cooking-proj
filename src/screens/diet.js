@@ -1,14 +1,14 @@
-import Create from './createInfo.js';
+import Diet from './dietInfo.js';
 import '../css/allpages.css';
 import Menu from '../components/profileMenu.js';
 
-function CreateDisplay () {
+function DietDisplay () {
 
   return (
     <div className='container'>
       <Menu />
       <div className='content_container'>
-        <Create />
+        <Diet />
       </div>
     </div>
   )
@@ -16,4 +16,4 @@ function CreateDisplay () {
 
 //onClick={logoutHandler}
 
-export default CreateDisplay;
+export default DietDisplay;
