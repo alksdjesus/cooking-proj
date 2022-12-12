@@ -14,7 +14,7 @@ const Navbar = () => {
     <>
       <Nav>
         <NavTitle to='/'>
-          <img src={require('../images/logo1.png')} alt='logo' height="32" />
+          <img src={require('../images/logo1.png')} alt='logo' height="25" />
         </NavTitle>
         <Bars />
         <NavMenu>
@@ -29,9 +29,6 @@ const Navbar = () => {
           </NavLink>
           <NavLink to='/profile' activeStyle>
             Profile
-          </NavLink>
-          <NavLink to='/settings' activeStyle>
-            Settings
           </NavLink>
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}

@@ -1,24 +1,22 @@
 
 .profile_container {
-    margin-left: 3.75%;
-    margin-right: 3.75%;
-    margin-top: 115px;
     height: 100%;
+    margin-left: 8%;
    /*background-image: url("../images/login.jpg");
     background-size: cover;*/
 }
 
-.profile {
-    font-size: 44px;
+.sub_title {
+    font-size: 28px;
     color: #000;
     text-align: left;
     font-family: 'Raleway';
-    font-weight: 700;
+    font-weight: 600;
     margin-bottom: 20px;
 }
 
 option {
-    font-size: 14px;
+    font-size: 16px;
     color: #000;
     font-family: 'Inter';
     font-weight: 500;
@@ -44,7 +42,7 @@ input[type="profile"] {
     border-radius: 50px;
     border-width: 1.75px;
     border-color: black;
-    width: 250px;
+    width: 300px;
     font-family: 'Inter';
     font-size: 15px;
 }
@@ -57,7 +55,7 @@ input[type="bio"] {
     border-radius: 20px;
     border-width: 1.75px;
     border-color: black;
-    width: 250px;
+    width: 300px;
     /*height: 200px;*/
     font-family: 'Inter';
     font-size: 15px;

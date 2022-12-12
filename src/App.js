@@ -4,9 +4,9 @@ import Feed from "./screens/feed";
 import Search from "./screens/search";
 import Profile from "./screens/profile";
 import Saved from "./screens/saved";
-import Settings from "./screens/settings";
 import Recipe from "./screens/recipe";
 import Create from "./screens/create";
+import Diet from "./screens/diet";
 import Register from "./screens/register";
 import Navbar from './components/navbar';
 import Login from "./screens/login";
@@ -76,9 +76,9 @@ function App() {
             <PrivateRoute path="/search" component={ Search }/>
             <PrivateRoute path="/profile" component={ Profile }/>
             <PrivateRoute path="/saved" component={ Saved }/>
-            <PrivateRoute path="/settings" component={ Settings }/>
             <PrivateRoute path="/recipe" component={ Recipe }/>
             <PrivateRoute path="/create" component={ Create }/>
+            <PrivateRoute path="/diet" component={ Diet }/>
           </div>
         </Switch>
       </Router>
