@@ -7,11 +7,17 @@ input[type="search"] {
     padding-left: 13px;
     border-radius: 50px;
     border-width: 2px;
-    border-color: black;
+    border-color: #A6A6A6;
+    border-style: solid;
     width: 30%;
     font-family: 'Inter';
     font-size: 15px;
     float: left;
+    outline: none;
+}
+
+input[type="search"]:focus {
+    border: 2px solid gray;
 }
 
 input[type="image"] {

@@ -3,6 +3,7 @@ import '../css/allpages.css';
 import '../css/profile.css';
 import { getUser, resetUserSession } from '../service/AuthService';
 import axios from 'axios';
+import { SaveButton } from '../components/navbarElements.js';
 
 const updateAPIURL = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo';
 
@@ -141,7 +142,10 @@ const Info = (props) => {
           <option value="lactose-intol">Lactose-Intolerant</option>
         </select>
         <br/>
-        <input type="submit" value="Save Changes" /> <br/>
+        <SaveButton input type="submit">
+          Save
+        </SaveButton>
+         <br/>
       </form>
     </div>
   )

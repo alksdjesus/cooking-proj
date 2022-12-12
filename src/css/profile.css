@@ -40,12 +40,18 @@ input[type="profile"] {
     padding: 10px;
     padding-left: 13px;
     border-radius: 50px;
-    border-width: 1.75px;
-    border-color: black;
+    border-width: 2px;
+    border-color: #A6A6A6;
+    border-style: solid;
     width: 300px;
     font-family: 'Inter';
     font-size: 15px;
+    outline: none;
 }
+
+input[type="profile"]:focus {
+    border: 2px solid gray;
+  }
 
 input[type="bio"] {
     margin: 10px 0px;
@@ -53,10 +59,16 @@ input[type="bio"] {
     padding: 10px;
     padding-left: 13px;
     border-radius: 20px;
-    border-width: 1.75px;
-    border-color: black;
+    border-width: 2px;
+    border-color: #A6A6A6;
+    border-style: solid;
     width: 300px;
     /*height: 200px;*/
     font-family: 'Inter';
     font-size: 15px;
+    outline: none;
 }
+
+input[type="bio"]:focus {
+    border: 2px solid gray;
+  }

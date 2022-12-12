@@ -67,11 +67,9 @@ function App() {
         <Switch>
           <Route exact path="/" component={ Login }/>
           <PublicRoute path="/login" component={ Login }/>
+          <PublicRoute path="/register" component={ Register }/>
           <div>
             <Navbar />
-            <Route exact path="/" component={ Login }/>
-            <PublicRoute path="/register" component={ Register }/>
-            <PublicRoute path="/login" component={ Login }/>
             <PrivateRoute path="/feed" component={ Feed }/>
             <PrivateRoute path="/search" component={ Search }/>
             <PrivateRoute path="/profile" component={ Profile }/>

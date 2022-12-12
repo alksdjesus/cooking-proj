@@ -50,7 +50,7 @@ const Login = (props) => {
             <input type="password" placeholder="Password" value={password} onChange={event => setPassword(event.target.value)} /> <br/>
             <input type="submit" value="Log In" />
             <Link to="/register">
-              <input type="button" value="Register" />
+              <input type="submit" value="Register" />
             </Link>
           </form>
         </div>
