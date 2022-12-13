@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, NavLink, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, NavLink, Route, Routes } from "react-router-dom";
 import Feed from "./screens/feed";
 import Search from "./screens/search";
 import Profile from "./screens/profile";
@@ -63,8 +63,8 @@ function App() {
 
   return (
     <div className='App'>
-      <Router>
-        <Switch>
+      {/* <Router>
+        <Routes>
           <Route exact path="/" component={ Login }/>
           <PublicRoute path="/login" component={ Login }/>
           <PublicRoute path="/register" component={ Register }/>
@@ -78,7 +78,20 @@ function App() {
             <PrivateRoute path="/create" component={ Create }/>
             <PrivateRoute path="/diet" component={ Diet }/>
           </div>
-        </Switch>
+        </Routes>
+      </Router> */}
+      <Router> 
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Feed/>}/>
+          <Route path='/feed' element={<Feed/>}/>
+          <Route path='/search' element={<Search/>}/>
+          <Route path='/profile' element={<Profile/>}/>
+          <Route path='/saved' element={<Saved/>}/>
+          <Route path='/recipe' element={<Recipe/>}/>
+          <Route path='/create' element={<Create/>}/>
+          <Route path='/diet' element={<Diet/>}/>
+        </Routes>
       </Router>
     </div>
   );
