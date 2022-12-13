@@ -119,32 +119,48 @@ export default function Recipe() {
     // updateRating(response.data.saved);
   }
 
-  // function updateRating(list) {
-  //   let dropdown = document.getElementById("rating")
-  //   let rating = dropdown.value
-  //   let id = mealData.id
+  async function getRated() {
 
-  //   list.push()
-  //   const update = {
-  //     id: rating
-  //   }
+    var url = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo?username='
+    url = url + username
 
-  //   const requestBody = {
-  //     username: username,
-  //     updateKey: "rated",
-  //     updateValue: update
-  //   }
+    axios.get(url).then(response => {
+      updateRated(response.data.rated);
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+  })
+    
+  }
 
-  //   axios.patch(updateAPIURL, requestBody).then(response => {
-  //     setMessage('Info Updated');
-  //   }).catch(error => {
-  //     if (error.response.status === 401) {
-  //       setMessage(error.response.data.message);
-  //     } else {
-  //       setMessage('sorry....the backend server is down!! please try again later');
-  //     }
-  // })
-  // }
+  function updateRated(dict) {
+    let dropdown = document.getElementById("rating")
+    let rating = parseInt(dropdown.value)
+    let id = mealData.id
+
+    dict[id] = rating
+    console.log(dict)
+
+    const requestBody = {
+      username: username,
+      updateKey: "rated",
+      updateValue: dict
+    }
+
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+  })
+  }
 
   var desc = meal.summary
   desc = desc.replace(/\s*\<.*?\>\s*/g, ' ');
@@ -165,7 +181,7 @@ export default function Recipe() {
       <br/>
       <button onClick={() => getSaved()}>Save Recipe</button>
       {/* <SaveButton>Save Recipe</SaveButton> */}
-        <select id="rating">
+        <select id="rating" onChange={() => getRated()}>
           <option value="">Select Rating</option>
           <option value="1">Rating 1/5</option>
           <option value="2">Rating 2/5</option>
