@@ -27,4 +27,16 @@ export default function MealList({ mealData, sender }) {
       </div>
     );
   }
+
+  if (sender === "saved") {
+    return (
+      <div>
+        <section className="recipe_grid">
+          {mealData.map((meal) => {
+            return <Meal key={meal.id} meal={meal} />;
+          })}
+        </section>
+      </div>
+    );
+  }
 }

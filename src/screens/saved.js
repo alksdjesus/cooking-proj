@@ -1,5 +1,6 @@
 import { getUser } from '../service/AuthService';
 import React, {Component, useEffect, useState} from 'react';
+import MealList from '../components/itemlist';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import '../css/allpages.css';
@@ -27,6 +28,8 @@ function Saved () {
     }
 
     idquery.slice(0, -1)
+
+    console.log(idquery)
     
     const saved = "https://api.spoonacular.com/recipes/informationBulk?ids=" + idquery + apiKey
     // setLink(someLink = (baseSearchURL + meal.id + apiKey))
@@ -60,12 +63,15 @@ function Saved () {
 
     return (
       <div className='container'>
-        <div className='title'>
-          Saved
-        </div>
-        <br></br>
-        <br></br>
-        <br></br>
+      <div className='title'>
+        Saved
+      </div>
+      <br></br>
+      <br></br>
+      <br></br>
+      <div >
+        {mealData && <MealList mealData={mealData} sender={"saved"}/>}
+      </div>
     </div>
     )
 }
