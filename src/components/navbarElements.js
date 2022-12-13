@@ -50,7 +50,7 @@ export const NavTitle = styled(Link)`
   align-items: center;
   text-decoration: none;
   padding: 0 0rem;
-  padding-right: 23.7%;
+  padding-right: 4%;
   height: 100%;
   cursor: pointer;
   font-family: 'Montserrat', sans-serif;
@@ -176,7 +176,7 @@ export const SaveButton = styled.button`
   border-color: black;
   outline: none;
   border-style: solid;
-  margin: 10px 0px;
+  margin: 0px 0px 30px 0px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   &:hover {

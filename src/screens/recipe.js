@@ -23,6 +23,7 @@ import React, { useEffect, useState } from 'react';
 import {useLocation} from "react-router-dom";
 import '../css/allpages.css'
 import '../css/recipe.css'
+import { SaveButton } from '../components/navbarElements';
 
 
 export default function Recipe() {
@@ -31,7 +32,7 @@ export default function Recipe() {
   const meal = location.state.meal
 
   var [mealData, setMealData] = useState({});
-  const [apiKey, setKey] = useState('/information?apiKey=539b28b197f8412eba867c3356a8d6a6')
+  const [apiKey, setKey] = useState('/information?apiKey=affe55df0130465780b612e83f9b8895')
   const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/')
   var [someLink, setLink] = useState('test')
 
@@ -54,29 +55,50 @@ export default function Recipe() {
     }
   }
 
-  // var desc = meal.summary
-  // desc = desc.replace(/\s*\<.*?\>\s*/g, ' ');
-  // desc = desc.split('.')[0] + '.';
+  var desc = meal.summary
+  desc = desc.replace(/\s*\<.*?\>\s*/g, ' ');
+  //desc = desc.split('.')[0] + '.';
 
-  // var inst = meal.instructions
-  // inst = inst.replace(/\s*\<.*?\>\s*/g, ' ');
-  // inst = inst.replaceAll('\n', '\n\n')
+  var inst = meal.instructions
+  inst = inst.replace(/\s*\<.*?\>\s*/g, ' ');
+  inst = inst.replaceAll('\n', '\n\n')
 
-      return (
-        <div className='container'>
-          <div className='recipe_title'>
-            {mealData.title}
+  var ingredients = meal.extendedIngredients.original
+
+  return (
+    <div className='recipe_page'>
+      <div className='recipe_title'>
+        {mealData.title}
+      </div>
+      <img className="img" src={mealData.image} alt={mealData.title}/>
+      <br/>
+      <SaveButton>Save Recipe</SaveButton>
+        <select id="rating">
+          <option value="">Select Rating</option>
+          <option value="1">Rating 1/5</option>
+          <option value="2">Rating 2/5</option>
+          <option value="3">Rating 3/5</option>
+          <option value="4">Rating 4/5</option>
+          <option value="5">Rating 5/5</option>
+        </select>
+      <div className='text_container'>
+        <div className='summary'>
+          <div className='part_title'>
+            Overview:
           </div>
-          <div className='sum_img'>
-            <div className='summary_container'>
-              <div className='summary'>
-                {mealData.summary}
-              </div>
-            </div>
-            <img className="img" src={mealData.image} alt={mealData.title}/>
+          {desc}
+          <br/><br/><br/>
+          <div className='part_title'>
+            Ingredients:
           </div>
+          {ingredients}
+          <br/><br/><br/>
+          <div className='part_title'>
+            Instructions:
+          </div>
+          {inst}
         </div>
-      );
-
-
-    }
+      </div>
+    </div>
+  );
+}

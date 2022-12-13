@@ -64,8 +64,12 @@ function App() {
   return (
     <div className='App'>
       <Router> 
-        <Navbar />
+      <Navbar />
         <Routes>
+          <Route element= {<PublicRoutes />}>
+            <Route path='/login' element={<Login/>}/>
+            <Route path='/register' element={<Register/>}/>
+          </Route>
           <Route element= {<PrivateRoutes />}>
             <Route path='/' element={<Feed/>}/>
             <Route path='/feed' element={<Feed/>}/>
@@ -75,10 +79,6 @@ function App() {
             <Route path='/recipe' element={<Recipe/>}/>
             <Route path='/create' element={<Create/>}/>
             <Route path='/diet' element={<Diet/>}/>
-          </Route>
-          <Route element= {<PublicRoutes />}>
-            <Route path='/login' element={<Login/>}/>
-            <Route path='/register' element={<Register/>}/>
           </Route>
         </Routes>
       </Router>
