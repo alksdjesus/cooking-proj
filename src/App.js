@@ -63,23 +63,6 @@ function App() {
 
   return (
     <div className='App'>
-      {/* <Router>
-        <Routes>
-          <Route exact path="/" component={ Login }/>
-          <PublicRoute path="/login" component={ Login }/>
-          <PublicRoute path="/register" component={ Register }/>
-          <div>
-            <Navbar />
-            <PrivateRoute path="/feed" component={ Feed }/>
-            <PrivateRoute path="/search" component={ Search }/>
-            <PrivateRoute path="/profile" component={ Profile }/>
-            <PrivateRoute path="/saved" component={ Saved }/>
-            <PrivateRoute path="/recipe" component={ Recipe }/>
-            <PrivateRoute path="/create" component={ Create }/>
-            <PrivateRoute path="/diet" component={ Diet }/>
-          </div>
-        </Routes>
-      </Router> */}
       <Router> 
         <Navbar />
         <Routes>
@@ -97,7 +80,6 @@ function App() {
             <Route path='/login' element={<Login/>}/>
             <Route path='/register' element={<Register/>}/>
           </Route>
-          
         </Routes>
       </Router>
     </div>
