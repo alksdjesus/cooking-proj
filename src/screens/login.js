@@ -29,7 +29,6 @@ const Login = (props) => {
     axios.post(loginAPIUrl, requestBody).then((response) => {
       setUserSession(response.data.user, response.data.token);
       navigate('/profile');
-      console.log(navigate('/profile'))
     }).catch((error) => {
       // console.log(error)
       if (error.response.status === 401 || error.response.status === 403) {

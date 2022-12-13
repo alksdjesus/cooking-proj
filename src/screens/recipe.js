@@ -32,7 +32,7 @@ export default function Recipe() {
   const meal = location.state.meal
 
   var [mealData, setMealData] = useState({});
-  const [apiKey, setKey] = useState('/information?apiKey=affe55df0130465780b612e83f9b8895')
+  const [apiKey, setKey] = useState('/information?apiKey=e0ba8f96837748dc9473f52b42c3b8a8')
   const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/')
   var [someLink, setLink] = useState('test')
 
