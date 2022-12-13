@@ -15,6 +15,7 @@ import PrivateRoutes from "./routes/PrivateRoutes";
 import React, { useState, useEffect } from "react";
 import { getUser, getToken, setUserSession, resetUserSession } from "./service/AuthService";
 import axios from "axios";
+import Layout from './components/layout.js'
 
 const verifyTokenAPIURL = 'https://gzcxszjnze.execute-api.us-east-1.amazonaws.com/prod/verify';
 
@@ -62,27 +63,26 @@ function App() {
   )*/
 
   return (
-    <div className='App'>
-      <Router> 
+   
+    <Router> 
       <Navbar />
-        <Routes>
-          <Route element= {<PublicRoutes />}>
-            <Route path='/login' element={<Login/>}/>
-            <Route path='/register' element={<Register/>}/>
-          </Route>
-          <Route element= {<PrivateRoutes />}>
-            <Route path='/' element={<Feed/>}/>
-            <Route path='/feed' element={<Feed/>}/>
-            <Route path='/search' element={<Search/>}/>
-            <Route path='/profile' element={<Profile/>}/>
-            <Route path='/saved' element={<Saved/>}/>
-            <Route path='/recipe' element={<Recipe/>}/>
-            <Route path='/create' element={<Create/>}/>
-            <Route path='/diet' element={<Diet/>}/>
-          </Route>
-        </Routes>
-      </Router>
-    </div>
+      <Routes>
+        <Route element={<PublicRoutes />}>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/register' element={<Register/>}/>
+        </Route>
+        <Route element={<PrivateRoutes />}>
+          <Route path='/' element={<Feed/>}/>
+          <Route path='/feed' element={<Feed/>}/>
+          <Route path='/search' element={<Search/>}/>
+          <Route path='/profile' element={<Profile/>}/>
+          <Route path='/saved' element={<Saved/>}/>
+          <Route path='/recipe' element={<Recipe/>}/>
+          <Route path='/create' element={<Create/>}/>
+          <Route path='/diet' element={<Diet/>}/>
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 

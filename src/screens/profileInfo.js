@@ -1,11 +1,11 @@
 import React, { Component, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import '../css/allpages.css';
 import '../css/profile.css';
 import { getUser, resetUserSession } from '../service/AuthService';
 import axios from 'axios';
 import { SaveButton } from '../components/navbarElements.js';
+import Select from 'react-select';
 
 const updateAPIURL = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo';
 
@@ -247,6 +247,24 @@ const Info = (props) => {
     })
   }
 
+  const dietOptions = [
+    { value: 'vegetarian', label: 'Vegetarian' },
+    { value: 'pescatarian', label: 'Pescatarian' },
+    { value: 'gluten-free', label: 'Gluten-Free' },
+    { value: 'lactose-intol', label: 'Lactose-Intolerant' },
+    { value: 'vegan', label: 'Vegan' },
+  ]
+
+  const ingredientOptions = [
+    { value: 'rice', label: 'Rice' },
+    { value: 'beef', label: 'Beef' },
+    { value: 'tomato', label: 'Tomato' },
+    { value: 'lettuce', label: 'Lettuce' },
+    { value: 'cabbage', label: 'Cabbage' },
+    { value: 'milk', label: 'Milk' },
+    { value: 'pork', label: 'Pork' },
+  ]
+
 //<input type="profile" placeholder="Name" value={name} onChange={event => setName(event.target.value)} /> <br/>
 
   return (
@@ -259,24 +277,12 @@ const Info = (props) => {
         <input type="profile" placeholder="Last Name"value={lastName} onChange={event => setLastName(event.target.value)}/> <br/>
         <input type="profile" placeholder="Email" value={email} onChange={event => setEmail(event.target.value)}/> <br/>
         <input type="bio" placeholder="Bio" value={bio} onChange={event => setBio(event.target.value)} /> <br/>
-        Ingredients:
-        <select>
-          <option value=""></option>
-          <option value="rice">Rice</option>
-          <option value="beef">Beef</option>
-          <option value="cabbage">Cabbage</option>
-          <option value="milk">Milk</option>
-        </select>
         <br/>
         Dietary Restrictions:
-        <select>
-          <option value=""></option>
-          <option value="vegetarian">Vegetarian</option>
-          <option value="pescatarian">Pescatarian</option>
-          <option value="vegan">Vegan</option>
-          <option value="gluten-free">Gluten-Free</option>
-          <option value="lactose-intol">Lactose-Intolerant</option>
-        </select>
+        <Select options={dietOptions} isMulti name="diets"/>
+        <br/>
+        Ingredients:
+        <Select options={ingredientOptions} isMulti name="ingredients"/>
         <br/>
         <SaveButton input type="submit">
           Save

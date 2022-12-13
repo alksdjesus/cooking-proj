@@ -14,9 +14,8 @@ const Navbar = () => {
     <>
       <Nav>
         <NavTitle to='/'>
-          <img src={require('../images/logo1.png')} alt='logo' height="25" />
+          <img src={require('../images/logo1.png')} alt='logo' height="23" />
         </NavTitle>
-        <Bars />
         <NavMenu>
           <NavLink to='/feed' activeStyle>
             Feed

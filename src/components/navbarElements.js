@@ -58,7 +58,7 @@ export const NavTitle = styled(Link)`
   margin-left: 3.75%;
 `;
 
-export const Bars = styled(FaBars)`
+/*export const Bars = styled(FaBars)`
   display: none;
   color: #000;
   @media screen and (max-width: 768px) {
@@ -70,7 +70,7 @@ export const Bars = styled(FaBars)`
     font-size: 1.8rem;
     cursor: pointer;
   }
-`;
+`;*/
 
 export const NavMenu = styled.div`
   display: flex;
