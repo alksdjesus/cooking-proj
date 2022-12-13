@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { setUserSession } from '../service/AuthService'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../css/allpages.css'
 import '../css/login.css'
 
@@ -11,6 +11,7 @@ const Login = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
+  const navigate = useNavigate();
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -27,8 +28,10 @@ const Login = (props) => {
 
     axios.post(loginAPIUrl, requestBody).then((response) => {
       setUserSession(response.data.user, response.data.token);
-      props.history.push('/profile');
+      navigate('/profile');
+      console.log(navigate('/profile'))
     }).catch((error) => {
+      // console.log(error)
       if (error.response.status === 401 || error.response.status === 403) {
         setErrorMessage(error.response.data.message);
       } else {

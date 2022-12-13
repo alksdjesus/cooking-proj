@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, NavLink, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Feed from "./screens/feed";
 import Search from "./screens/search";
 import Profile from "./screens/profile";
@@ -10,8 +10,8 @@ import Diet from "./screens/diet";
 import Register from "./screens/register";
 import Navbar from './components/navbar';
 import Login from "./screens/login";
-import PublicRoute from "./routes/PublicRoute";
-import PrivateRoute from "./routes/PrivateRoute";
+import PublicRoutes from "./routes/PublicRoutes";
+import PrivateRoutes from "./routes/PrivateRoutes";
 import React, { useState, useEffect } from "react";
 import { getUser, getToken, setUserSession, resetUserSession } from "./service/AuthService";
 import axios from "axios";
@@ -83,14 +83,21 @@ function App() {
       <Router> 
         <Navbar />
         <Routes>
-          <Route path='/' element={<Feed/>}/>
-          <Route path='/feed' element={<Feed/>}/>
-          <Route path='/search' element={<Search/>}/>
-          <Route path='/profile' element={<Profile/>}/>
-          <Route path='/saved' element={<Saved/>}/>
-          <Route path='/recipe' element={<Recipe/>}/>
-          <Route path='/create' element={<Create/>}/>
-          <Route path='/diet' element={<Diet/>}/>
+          <Route element= {<PrivateRoutes />}>
+            <Route path='/' element={<Feed/>}/>
+            <Route path='/feed' element={<Feed/>}/>
+            <Route path='/search' element={<Search/>}/>
+            <Route path='/profile' element={<Profile/>}/>
+            <Route path='/saved' element={<Saved/>}/>
+            <Route path='/recipe' element={<Recipe/>}/>
+            <Route path='/create' element={<Create/>}/>
+            <Route path='/diet' element={<Diet/>}/>
+          </Route>
+          <Route element= {<PublicRoutes />}>
+            <Route path='/login' element={<Login/>}/>
+            <Route path='/register' element={<Register/>}/>
+          </Route>
+          
         </Routes>
       </Router>
     </div>

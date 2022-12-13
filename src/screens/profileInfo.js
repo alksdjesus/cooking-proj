@@ -1,4 +1,6 @@
 import React, { Component, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import '../css/allpages.css';
 import '../css/profile.css';
 import { getUser, resetUserSession } from '../service/AuthService';
@@ -8,6 +10,8 @@ import { SaveButton } from '../components/navbarElements.js';
 const updateAPIURL = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo';
 
 const Info = (props) => {
+  const navigate = useNavigate();
+
 
   //getting loggind in user
   const user = getUser();
@@ -21,7 +25,7 @@ const Info = (props) => {
 
   const logoutHandler = () => {
     resetUserSession();
-    props.history.push('/login');
+    navigate('/login');
   }
 
   const submitHandler = (event) => {
