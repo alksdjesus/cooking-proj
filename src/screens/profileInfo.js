@@ -19,8 +19,14 @@ const Info = (props) => {
 
 
   // const [name, setName] = useState('');
+  const [firstName, setFistName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [bio, setBio] = useState('');
+  const [ingredients, setIngredients] = useState('');
+  const [dietaryRestrictions, setDietaryRestrictions] = useState('');
+  const [rated, setRated] = useState('');
+  const [saved, setSaved] = useState('');
   const [message, setMessage] = useState(null);
 
   const logoutHandler = () => {
@@ -52,13 +58,35 @@ const Info = (props) => {
     //   submitName();
     // }
 
+    if (firstName !== '') {
+      submitFirstName();
+    }
+    if (lastName !== '') {
+      submitLastName();
+    }
     if (bio !== '') {
       submitBio();
     }
-
     if (email !== '') {
       submitEmail();
     }
+    submitIngredients();
+    submitDietaryRestrictions();
+    submitRated();
+    submitSaved();
+
+    // if (ingredients !== '') {
+    //   submitIngredients();
+    // }
+    // if (dietaryRestrictions !== '') {
+    //   submitDietaryRestrictions();
+    // }
+    // if (rated !== '') {
+    //   submitRated();
+    // }
+    // if (saved !== '') {
+    //   submitSaved();
+    // }
   }
 
 //   const submitName = () => {
@@ -79,6 +107,42 @@ const Info = (props) => {
 //   })
 // }
 
+  const submitFirstName = () => {
+    const requestBody = {
+      username: username,
+      updateKey: "firstName",
+      updateValue: firstName
+    }
+
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+    })
+  }
+
+  const submitLastName = () => {
+    const requestBody = {
+      username: username,
+      updateKey: "lastName",
+      updateValue: lastName
+    }
+
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+    })
+  }
+
   const submitBio = () => {
     const requestBody = {
       username: username,
@@ -94,8 +158,8 @@ const Info = (props) => {
       } else {
         setMessage('sorry....the backend server is down!! please try again later');
       }
-  })
-}
+    })
+  }
 
   const submitEmail = () => {
     const requestBody = {
@@ -112,8 +176,76 @@ const Info = (props) => {
       } else {
         setMessage('sorry....the backend server is down!! please try again later');
       }
-  })
-}
+    })
+  }
+  const submitIngredients = () => {
+    const requestBody = {
+      username: username,
+      updateKey: "ingredients",
+      updateValue: []
+    }
+
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+    })
+  }
+  const submitDietaryRestrictions = () => {
+    const requestBody = {
+      username: username,
+      updateKey: "dietaryRestrictions",
+      updateValue: []
+    }
+
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+    })
+  }
+  const submitRated = () => {
+    const requestBody = {
+      username: username,
+      updateKey: "rated",
+      updateValue: {}
+    }
+
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+    })
+  }
+  const submitSaved = () => {
+    const requestBody = {
+      username: username,
+      updateKey: "saved",
+      updateValue: []
+    }
+
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+    })
+  }
 
 //<input type="profile" placeholder="Name" value={name} onChange={event => setName(event.target.value)} /> <br/>
 
@@ -123,8 +255,8 @@ const Info = (props) => {
         <div className='sub_title'>
           General Information
         </div>
-        <input type="profile" placeholder="First Name"/> <br/>
-        <input type="profile" placeholder="Last Name"/> <br/>
+        <input type="profile" placeholder="First Name"value={firstName} onChange={event => setFistName(event.target.value)}/> <br/>
+        <input type="profile" placeholder="Last Name"value={lastName} onChange={event => setLastName(event.target.value)}/> <br/>
         <input type="profile" placeholder="Email" value={email} onChange={event => setEmail(event.target.value)}/> <br/>
         <input type="bio" placeholder="Bio" value={bio} onChange={event => setBio(event.target.value)} /> <br/>
         Ingredients:
