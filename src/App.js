@@ -15,7 +15,9 @@ import PrivateRoutes from "./routes/PrivateRoutes";
 import React, { useState, useEffect } from "react";
 import { getUser, getToken, setUserSession, resetUserSession } from "./service/AuthService";
 import axios from "axios";
-import Layout from './components/layout.js'
+import Layout from './components/layout.js';
+import { Nav } from './components/navbarElements';
+//import Loading from './components/loading.js';
 
 const verifyTokenAPIURL = 'https://gzcxszjnze.execute-api.us-east-1.amazonaws.com/prod/verify';
 

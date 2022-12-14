@@ -7,7 +7,7 @@ import '../css/allpages.css';
 
 
 function Saved () {
-  const [apiKey, setKey] = useState('&apiKey=e0ba8f96837748dc9473f52b42c3b8a8')
+  const [apiKey, setKey] = useState('&apiKey=0fdb28e86ada4091a5018498977de77d')
   const [mealData, setMealData] = useState(null);
   const [message, setMessage] = useState(null);
 
@@ -63,13 +63,13 @@ function Saved () {
 
     return (
       <div className='container'>
-      <div className='title'>
-        Saved
-      </div>
-      <br></br>
-      <br></br>
-      <br></br>
-      <div >
+        <div className='title'>
+          Saved
+        </div>
+        <br></br>
+        <br></br>
+        <br></br>
+        <div >
         {mealData && <MealList mealData={mealData} sender={"saved"}/>}
       </div>
     </div>

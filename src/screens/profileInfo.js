@@ -278,10 +278,10 @@ const Info = (props) => {
     control: (styles) => ({ 
       ...styles, 
       backgroundColor: "white", 
-      borderRadius: 50, 
+      borderRadius: 20, 
       borderWidth: 2,
       borderColor: '#A6A6A6',
-      padding: 3,
+      padding: 2.5,
       width: 500,
     }),
     multiValue: (styles) => {
@@ -301,6 +301,22 @@ const Info = (props) => {
       return {
         ...styles,
         width: 500,
+        borderRadius: 10,
+      }
+    },
+    option: (styles) => {
+      return {
+        ...styles,
+        marginTop: -4,
+        marginBottom: -4,
+        width: 500,
+        borderRadius: 10,
+      }
+    },
+    multiValueRemove: (styles) => {
+      return {
+        ...styles,
+        borderRadius: 20,
       }
     }
   }

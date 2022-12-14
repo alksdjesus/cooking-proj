@@ -38,20 +38,23 @@ const Register = () => {
   }
 
   return (
-    <div className='login_container'>
-      <div className='form_container'>
-        <form onSubmit={submitHandler}>
+    <div className='login_background'>
+      <div className='title_container'>
+        <img className="login_title" src={require("../images/logo.png")}/>
+        <div className='login_container'>
           <div className='login'>
             Register
           </div>
-          <input type="login" placeholder="Name" value={name} onChange={event => setName(event.target.value)} /> <br/>
-          <input type="login" placeholder="Email" value={email} onChange={event => setEmail(event.target.value)} /> <br/>
-          <input type="login" placeholder="Username" value={username} onChange={event => setUsername(event.target.value)} /> <br/>
-          <input type="login" placeholder="Password" value={password} onChange={event => setPassword(event.target.value)} /> <br/>
-          <input type="submit" value="Register" />
-        </form>
+          <form onSubmit={submitHandler}>
+            <input type="login" placeholder="Name" value={name} onChange={event => setName(event.target.value)} /> <br/>
+            <input type="login" placeholder="Email" value={email} onChange={event => setEmail(event.target.value)} /> <br/>
+            <input type="login" placeholder="Username" value={username} onChange={event => setUsername(event.target.value)} /> <br/>
+            <input type="password" placeholder="Password" value={password} onChange={event => setPassword(event.target.value)} /> <br/>
+            <input type="submit" value="Register" />
+          </form>
+        </div>
+        {message && <p className="message">{message}</p>}
       </div>
-      {message && <p className="message">{message}</p>}
     </div>
   )
 }

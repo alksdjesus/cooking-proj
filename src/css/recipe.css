@@ -10,6 +10,9 @@
 
 .recipe_title {
     font-size: 44px;
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
     color: #000;
     text-align: center;
     font-family: 'Raleway', sans-serif;
@@ -26,7 +29,7 @@
 }*/
 
 .text_container {
-    width: 48%;
+    width: 50%;
     background-color: white;
     margin-left: auto;
     margin-right: auto;
