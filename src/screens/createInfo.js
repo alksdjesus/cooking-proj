@@ -3,6 +3,7 @@ import '../css/allpages.css';
 import '../css/profile.css';
 import React, {Component, useState} from 'react';
 import { getUser, resetUserSession } from '../service/AuthService';
+import { SaveButton } from '../components/navbarElements.js';
 import axios from 'axios';
 
 const recipeAPIURL = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/recipe';
@@ -65,7 +66,9 @@ const Create = (props) => {
         <input type="profile" placeholder="Picture" value={pic} onChange={event => setPic(event.target.value)}/> <br/>
         <input type="profile" placeholder="Ingredients" value={ingredients} onChange={event => setIngredients(event.target.value)}/> <br/>
         <input type="profile" placeholder="Directions" value={steps} onChange={event => setSteps(event.target.value)}/> <br/>
-        <input type="submit" value="Save" />
+        <SaveButton input type="submit">
+          Save
+        </SaveButton>
       </form>
     </div>
   )

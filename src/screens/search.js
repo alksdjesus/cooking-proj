@@ -12,8 +12,8 @@ function Search() {
   // const [isLoading, setLoading] = useState(true)
   var [searchText, setText] = useState(null)
   // var [data, setData] = useState([])
-  const [apiKey, setKey] = useState('&apiKey=e0ba8f96837748dc9473f52b42c3b8a8')
-  const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/complexSearch?number=10&query=')
+  const [apiKey, setKey] = useState('&apiKey=0fdb28e86ada4091a5018498977de77d')
+  const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/complexSearch?number=1&query=')
   var [someLink, setLink] = useState('test')
 
 
@@ -52,7 +52,7 @@ function Search() {
       />
       <br/><br/><br/>
       <div>
-        {mealData && <MealList mealData={mealData} sender={"search"}  />}
+        {mealData && <MealList mealData={mealData} sender={"search"}/>}
       </div>
     </div>
   );

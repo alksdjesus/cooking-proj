@@ -1,8 +1,8 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, state } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/allpages.css';
 import '../css/profile.css';
-import { getUser, resetUserSession } from '../service/AuthService';
+import { getUser, getFirst, resetUserSession } from '../service/AuthService';
 import axios from 'axios';
 import { SaveButton } from '../components/navbarElements.js';
 import Select from 'react-select';
@@ -18,14 +18,14 @@ const Info = (props) => {
   const user = getUser();
   const username = user !== 'undefined' && user ? user.username : '';
 
-
   // const [name, setName] = useState('');
-  const [firstName, setFistName] = useState('');
+  const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [bio, setBio] = useState('');
   const [ingredients, setIngredients] = useState('');
   const [dietaryRestrictions, setDietaryRestrictions] = useState('');
+  const [cuisines, setCuisines] = useState('');
   const [rated, setRated] = useState('');
   const [saved, setSaved] = useState('');
   const [message, setMessage] = useState(null);
@@ -75,6 +75,7 @@ const Info = (props) => {
     submitDietaryRestrictions();
     submitRated();
     submitSaved();
+    submitCuisines();
 
     // if (ingredients !== '') {
     //   submitIngredients();
@@ -179,6 +180,7 @@ const Info = (props) => {
       }
     })
   }
+
   const submitIngredients = () => {
     const requestBody = {
       username: username,
@@ -196,6 +198,7 @@ const Info = (props) => {
       }
     })
   }
+
   const submitDietaryRestrictions = () => {
     const requestBody = {
       username: username,
@@ -213,6 +216,25 @@ const Info = (props) => {
       }
     })
   }
+
+  const submitCuisines = () => {
+    const requestBody = {
+      username: username,
+      updateKey: "cuisines",
+      updateValue: []
+    }
+
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+    })
+  }
+
   const submitRated = () => {
     const requestBody = {
       username: username,
@@ -230,6 +252,7 @@ const Info = (props) => {
       }
     })
   }
+
   const submitSaved = () => {
     const requestBody = {
       username: username,
@@ -248,41 +271,17 @@ const Info = (props) => {
     })
   }
 
-  const dietOptions = [
-    { value: 'vegetarian', label: 'Vegetarian' },
-    { value: 'pescatarian', label: 'Pescatarian' },
-    { value: 'gluten-free', label: 'Gluten-Free' },
-    { value: 'lactose-intol', label: 'Lactose-Intolerant' },
-    { value: 'vegan', label: 'Vegan' },
-  ]
-
-  const ingredientOptions = [
-    { value: 'rice', label: 'Rice' },
-    { value: 'beef', label: 'Beef' },
-    { value: 'tomato', label: 'Tomato' },
-    { value: 'lettuce', label: 'Lettuce' },
-    { value: 'cabbage', label: 'Cabbage' },
-    { value: 'milk', label: 'Milk' },
-    { value: 'pork', label: 'Pork' },
-  ]
-
-  const cuisineOptions = [
-    { value: 'korean', label: 'Korean' },
-    { value: 'indian', label: 'Indian' },
-    { value: 'vietnamese', label: 'Vietnamese' },
-    { value: 'chinese', label: 'Chinese' },
-    { value: 'carribean', label: 'Carribean' },
-  ]
-
   const optionStyles = {
     control: (styles) => ({ 
       ...styles, 
       backgroundColor: "white", 
       borderRadius: 20, 
       borderWidth: 2,
+      boxShadow: 'none',
       borderColor: '#A6A6A6',
       padding: 2.5,
       width: 500,
+      outline: 'none',
     }),
     multiValue: (styles) => {
       return {
@@ -309,7 +308,7 @@ const Info = (props) => {
         ...styles,
         marginTop: -4,
         marginBottom: -4,
-        width: 500,
+        width: 483,
         borderRadius: 10,
       }
     },
@@ -321,7 +320,25 @@ const Info = (props) => {
     }
   }
 
-//<input type="profile" placeholder="Name" value={name} onChange={event => setName(event.target.value)} /> <br/>
+  /*async function getSaved() {
+    var url = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo?username='
+    url = url + username
+
+    axios.get(url).then(response => {
+      getRecipes(response.data.saved);
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+  })
+  }*/
+  
+  /*const onButtonClickHandler = () => {
+    window.alert('Hi')
+  };*/
 
   return (
     <div className='profile_container'>
@@ -329,26 +346,17 @@ const Info = (props) => {
         <div className='sub_title'>
           General Information
         </div>
-        <input type="profile" placeholder="First Name"value={firstName} onChange={event => setFistName(event.target.value)}/> <br/>
+        <div className='saved_title'>
+          Username: 
+        </div>
+        <div className='saved_info'>
+          {username}
+        </div>
+        <br/>
+        <input type="profile" placeholder="First Name"value={firstName} onChange={event => setFirstName(event.target.value)}/> <br/>
         <input type="profile" placeholder="Last Name"value={lastName} onChange={event => setLastName(event.target.value)}/> <br/>
         <input type="profile" placeholder="Email" value={email} onChange={event => setEmail(event.target.value)}/> <br/>
-        <input type="bio" placeholder="Bio" value={bio} onChange={event => setBio(event.target.value)} /> <br/>
-        <br/>
-        <div className='option_title'>
-          Dietary Restrictions:
-        </div>
-        <Select options={dietOptions} isMulti name="diets" styles={optionStyles}/>
-        <br/>
-        <div className='option_title'>
-          Favorite Cuisines:
-        </div>
-        <Select options={cuisineOptions} isMulti name="cuisines" styles={optionStyles}/>
-        <br/>
-        <div className='option_title'>
-          Ingredients:
-        </div>
-        <Select options={ingredientOptions} isMulti name="ingredients" styles={optionStyles}/>
-        <br/>
+        <textarea type="bio" placeholder="Bio" value={bio} onChange={event => setBio(event.target.value)} /> <br/>
         <SaveButton input type="submit">
           Save
         </SaveButton>

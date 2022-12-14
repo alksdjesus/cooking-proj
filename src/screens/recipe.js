@@ -26,6 +26,7 @@ import axios from 'axios';
 import '../css/allpages.css'
 import '../css/recipe.css'
 import { SaveButton } from '../components/navbarElements';
+import Rating from '../components/rating';
 
 
 export default function Recipe() {
@@ -39,7 +40,7 @@ export default function Recipe() {
   const updateAPIURL = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo';
 
   var [mealData, setMealData] = useState({});
-  const [apiKey, setKey] = useState('/information?apiKey=e0ba8f96837748dc9473f52b42c3b8a8')
+  const [apiKey, setKey] = useState('/information?apiKey=0fdb28e86ada4091a5018498977de77d')
   const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/')
   const [message, setMessage] = useState(null);
   var [someLink, setLink] = useState('test')
@@ -180,15 +181,15 @@ export default function Recipe() {
       <img className="img" src={mealData.image} alt={mealData.title}/>
       <br/>
       <SaveButton onClick={() => getSaved()}>Save Recipe</SaveButton>
-      {/* <SaveButton>Save Recipe</SaveButton> */}
-        <select id="rating" onChange={() => getRated()}>
-          <option value="">Select Rating</option>
-          <option value="1">Rating 1/5</option>
-          <option value="2">Rating 2/5</option>
-          <option value="3">Rating 3/5</option>
-          <option value="4">Rating 4/5</option>
-          <option value="5">Rating 5/5</option>
-        </select>
+      <Rating onChange={() => updateRated()}/>
+      <select id="rating" onChange={() => getRated()}>
+        <option value="">Select Rating</option>
+        <option value="1">Rating 1/5</option>
+        <option value="2">Rating 2/5</option>
+        <option value="3">Rating 3/5</option>
+        <option value="4">Rating 4/5</option>
+        <option value="5">Rating 5/5</option>
+      </select>
       <div className='text_container'>
         <div className='summary'>
           <div className='part_title'>
@@ -210,3 +211,12 @@ export default function Recipe() {
     </div>
   );
 }
+
+/*<select id="rating" onChange={() => getRated()}>
+          <option value="">Select Rating</option>
+          <option value="1">Rating 1/5</option>
+          <option value="2">Rating 2/5</option>
+          <option value="3">Rating 3/5</option>
+          <option value="4">Rating 4/5</option>
+          <option value="5">Rating 5/5</option>
+        </select>*/

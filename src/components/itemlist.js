@@ -1,6 +1,8 @@
 import React from "react";
 import Meal from "./item";
+import FeedMeal from "./feeditem";
 import '../css/item.css';
+import '../css/feed.css';
 
 export default function MealList({ mealData, sender }) {
 
@@ -19,9 +21,9 @@ export default function MealList({ mealData, sender }) {
   if (sender === "feed") {
     return (
       <div>
-        <section className="recipe_grid">
+        <section className="feed_grid">
           {mealData.recipes.map((meal) => {
-            return <Meal key={meal.id} meal={meal} />;
+            return <FeedMeal key={meal.id} meal={meal} />;
           })}
         </section>
       </div>

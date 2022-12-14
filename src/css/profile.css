@@ -6,6 +6,20 @@
     background-size: cover;*/
 }
 
+.saved_title {
+    font-family: 'Raleway';
+    font-size: 18px;
+    font-weight: 600;
+    float: left;
+    margin-right: 5px;
+}
+
+.saved_info {
+    font-family: 'Raleway';
+    font-size: 18px;
+    font-weight: 400;
+}
+
 .sub_title {
     font-size: 28px;
     color: #000;
@@ -44,7 +58,7 @@ select {
 }
 
 input[type="profile"] {
-    margin: 10px 0px;
+    margin: 0px 0px 20px 0;
     background: white;
     padding: 10px;
     padding-left: 13px;
@@ -62,8 +76,9 @@ input[type="profile"]:focus {
     border: 2px solid gray;
   }
 
-input[type="bio"] {
-    margin: 10px 0px;
+textarea[type="bio"] {
+    margin: 0px 0px 20px 0px;
+    margin-bottom: 15px;
     background: white;
     padding: 10px;
     padding-left: 13px;
@@ -72,7 +87,7 @@ input[type="bio"] {
     border-color: #A6A6A6;
     border-style: solid;
     width: 300px;
-    /*height: 200px;*/
+    height: 200px;
     font-family: 'Inter';
     font-size: 15px;
     outline: none;

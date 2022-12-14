@@ -61,19 +61,19 @@ function Saved () {
   })
   }
 
-    return (
-      <div className='container'>
-        <div className='title'>
-          Saved
-        </div>
-        <br></br>
-        <br></br>
-        <br></br>
-        <div >
-        {mealData && <MealList mealData={mealData} sender={"saved"}/>}
+  return (
+    <div className='container'>
+      <div className='title'>
+        Saved Recipes
       </div>
+      <br></br>
+      <br></br>
+      <br></br>
+      <div >
+      {mealData && <MealList mealData={mealData} sender={"saved"}/>}
     </div>
-    )
+  </div>
+  )
 }
 
 export default Saved;

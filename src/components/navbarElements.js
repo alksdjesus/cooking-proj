@@ -26,7 +26,7 @@ export const NavLink = styled(Link)`
   height: 100%;
   cursor: pointer;
   font-family: 'Alexandria', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   //transition: all 0.2s ease-in-out;
   &.active {
     //font-weight: 700;
