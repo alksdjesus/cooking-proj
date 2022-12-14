@@ -15,6 +15,15 @@
     margin-bottom: 20px;
 }
 
+.option_title {
+    font-size: 20px;
+    color: #000;
+    text-align: left;
+    font-family: 'Raleway';
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
 option {
     font-size: 16px;
     color: #000;

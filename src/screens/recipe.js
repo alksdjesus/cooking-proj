@@ -179,7 +179,7 @@ export default function Recipe() {
       </div>
       <img className="img" src={mealData.image} alt={mealData.title}/>
       <br/>
-      <button onClick={() => getSaved()}>Save Recipe</button>
+      <SaveButton onClick={() => getSaved()}>Save Recipe</SaveButton>
       {/* <SaveButton>Save Recipe</SaveButton> */}
         <select id="rating" onChange={() => getRated()}>
           <option value="">Select Rating</option>

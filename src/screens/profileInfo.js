@@ -6,6 +6,7 @@ import { getUser, resetUserSession } from '../service/AuthService';
 import axios from 'axios';
 import { SaveButton } from '../components/navbarElements.js';
 import Select from 'react-select';
+import { StyleSheetManager } from 'styled-components';
 
 const updateAPIURL = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo';
 
@@ -265,6 +266,45 @@ const Info = (props) => {
     { value: 'pork', label: 'Pork' },
   ]
 
+  const cuisineOptions = [
+    { value: 'korean', label: 'Korean' },
+    { value: 'indian', label: 'Indian' },
+    { value: 'vietnamese', label: 'Vietnamese' },
+    { value: 'chinese', label: 'Chinese' },
+    { value: 'carribean', label: 'Carribean' },
+  ]
+
+  const optionStyles = {
+    control: (styles) => ({ 
+      ...styles, 
+      backgroundColor: "white", 
+      borderRadius: 50, 
+      borderWidth: 2,
+      borderColor: '#A6A6A6',
+      padding: 3,
+      width: 500,
+    }),
+    multiValue: (styles) => {
+      return {
+        ...styles,
+        borderRadius: 20,
+        borderWidth: 2,
+        padding: 2,
+        paddingLeft: 4,
+        fontSize: 16,
+        marginLeft: -4,
+        marginRight: 10,
+        onmouseover: "this.style.textDecoration = 'underline'",
+      }
+    },
+    menu: (styles) => {
+      return {
+        ...styles,
+        width: 500,
+      }
+    }
+  }
+
 //<input type="profile" placeholder="Name" value={name} onChange={event => setName(event.target.value)} /> <br/>
 
   return (
@@ -278,11 +318,20 @@ const Info = (props) => {
         <input type="profile" placeholder="Email" value={email} onChange={event => setEmail(event.target.value)}/> <br/>
         <input type="bio" placeholder="Bio" value={bio} onChange={event => setBio(event.target.value)} /> <br/>
         <br/>
-        Dietary Restrictions:
-        <Select options={dietOptions} isMulti name="diets"/>
+        <div className='option_title'>
+          Dietary Restrictions:
+        </div>
+        <Select options={dietOptions} isMulti name="diets" styles={optionStyles}/>
         <br/>
-        Ingredients:
-        <Select options={ingredientOptions} isMulti name="ingredients"/>
+        <div className='option_title'>
+          Favorite Cuisines:
+        </div>
+        <Select options={cuisineOptions} isMulti name="cuisines" styles={optionStyles}/>
+        <br/>
+        <div className='option_title'>
+          Ingredients:
+        </div>
+        <Select options={ingredientOptions} isMulti name="ingredients" styles={optionStyles}/>
         <br/>
         <SaveButton input type="submit">
           Save
