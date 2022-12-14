@@ -5,6 +5,7 @@ import axios from 'axios';
 import '../css/allpages.css'
 import '../css/recipe.css'
 import { SaveButton } from '../components/navbarElements';
+import Rating from '../components/rating';
 
 export default function Recipe() {
   
@@ -192,3 +193,12 @@ export default function Recipe() {
     </div>
   );
 }
+
+/*<select id="rating" onChange={() => getRated()}>
+          <option value="">Select Rating</option>
+          <option value="1">Rating 1/5</option>
+          <option value="2">Rating 2/5</option>
+          <option value="3">Rating 3/5</option>
+          <option value="4">Rating 4/5</option>
+          <option value="5">Rating 5/5</option>
+        </select>*/

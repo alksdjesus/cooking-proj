@@ -52,7 +52,7 @@ function Search() {
       />
       <br/><br/><br/>
       <div>
-        {mealData && <MealList mealData={mealData} sender={"search"}  />}
+        {mealData && <MealList mealData={mealData} sender={"search"}/>}
       </div>
     </div>
   );
