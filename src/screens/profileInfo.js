@@ -12,6 +12,9 @@ const updateAPIURL = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/bet
 
 const Info = (props) => {
   const navigate = useNavigate();
+  var dietaryRestrictions = new Array();
+  var ingredients = new Array();
+  var cuisines = new Array();
 
 
   //getting loggind in user
@@ -24,8 +27,8 @@ const Info = (props) => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [bio, setBio] = useState('');
-  const [ingredients, setIngredients] = useState('');
-  const [dietaryRestrictions, setDietaryRestrictions] = useState('');
+  //const [ingredients, setIngredients] = useState('');
+  //const [dietaryRestrictions, setDietaryRestrictions] = useState('');
   const [rated, setRated] = useState('');
   const [saved, setSaved] = useState('');
   const [message, setMessage] = useState(null);
@@ -196,6 +199,7 @@ const Info = (props) => {
       }
     })
   }
+
   const submitDietaryRestrictions = () => {
     const requestBody = {
       username: username,
@@ -1353,17 +1357,17 @@ const Info = (props) => {
         <div className='option_title'>
           Dietary Restrictions:
         </div>
-        <Select options={dietOptions} isMulti name="diets" styles={optionStyles}/>
+        <Select options={dietOptions} isMulti isClearable name="diets" styles={optionStyles}/>
         <br/>
         <div className='option_title'>
           Favorite Cuisines:
         </div>
-        <Select options={cuisineOptions} isMulti name="cuisines" styles={optionStyles}/>
+        <Select options={cuisineOptions} isMulti isClearable name="cuisines" styles={optionStyles} onChange/>
         <br/>
         <div className='option_title'>
           Ingredients:
         </div>
-        <Select options={ingredientOptions} isMulti name="ingredients" styles={optionStyles}/>
+        <Select options={ingredientOptions} isMulti isClearable name="ingredients" styles={optionStyles} onChange/>
         <br/>
         <SaveButton input type="submit">
           Save

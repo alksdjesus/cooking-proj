@@ -1,24 +1,3 @@
-// import React from "react";
-// import {useLocation} from "react-router-dom";
-// import '../App.css'
-// import Home from "./home";
-
-
-// export default function Recipe() {
-//   const location = useLocation();
-//   const meal = location.state.meal
-
-//       return (
-        
-//         <><Home/><article className="all-browsers">
-//           <h1>{meal.title}</h1>
-//         </article><article>
-//         <img className="img" src={meal.image} alt={meal.title}/>
-//           </article></>
-
-//       );
-//     }
-
 import React, { useEffect, useState } from 'react';
 import { getUser } from '../service/AuthService';
 import {useLocation} from "react-router-dom";
@@ -26,7 +5,6 @@ import axios from 'axios';
 import '../css/allpages.css'
 import '../css/recipe.css'
 import { SaveButton } from '../components/navbarElements';
-
 
 export default function Recipe() {
   
@@ -39,7 +17,7 @@ export default function Recipe() {
   const updateAPIURL = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo';
 
   var [mealData, setMealData] = useState({});
-  const [apiKey, setKey] = useState('/information?apiKey=e0ba8f96837748dc9473f52b42c3b8a8')
+  const [apiKey, setKey] = useState('/information?apiKey=4c79dafa41b2490e8ee389c5a4b6583c')
   const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/')
   const [message, setMessage] = useState(null);
   var [someLink, setLink] = useState('test')
@@ -96,9 +74,13 @@ export default function Recipe() {
   }
 
   async function updateSaved(list) {
-    list.push(mealData.id)
-    list = [...new Set(list)];
-
+    if (list.includes(mealData.id)) {
+      const index = list.indexOf(mealData.id);
+      list.splice(index, 1);
+    } else {
+      list.push(mealData.id)
+      list = [...new Set(list)];
+    }
 
     console.log(list)
     const requestBody = {
@@ -179,7 +161,7 @@ export default function Recipe() {
       </div>
       <img className="img" src={mealData.image} alt={mealData.title}/>
       <br/>
-      <SaveButton onClick={() => getSaved()}>Save Recipe</SaveButton>
+      <SaveButton onClick={() => getSaved()}>Toggle Save</SaveButton>
       {/* <SaveButton>Save Recipe</SaveButton> */}
         <select id="rating" onChange={() => getRated()}>
           <option value="">Select Rating</option>

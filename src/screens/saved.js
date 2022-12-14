@@ -7,7 +7,7 @@ import '../css/allpages.css';
 
 
 function Saved () {
-  const [apiKey, setKey] = useState('&apiKey=0fdb28e86ada4091a5018498977de77d')
+  const [apiKey, setKey] = useState('&apiKey=4c79dafa41b2490e8ee389c5a4b6583c')
   const [mealData, setMealData] = useState(null);
   const [message, setMessage] = useState(null);
 
@@ -24,6 +24,7 @@ function Saved () {
 
     for (var i = 0; i < list.length; i++)
     { 
+      if (list[i] == null) {continue;}
       idquery = idquery + list[i].toString() + ",";
     }
 
@@ -50,6 +51,7 @@ function Saved () {
     url = url + username
 
     axios.get(url).then(response => {
+      console.log(response.data.saved);
       getRecipes(response.data.saved);
       setMessage('Info Updated');
     }).catch(error => {
