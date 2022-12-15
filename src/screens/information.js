@@ -1328,54 +1328,53 @@ const Information = () => {
 
   return (
     <div className='login_background'>
-      <div className='title_container'>
+      <div className='inform_container'>
         <img className="login_title" src={require("../images/logo.png")}/>
         <div className='information_container'>
-          <div className='sub_title'>
-            General Information
-          </div>
-          <br/>
-          <div className='option_title'>
-            First Name:
-          </div>
-          <input type="profile" placeholder="First Name"value={firstName} onChange={event => setFirstName(event.target.value)}/> <br/>
-          <div className='option_title'>
-            Last Name:
-          </div>
-          <input type="profile" placeholder="Last Name"value={lastName} onChange={event => setLastName(event.target.value)}/> <br/>
-          <div className='option_title'>
-            Email:
-          </div>
-          <input type="profile" placeholder="Email" value={email} onChange={event => setEmail(event.target.value)}/> <br/>
-          <div className='option_title'>
-            Bio:
-          </div>
-          <textarea type="bio" placeholder="Bio" value={bio} onChange={event => setBio(event.target.value)} /> <br/>
-          <br/>
-          <div className='login'>
-            Diet Preferences
-          </div>
-          <form className='info_form' align="left" onSubmit={submitHandler} >
-            <div className='option_title'>
-              Dietary Restrictions:
+          <div className='general_container'>
+            <div className='info_title'>
+              User Settings
             </div>
-            <Select options={dietOptions} isMulti name="diets" styles={optionStyles} onChange={event => setSelectedDiets(event)}/>
-            <br/>
             <div className='option_title'>
-              Favorite Ingredients:
+              First Name:
             </div>
-            <Select options={ingredientOptions} isMulti name="ingredients" styles={optionStyles} onChange={event => setSelectedFavoriteIngredients(event)}/>
-            <br/>
+            <input type="profile" placeholder="First Name"value={firstName} onChange={event => setFirstName(event.target.value)}/> <br/>
             <div className='option_title'>
-              Favorite Cuisines:
+              Last Name:
             </div>
-            <Select options={cuisineOptions} isMulti name="cuisines" styles={optionStyles} onChange={event => setSelectedCuisine(event)}/>
+            <input type="profile" placeholder="Last Name"value={lastName} onChange={event => setLastName(event.target.value)}/> <br/>
+            <div className='option_title'>
+              Email:
+            </div>
+            <input type="profile" placeholder="Email" value={email} onChange={event => setEmail(event.target.value)}/> <br/>
+            <div className='option_title'>
+              Bio:
+            </div>
+            <textarea type="bio" placeholder="Bio" value={bio} onChange={event => setBio(event.target.value)} /> <br/>
             <br/>
-            <SaveButton input type="submit">
-              Save Information
-            </SaveButton>
-            
-          </form>
+          </div>
+          <div className='diet_container'>
+            <form className='info_form' align="left" onSubmit={submitHandler} >
+              <div className='option_title'>
+                Dietary Restrictions:
+              </div>
+              <Select options={dietOptions} isMulti name="diets" styles={optionStyles} onChange={event => setSelectedDiets(event)}/>
+              <br/>
+              <div className='option_title'>
+                Favorite Ingredients:
+              </div>
+              <Select options={ingredientOptions} isMulti name="ingredients" styles={optionStyles} onChange={event => setSelectedFavoriteIngredients(event)}/>
+              <br/>
+              <div className='option_title'>
+                Favorite Cuisines:
+              </div>
+              <Select options={cuisineOptions} isMulti name="cuisines" styles={optionStyles} onChange={event => setSelectedCuisine(event)}/>
+              <br/>
+              <SaveButton input type="submit">
+                Save Information
+              </SaveButton>
+            </form>
+          </div>
         </div>
         {message && <p className="message">{message}</p>}
       </div>
