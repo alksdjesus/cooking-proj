@@ -52,7 +52,7 @@ const Info = (props) => {
         
     return (
         <div className='profile_container'>
-          <div className='sub_title'> My Profile </div>
+          <div className='profile_title'> My Profile </div>
           <div className='sub_title'> General Information </div>
           <div className='info_container'>
             <div className='saved_title'> Username: </div>

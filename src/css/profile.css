@@ -1,48 +1,11 @@
-
 .profile_container {
     height: 100%;
     margin-left: 8%;
    /*background-image: url("../images/login.jpg");
     background-size: cover;*/
 }
-
+ 
 .profile_title {
-    font-size: 44px;
-    color: #000;
-    text-align: left;
-    font-family: 'Raleway';
-    font-weight: 700;
-    float: left;
-}
-
-.saved_title {
-    font-family: 'Raleway';
-    font-size: 18px;
-    font-weight: 600;
-    float: left;
-    margin-right: 5px;
-}
-
-.saved_info {
-    font-family: 'Raleway';
-    font-size: 18px;
-    font-weight: 400;
-}
-
-.saved_bio {
-    font-family: 'Raleway';
-    font-size: 18px;
-    font-weight: 400;
-    width: 325px;
-}
-
-.list_info {
-    font-family: 'Raleway';
-    font-size: 18px;
-    font-weight: 400;
-}
-
-.sub_title {
     font-size: 28px;
     color: #000;
     text-align: left;
@@ -50,7 +13,47 @@
     font-weight: 600;
     margin-bottom: 20px;
 }
-
+ 
+.saved_title {
+    font-family: 'Raleway';
+    font-size: 18px;
+    font-weight: 600;
+    float: left;
+    margin-right: 5px;
+}
+ 
+.saved_info {
+    font-family: 'Raleway';
+    font-size: 18px;
+    font-weight: 400;
+}
+ 
+.saved_bio {
+    font-family: 'Raleway';
+    font-size: 18px;
+    font-weight: 400;
+    width: 325px;
+}
+ 
+.list_info {
+    font-family: 'Raleway';
+    font-size: 16px;
+    font-weight: 400;
+}
+ 
+ul {
+    margin: 3px;
+}
+ 
+.sub_title {
+    font-size: 24px;
+    color: #000;
+    text-align: left;
+    font-family: 'Raleway';
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+ 
 .option_title {
     font-size: 20px;
     color: #000;
@@ -59,14 +62,14 @@
     font-weight: 600;
     margin-bottom: 8px;
 }
-
+ 
 option {
     font-size: 16px;
     color: #000;
     font-family: 'Inter';
     font-weight: 500;
 }
-
+ 
 select {
     padding: 3px;
     padding-left: 5px;
@@ -78,7 +81,7 @@ select {
     font-weight: 500;
     margin: 10px 10px;
 }
-
+ 
 input[type="profile"] {
     margin: 0px 0px 20px 0;
     background: white;
@@ -93,11 +96,11 @@ input[type="profile"] {
     font-size: 15px;
     outline: none;
 }
-
+ 
 input[type="profile"]:focus {
     border: 2px solid gray;
   }
-
+ 
 textarea[type="bio"] {
     margin: 0px 0px 20px 0px;
     margin-bottom: 15px;
@@ -114,7 +117,7 @@ textarea[type="bio"] {
     font-size: 15px;
     outline: none;
 }
-
+ 
 input[type="bio"]:focus {
     border: 2px solid gray;
-  }
+}

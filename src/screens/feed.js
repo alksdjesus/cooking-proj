@@ -64,10 +64,16 @@ const Feed = () => {
     currentHour >= 12 && currentHour < 18 ? ["afternoon"] :
     ["evening"];
 
+  var target = firstName;
+
+  if (firstName.trim() === '') {
+    target = "chef";
+  }
+  
   return (
     <div className='container'>
       <div className='title'>
-        Good {time}, {firstName}
+        Good {time}, {target}
       </div>
       <br/><br/><br/><br/><br/>
       <div className='feed_title'>
