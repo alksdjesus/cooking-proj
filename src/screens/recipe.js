@@ -18,7 +18,7 @@ export default function Recipe() {
   const updateAPIURL = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo';
 
   var [mealData, setMealData] = useState({});
-  const [apiKey, setKey] = useState('/information?apiKey=affe55df0130465780b612e83f9b8895')
+  const [apiKey, setKey] = useState('/information?apiKey=e0ba8f96837748dc9473f52b42c3b8a8')
   const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/')
   const [message, setMessage] = useState(null);
   var [someLink, setLink] = useState('test')
@@ -148,7 +148,7 @@ export default function Recipe() {
       </div>
       <img className="img" src={mealData.image} alt={mealData.title}/>
       <br/>
-      <SaveButton onClick={() => getSaved()}>Save Recipe</SaveButton>
+      <SaveButton onClick={() => getSaved()}>Toggle Save</SaveButton>
       {/* <SaveButton>Save Recipe</SaveButton> */}
         <select id="rating" onChange={() => getRated()}>
           <option value="">Select Rating</option>

@@ -22,7 +22,7 @@ export default function MealList({ mealData, sender }) {
     return (
       <div>
         <section className="feed_grid">
-          {mealData.recipes.map((meal) => {
+          {mealData.map((meal) => {
             return <FeedMeal key={meal.id} meal={meal} />;
           })}
         </section>

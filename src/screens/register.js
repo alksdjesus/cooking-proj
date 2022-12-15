@@ -9,6 +9,7 @@ const registerUrl = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta
 const loginAPIUrl = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/login';
 
 const Register = () => {
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
@@ -34,7 +35,7 @@ const Register = () => {
     
     axios.post(registerUrl, registerBody).then(response => {
       setMessage('Registration Successful');
-      navigate('/information')
+      navigate('/information', {state:{uname: username}})
     }).catch(error => {
       if (error.response.status === 401) {
         setMessage(error.response.data.message);

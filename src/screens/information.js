@@ -8,15 +8,18 @@ import { getUser } from '../service/AuthService';
 import '../css/allpages.css';
 import '../css/login.css';
 import '../css/information.css'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const updateAPIURL = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo';
+
+
 
 const Information = () => {
 
   const user = getUser();
   const username = user !== 'undefined' && user ? user.username : '';
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [selectedDiets, setSelectedDiets] = useState([]);
   const [selectedAllergicIngredients, setSelectedAllergicIngredients] = useState([]);
@@ -26,76 +29,56 @@ const Information = () => {
   const listsOfSelectedAllergicIngredients = []
   const listsOfSelectedCuisine = []
 
+  function getData() {
+    axios({
+      method: "GET",
+      url:"/users/" + location.state.uname,
+    })
+    .then((response) => {
+      console.log(response)
+    }).catch((error) => {
+      if (error.response) {
+        console.log(error.response)
+        console.log(error.response.status)
+        console.log(error.response.headers)
+        }
+    })}
+
 
   const submitHandler = (event) => {
     event.preventDefault();
-    // console.log(listsOfSelectedDiets)
-    // console.log(listsOfSelectedCuisine)
+    
 
 
     for (let i = 0; i < selectedDiets.length; i++) {
-      listsOfSelectedDiets.push(selectedDiets[i].label);
+      listsOfSelectedDiets.push(selectedDiets[i].value);
     }
 
     for (let i = 0; i < selectedAllergicIngredients.length; i++) {
-      listsOfSelectedAllergicIngredients.push(selectedAllergicIngredients[i].label);
+      listsOfSelectedAllergicIngredients.push(selectedAllergicIngredients[i].value);
     }
 
     for (let i = 0; i < selectedCuisine.length; i++) {
       listsOfSelectedCuisine.push(selectedCuisine[i].label);
     }
     submitSelectedDiets();
-    submitSelectedAllergicIngredients();
-    submitSelectedCuisine();
+    getData();
     navigate('/login')
   }
 
   const submitSelectedDiets = () => {
-    console.log(listsOfSelectedDiets)
     const requestBody = {
-      username: username,
-      updateKey: "dietaryRestrictions",
-      updateValue: listsOfSelectedDiets
+      pk: location.state.uname,
+      sk: "profileInfo",
+      dietaryRestrictions: listsOfSelectedDiets,
+      favoriteCuisine: listsOfSelectedCuisine,
+      ingredients: listsOfSelectedAllergicIngredients,
+      rated: new Array(),
+      saved: new Array(),
+      feed: new Array()
     }
 
-    axios.patch(updateAPIURL, requestBody).then(response => {
-      setMessage('Info Updated');
-    }).catch(error => {
-      if (error.response.status === 401) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage('sorry....the backend server is down!! please try again later');
-      }
-    })
-  }
-
-  const submitSelectedAllergicIngredients = () => {
-    const requestBody = {
-      username: username,
-      updateKey: "allergicIngredients",
-      updateValue: listsOfSelectedAllergicIngredients
-    }
-
-    axios.patch(updateAPIURL, requestBody).then(response => {
-      setMessage('Info Updated');
-    }).catch(error => {
-      if (error.response.status === 401) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage('sorry....the backend server is down!! please try again later');
-      }
-    })
-  }
-
-  const submitSelectedCuisine = () => {
-    console.log(listsOfSelectedCuisine)
-    const requestBody = {
-      username: username,
-      updateKey: "favoriteCuisines",
-      updateValue: listsOfSelectedCuisine
-    }
-    
-    axios.patch(updateAPIURL, requestBody).then(response => {
+    axios.post(updateAPIURL, requestBody).then(response => {
       setMessage('Info Updated');
     }).catch(error => {
       if (error.response.status === 401) {
@@ -1145,7 +1128,7 @@ const Information = () => {
     { value: "southern", label: "Southern" },
     { value: "spanish", label: "Spanish" },
     { value: "thai", label: "Thai" },
-    { value: "vietname", label: "Vietname" }
+    { value: "vietnamese", label: "Vietnamese" }
   ]
 
   const optionStyles = {
@@ -1206,14 +1189,14 @@ const Information = () => {
           <div className='login'>
             Diet Preferences
           </div>
-          <form className='info_form' align="left" onSubmit={submitHandler} >
+          <form className='info_form' align="left">
             <div className='option_title'>
               Dietary Restrictions:
             </div>
             <Select options={dietOptions} isMulti name="diets" styles={optionStyles} onChange={event => setSelectedDiets(event)}/>
             <br/>
             <div className='option_title'>
-              Allergies:
+              Ingredients:
             </div>
             <Select options={ingredientOptions} isMulti name="ingredients" styles={optionStyles} onChange={event => setSelectedAllergicIngredients(event)}/>
             <br/>
@@ -1223,7 +1206,7 @@ const Information = () => {
             <Select options={cuisineOptions} isMulti name="cuisines" styles={optionStyles} onChange={event => setSelectedCuisine(event)}/>
             <br/>
             <Link to="/feed">
-              <SaveButton input type="submit">
+              <SaveButton input type="submit" onClick={submitHandler}>
                 Save Information
               </SaveButton>
             </Link>

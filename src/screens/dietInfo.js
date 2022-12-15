@@ -37,9 +37,15 @@ const Diet = (props) => {
       listsOfSelectedCuisine[selectedCuisine[i].label] = selectedCuisine[i].value;
     }
 
-    submitSelectedDiets();
-    submitSelectedAllergicIngredients();
-    submitSelectedCuisine();
+    if (listsOfSelectedDiets.length != 0) {
+      submitSelectedDiets();
+    }
+    if (listsOfSelectedAllergicIngredients.length != 0) {
+      submitSelectedAllergicIngredients();
+    }
+    if (listsOfSelectedCuisine.length != 0) {
+      submitSelectedCuisine();
+    }
   }
 
   const submitSelectedDiets = () => {
@@ -63,7 +69,7 @@ const Diet = (props) => {
   const submitSelectedAllergicIngredients = () => {
     const requestBody = {
       username: username,
-      updateKey: "allergicIngredients",
+      updateKey: "ingredients",
       updateValue: listsOfSelectedAllergicIngredients
     }
 
@@ -82,7 +88,7 @@ const Diet = (props) => {
     // console.log(listsOfSelectedCuisine)
     const requestBody = {
       username: username,
-      updateKey: "favoriteCuisines",
+      updateKey: "favoriteCuisine",
       updateValue: listsOfSelectedCuisine
     }
     
