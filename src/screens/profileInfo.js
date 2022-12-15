@@ -1,5 +1,4 @@
 import React, { Component, useState, useEffect } from 'react';
-import React, { Component, useState, useEffect } from 'react';
 import '../css/allpages.css';
 import '../css/profile.css';
 import { getUser, getFirst, resetUserSession } from '../service/AuthService';
@@ -73,58 +72,17 @@ const Info = (props) => {
 
             <div align='center' className='sub_title'> Dietary Preferences </div>
             <div className='saved_title'> Favorite Cuisines: </div> 
-            <div className='saved_info'> {favoriteCuisines?.map((favoriteCuisine) => <li>{favoriteCuisine}</li>) }</div>
+            <div className='list_info'> {favoriteCuisines?.map((favoriteCuisine) => <li>{favoriteCuisine}</li>) }</div>
             <br />
 
             <div className='saved_title'> Dietary Restrictions: </div> 
-            <div className='saved_info'> {dietaryRestrictions?.map((dietaryRestriction) => <li>{dietaryRestriction}</li>) } </div>
+            <div className='list_info'> {dietaryRestrictions?.map((dietaryRestriction) => <li>{dietaryRestriction}</li>) } </div>
             <br />
 
             <div className='saved_title'> Allergic Ingredients: </div> 
-            <div className='saved_info'> {allergicIngredients?.map((allergicIngredient) => <li>{allergicIngredient}</li>) } </div>
-            
-
-            
-        {/* <form onSubmit={submitHandler} align="left">
-            <div className='sub_title'>
-            Profile Information
-            </div>
-            <div className='saved_title'>
-            Username: 
-            </div>
-            <div className='saved_info'>
-            {username}
-            </div>
-            <br/>
-            <input type="profile" placeholder="First Name"value={firstName} onChange={event => setFirstName(event.target.value)}/> <br/>
-            <input type="profile" placeholder="Last Name"value={lastName} onChange={event => setLastName(event.target.value)}/> <br/>
-            <input type="profile" placeholder="Email" value={email} onChange={event => setEmail(event.target.value)}/> <br/>
-            <textarea type="bio" placeholder="Bio" value={bio} onChange={event => setBio(event.target.value)} /> <br/>
-            <br/>
-            <div className='option_title'>
-            Dietary Restrictions:
-            </div>
-            {/* <Select options={dietOptions} isMulti isClearable name="diets" styles={optionStyles}/>
-            <br/>
-            <div className='option_title'>
-            Favorite Cuisines:
-            </div>
-            <Select options={cuisineOptions} isMulti isClearable name="cuisines" styles={optionStyles} onChange/>
-            <br/>
-            <div className='option_title'>
-            Ingredients:
-            </div>
-            <Select options={ingredientOptions} isMulti isClearable name="ingredients" styles={optionStyles} onChange/> */}
-            {/* <br/>
-            <SaveButton input type="submit">
-            Save
-            </SaveButton>
-            <br/>
-        </form> */}
+            <div className='list_info'> {allergicIngredients?.map((allergicIngredient) => <li>{allergicIngredient}</li>) } </div>
         </div>
     )
 }
-
-//<input type="button" value="Logout" onClick={logoutHandler}/>
 
 export default Info;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MealList from '../components/itemlist';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../css/allpages.css';
 import '../css/item.css';
@@ -12,6 +13,8 @@ const Feed = () => {
 
   const user = getUser();
   const username = user !== 'undefined' && user ? user.username : '';
+  const [firstName, setFirstName] = useState('');
+  const [message, setMessage] = useState(null);
 
   const [apiKey, setKey] = useState('&apiKey=affe55df0130465780b612e83f9b8895')
   const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/random?number=1')
@@ -20,9 +23,25 @@ const Feed = () => {
   useEffect(() => {
     // Run! Like go get some data from an API.
     getRecipes()
+    getProfileInfo()
   }, []);
 
-   async function getRecipes()  {
+  async function getProfileInfo(){
+    var url = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo?username='
+    url = url + username
+
+    axios.get(url).then(response => {
+        setFirstName(response.data.firstName);
+    }).catch(error => {
+        if (error.response?.status === 401) {
+            setMessage(error.response.data.message);
+        } else {
+            setMessage('sorry....the backend server is down!! please try again later');
+        }
+    })
+  }
+
+  async function getRecipes()  {
     setLink(someLink = (baseSearchURL + apiKey))
      try {
       const response = await fetch(someLink)
@@ -48,7 +67,7 @@ const Feed = () => {
   return (
     <div className='container'>
       <div className='title'>
-        Good {time}, {username}
+        Good {time}, {firstName}
       </div>
       <br/><br/><br/><br/><br/>
       <div className='feed_title'>
