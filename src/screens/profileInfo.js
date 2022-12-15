@@ -43,7 +43,7 @@ const Info = (props) => {
             console.log(response.data.dietaryRestrictions)
             setMessage('Info Updated');
         }).catch(error => {
-            if (error.response.status === 401) {
+            if (error.response?.status === 401) {
                 setMessage(error.response.data.message);
             } else {
                 setMessage('sorry....the backend server is down!! please try again later');
@@ -71,15 +71,15 @@ const Info = (props) => {
 
             <div align='center' className='sub_title'> Dietary Preferences </div>
             <div className='saved_title'> Favorite Cuisines: </div> 
-            <div className='saved_info'> {favoriteCuisines.map((favoriteCuisine) => <li>{favoriteCuisine}</li>) }</div>
+            <div className='saved_info'> {favoriteCuisines?.map((favoriteCuisine) => <li>{favoriteCuisine}</li>) }</div>
             <br />
 
             <div className='saved_title'> Dietary Restrictions: </div> 
-            <div className='saved_info'> {dietaryRestrictions.map((dietaryRestriction) => <li>{dietaryRestriction}</li>) } </div>
+            <div className='saved_info'> {dietaryRestrictions?.map((dietaryRestriction) => <li>{dietaryRestriction}</li>) } </div>
             <br />
 
             <div className='saved_title'> Allergic Ingredients: </div> 
-            <div className='saved_info'> {allergicIngredients.map((allergicIngredient) => <li>{allergicIngredient}</li>) } </div>
+            <div className='saved_info'> {allergicIngredients?.map((allergicIngredient) => <li>{allergicIngredient}</li>) } </div>
             
 
             
