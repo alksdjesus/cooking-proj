@@ -1,6 +1,6 @@
 
 .login_background {
-    height: 100vh;
+    height: 150vh;
     background-image: url("../images/login.jpg");
     background-size: cover;
 }

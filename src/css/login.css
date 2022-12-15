@@ -1,6 +1,6 @@
 
 .login_background {
-    height: 100vh;
+    height: 150vh;
     background-image: url("../images/login.jpg");
     background-size: cover;
 }
@@ -8,7 +8,7 @@
 .title_container {
     justify-content: center;
     align-items: center;
-    padding-top: 150px;
+    padding-top: 120px;
 }
 
 .login_title {
