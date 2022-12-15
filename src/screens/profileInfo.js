@@ -359,22 +359,6 @@ const Info = (props) => {
         <input type="profile" placeholder="Last Name"value={lastName} onChange={event => setLastName(event.target.value)}/> <br/>
         <input type="profile" placeholder="Email" value={email} onChange={event => setEmail(event.target.value)}/> <br/>
         <textarea type="bio" placeholder="Bio" value={bio} onChange={event => setBio(event.target.value)} /> <br/>
-        <br/>
-        <div className='option_title'>
-          Dietary Restrictions:
-        </div>
-        <Select options={dietOptions} isMulti isClearable name="diets" styles={optionStyles}/>
-        <br/>
-        <div className='option_title'>
-          Favorite Cuisines:
-        </div>
-        <Select options={cuisineOptions} isMulti isClearable name="cuisines" styles={optionStyles} onChange/>
-        <br/>
-        <div className='option_title'>
-          Ingredients:
-        </div>
-        <Select options={ingredientOptions} isMulti isClearable name="ingredients" styles={optionStyles} onChange/>
-        <br/>
         <SaveButton input type="submit">
           Save
         </SaveButton>

@@ -6,6 +6,15 @@
     background-size: cover;*/
 }
 
+.profile_title {
+    font-size: 44px;
+    color: #000;
+    text-align: left;
+    font-family: 'Raleway';
+    font-weight: 700;
+    float: left;
+}
+
 .saved_title {
     font-family: 'Raleway';
     font-size: 18px;

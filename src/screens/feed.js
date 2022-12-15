@@ -13,7 +13,7 @@ const Feed = () => {
   const user = getUser();
   const username = user !== 'undefined' && user ? user.username : '';
 
-  const [apiKey, setKey] = useState('&apiKey=4c79dafa41b2490e8ee389c5a4b6583c')
+  const [apiKey, setKey] = useState('&apiKey=affe55df0130465780b612e83f9b8895')
   const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/random?number=1')
   var [someLink, setLink] = useState('test')
 
@@ -34,12 +34,9 @@ const Feed = () => {
     } finally {
       // setLoading(false)
     }
-    
   }
 
-  /*<div>
-    <FeedButton onClick={getRecipes}>Refresh</FeedButton>
-  </div>*/
+  console.log(mealData);
 
   const currentHour = new Date().getHours();
   
@@ -65,15 +62,3 @@ const Feed = () => {
 };
 
 export default Feed;
-
-// import React from 'react';
-
-// const Feed = () => {
-//   return (
-//     <div>
-//       This is the Feed page!
-//     </div>
-//   )
-// }
-
-// export default Feed;
