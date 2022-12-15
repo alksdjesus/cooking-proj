@@ -17,7 +17,7 @@ const Info = (props) => {
     const [lastName, setLastName] = useState('');
     const [bio, setBio] = useState('');
     const [dietaryRestrictions, setDietaryRestrictions] = useState([]);
-    const [allergicIngredients, setAllergicIngredients] = useState([]);
+    const [favoriteIngredients, setFavoriteIngredients] = useState([]);
     const [favoriteCuisines, setFavoriteCuisines] = useState([]);
     const [message, setMessage] = useState(null);
 
@@ -37,7 +37,7 @@ const Info = (props) => {
             setLastName(response.data.lastName);
             setBio(response.data.bio);
             setDietaryRestrictions(Object.keys(response.data.dietaryRestrictions));
-            setAllergicIngredients(Object.keys(response.data.allergicIngredients));
+            setFavoriteIngredients(Object.keys(response.data.favoriteIngredients));
             setFavoriteCuisines(Object.values(response.data.favoriteCuisines));
             setMessage('Info Updated');
         }).catch(error => {
@@ -72,17 +72,17 @@ const Info = (props) => {
           <br/>
           <br/>
           <div className='sub_title'> Dietary Preferences </div>
-          <div className='saved_title'> Favorite Cuisines: </div> 
-          <br/>
-          <div className='list_info'> {favoriteCuisines?.map((favoriteCuisine) => <ul>{favoriteCuisine}</ul>) }</div>
-          <br/>
           <div className='saved_title'> Dietary Restrictions: </div> 
           <br/>
           <div className='list_info'> {dietaryRestrictions?.map((dietaryRestriction) => <ul>{dietaryRestriction}</ul>) } </div>
           <br/>
-          <div className='saved_title'> Allergic Ingredients: </div>
+          <div className='saved_title'> Favorite Cuisines: </div> 
           <br/>
-          <div className='list_info'> {allergicIngredients?.map((allergicIngredient) => <ul>{allergicIngredient}</ul>) } </div>
+          <div className='list_info'> {favoriteCuisines?.map((favoriteCuisine) => <ul>{favoriteCuisine}</ul>) }</div>
+          <br/>
+          <div className='saved_title'> Favorite Ingredients: </div>
+          <br/>
+          <div className='list_info'> {favoriteIngredients?.map((favoriteIngredient) => <ul>{favoriteIngredient}</ul>) } </div>
         </div>
     )
 }

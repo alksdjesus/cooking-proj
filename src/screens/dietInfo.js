@@ -15,11 +15,11 @@ const Diet = (props) => {
   const username = user !== 'undefined' && user ? user.username : '';
 
   const [selectedDiets, setSelectedDiets] = useState([]);
-  const [selectedAllergicIngredients, setSelectedAllergicIngredients] = useState([]);
+  const [selectedFavoriteIngredients, setSelectedFavoriteIngredients] = useState([]);
   const [selectedCuisine, setSelectedCuisine] = useState([]);
   const [message, setMessage] = useState(null);
   const listsOfSelectedDiets = {};
-  const listsOfSelectedAllergicIngredients = {};
+  const listsOfSelectedFavoriteIngredients = {};
   const listsOfSelectedCuisine = {};
 
   const submitHandler = (event) => {
@@ -29,8 +29,8 @@ const Diet = (props) => {
       listsOfSelectedDiets[selectedDiets[i].label] = selectedDiets[i].value;
     }
 
-    for (let i = 0; i < selectedAllergicIngredients.length; i++) {
-      listsOfSelectedAllergicIngredients[selectedAllergicIngredients[i].label] = selectedAllergicIngredients[i].value;
+    for (let i = 0; i < selectedFavoriteIngredients.length; i++) {
+      listsOfSelectedFavoriteIngredients[selectedFavoriteIngredients[i].label] = selectedFavoriteIngredients[i].value;
     }
 
     for (let i = 0; i < selectedCuisine.length; i++) {
@@ -38,7 +38,7 @@ const Diet = (props) => {
     }
 
     submitSelectedDiets();
-    submitSelectedAllergicIngredients();
+    submitSelectedFavoriteIngredients();
     submitSelectedCuisine();
   }
 
@@ -60,11 +60,11 @@ const Diet = (props) => {
     })
   }
 
-  const submitSelectedAllergicIngredients = () => {
+  const submitSelectedFavoriteIngredients = () => {
     const requestBody = {
       username: username,
-      updateKey: "allergicIngredients",
-      updateValue: listsOfSelectedAllergicIngredients
+      updateKey: "favoriteIngredients",
+      updateValue: listsOfSelectedFavoriteIngredients
     }
 
     axios.patch(updateAPIURL, requestBody).then(response => {
@@ -1199,14 +1199,14 @@ const Diet = (props) => {
         <Select options={dietOptions} isMulti name="diets" styles={optionStyles} onChange={event => setSelectedDiets(event)}/>
         <br/>
         <div className='option_title'>
-          Allergies:
-        </div>
-        <Select options={ingredientOptions} isMulti name="ingredients" styles={optionStyles} onChange={event => setSelectedAllergicIngredients(event)}/>
-        <br/>
-        <div className='option_title'>
           Favorite Cuisines:
         </div>
         <Select options={cuisineOptions} isMulti name="cuisines" styles={optionStyles} onChange={event => setSelectedCuisine(event)}/>
+        <br/>
+        <div className='option_title'>
+          Favorite Ingredients:
+        </div>
+        <Select options={ingredientOptions} isMulti name="ingredients" styles={optionStyles} onChange={event => setSelectedFavoriteIngredients(event)}/>
         <br/>
         <SaveButton input type="submit">
           Save
