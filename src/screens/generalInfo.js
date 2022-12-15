@@ -183,59 +183,59 @@ const Info = (props) => {
     })
   }
 
-  const submitIngredients = () => {
-    const requestBody = {
-      username: username,
-      updateKey: "ingredients",
-      updateValue: []
-    }
+  // const submitIngredients = () => {
+  //   const requestBody = {
+  //     username: username,
+  //     updateKey: "ingredients",
+  //     updateValue: []
+  //   }
 
-    axios.patch(updateAPIURL, requestBody).then(response => {
-      setMessage('Info Updated');
-    }).catch(error => {
-      if (error.response.status === 401) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage('sorry....the backend server is down!! please try again later');
-      }
-    })
-  }
+  //   axios.patch(updateAPIURL, requestBody).then(response => {
+  //     setMessage('Info Updated');
+  //   }).catch(error => {
+  //     if (error.response.status === 401) {
+  //       setMessage(error.response.data.message);
+  //     } else {
+  //       setMessage('sorry....the backend server is down!! please try again later');
+  //     }
+  //   })
+  // }
 
-  const submitDietaryRestrictions = () => {
-    const requestBody = {
-      username: username,
-      updateKey: "dietaryRestrictions",
-      updateValue: []
-    }
+  // const submitDietaryRestrictions = () => {
+  //   const requestBody = {
+  //     username: username,
+  //     updateKey: "dietaryRestrictions",
+  //     updateValue: []
+  //   }
 
-    axios.patch(updateAPIURL, requestBody).then(response => {
-      setMessage('Info Updated');
-    }).catch(error => {
-      if (error.response.status === 401) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage('sorry....the backend server is down!! please try again later');
-      }
-    })
-  }
+  //   axios.patch(updateAPIURL, requestBody).then(response => {
+  //     setMessage('Info Updated');
+  //   }).catch(error => {
+  //     if (error.response.status === 401) {
+  //       setMessage(error.response.data.message);
+  //     } else {
+  //       setMessage('sorry....the backend server is down!! please try again later');
+  //     }
+  //   })
+  // }
 
-  const submitCuisines = () => {
-    const requestBody = {
-      username: username,
-      updateKey: "cuisines",
-      updateValue: []
-    }
+  // const submitCuisines = () => {
+  //   const requestBody = {
+  //     username: username,
+  //     updateKey: "cuisines",
+  //     updateValue: []
+  //   }
 
-    axios.patch(updateAPIURL, requestBody).then(response => {
-      setMessage('Info Updated');
-    }).catch(error => {
-      if (error.response.status === 401) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage('sorry....the backend server is down!! please try again later');
-      }
-    })
-  }
+  //   axios.patch(updateAPIURL, requestBody).then(response => {
+  //     setMessage('Info Updated');
+  //   }).catch(error => {
+  //     if (error.response.status === 401) {
+  //       setMessage(error.response.data.message);
+  //     } else {
+  //       setMessage('sorry....the backend server is down!! please try again later');
+  //     }
+  //   })
+  // }
 
   const submitRated = () => {
     const requestBody = {

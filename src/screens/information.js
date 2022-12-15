@@ -11,34 +11,53 @@ import '../css/information.css'
 import { Link, useNavigate } from 'react-router-dom';
 
 const updateAPIURL = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo';
-
 const Information = () => {
 
   const user = getUser();
   const username = user !== 'undefined' && user ? user.username : '';
-  const navigate = useNavigate();
-  console.log(user)
   const [selectedDiets, setSelectedDiets] = useState([]);
-  const [selectedAllergicIngredients, setSelectedAllergicIngredients] = useState([]);
+  const [selectedFavoriteIngredients, setSelectedFavoriteIngredients] = useState([]);
   const [selectedCuisine, setSelectedCuisine] = useState([]);
   const [message, setMessage] = useState(null);
   const listsOfSelectedDiets = {};
-  const listsOfSelectedAllergicIngredients = {};
+  const listsOfSelectedFavoriteIngredients = {};
   const listsOfSelectedCuisine = {};
-
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [bio, setBio] = useState('');
+  const [rated, setRated] = useState('');
+  const [saved, setSaved] = useState('');
+  const navigate = useNavigate();
+  // console.log(username)
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log(listsOfSelectedDiets)
-    // console.log(listsOfSelectedCuisine)
-
+    
+    setMessage(null);
+    
+    
+    if (firstName !== '') {
+      submitFirstName();
+    }
+    if (lastName !== '') {
+      submitLastName();
+    }
+    if (bio !== '') {
+      submitBio();
+    }
+    if (email !== '') {
+      submitEmail();
+    }
+    submitRated();
+    submitSaved();
 
     for (let i = 0; i < selectedDiets.length; i++) {
       listsOfSelectedDiets[selectedDiets[i].label] = selectedDiets[i].value;
     }
 
-    for (let i = 0; i < selectedAllergicIngredients.length; i++) {
-      listsOfSelectedAllergicIngredients[selectedAllergicIngredients[i].label] = selectedAllergicIngredients[i].value;
+    for (let i = 0; i < selectedFavoriteIngredients.length; i++) {
+      listsOfSelectedFavoriteIngredients[selectedFavoriteIngredients[i].label] = selectedFavoriteIngredients[i].value;
     }
 
     for (let i = 0; i < selectedCuisine.length; i++) {
@@ -46,9 +65,81 @@ const Information = () => {
     }
 
     submitSelectedDiets();
-    submitSelectedAllergicIngredients();
+    submitSelectedFavoriteIngredients();
     submitSelectedCuisine();
     navigate('/feed')
+  }
+
+  const submitFirstName = () => {
+    const requestBody = {
+      username: username,
+      updateKey: "firstName",
+      updateValue: firstName
+    }
+
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+    })
+  }
+
+  const submitLastName = () => {
+    const requestBody = {
+      username: username,
+      updateKey: "lastName",
+      updateValue: lastName
+    }
+
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+    })
+  }
+
+  const submitBio = () => {
+    const requestBody = {
+      username: username,
+      updateKey: "bio",
+      updateValue: bio
+    }
+
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+    })
+  }
+
+  const submitEmail = () => {
+    const requestBody = {
+      username: username,
+      updateKey: "email",
+      updateValue: email
+    }
+
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+    })
   }
 
   const submitSelectedDiets = () => {
@@ -70,11 +161,11 @@ const Information = () => {
     })
   }
 
-  const submitSelectedAllergicIngredients = () => {
+  const submitSelectedFavoriteIngredients = () => {
     const requestBody = {
       username: username,
-      updateKey: "allergicIngredients",
-      updateValue: listsOfSelectedAllergicIngredients
+      updateKey: "favoriteIngredients",
+      updateValue: listsOfSelectedFavoriteIngredients
     }
 
     axios.patch(updateAPIURL, requestBody).then(response => {
@@ -96,6 +187,42 @@ const Information = () => {
       updateValue: listsOfSelectedCuisine
     }
     
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+    })
+  }
+
+  const submitRated = () => {
+    const requestBody = {
+      username: username,
+      updateKey: "rated",
+      updateValue: {}
+    }
+
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+    })
+  }
+
+  const submitSaved = () => {
+    const requestBody = {
+      username: username,
+      updateKey: "saved",
+      updateValue: []
+    }
+
     axios.patch(updateAPIURL, requestBody).then(response => {
       setMessage('Info Updated');
     }).catch(error => {
@@ -1204,6 +1331,27 @@ const Information = () => {
       <div className='title_container'>
         <img className="login_title" src={require("../images/logo.png")}/>
         <div className='information_container'>
+          <div className='sub_title'>
+            General Information
+          </div>
+          <br/>
+          <div className='option_title'>
+            First Name:
+          </div>
+          <input type="profile" placeholder="First Name"value={firstName} onChange={event => setFirstName(event.target.value)}/> <br/>
+          <div className='option_title'>
+            Last Name:
+          </div>
+          <input type="profile" placeholder="Last Name"value={lastName} onChange={event => setLastName(event.target.value)}/> <br/>
+          <div className='option_title'>
+            Email:
+          </div>
+          <input type="profile" placeholder="Email" value={email} onChange={event => setEmail(event.target.value)}/> <br/>
+          <div className='option_title'>
+            Bio:
+          </div>
+          <textarea type="bio" placeholder="Bio" value={bio} onChange={event => setBio(event.target.value)} /> <br/>
+          <br/>
           <div className='login'>
             Diet Preferences
           </div>
@@ -1214,9 +1362,9 @@ const Information = () => {
             <Select options={dietOptions} isMulti name="diets" styles={optionStyles} onChange={event => setSelectedDiets(event)}/>
             <br/>
             <div className='option_title'>
-              Allergies:
+              Favorite Ingredients:
             </div>
-            <Select options={ingredientOptions} isMulti name="ingredients" styles={optionStyles} onChange={event => setSelectedAllergicIngredients(event)}/>
+            <Select options={ingredientOptions} isMulti name="ingredients" styles={optionStyles} onChange={event => setSelectedFavoriteIngredients(event)}/>
             <br/>
             <div className='option_title'>
               Favorite Cuisines:
