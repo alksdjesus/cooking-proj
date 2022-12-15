@@ -16,7 +16,7 @@ const Feed = () => {
   const [firstName, setFirstName] = useState('');
   const [message, setMessage] = useState(null);
 
-  const [apiKey, setKey] = useState('&apiKey=2ac299ba2179456ca04f8ace7a414166')
+  const [apiKey, setKey] = useState('&apiKey=6a847610bc234f668b110cc2661d1d56')
   const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/random?number=1')
   var [someLink, setLink] = useState('test')
 
@@ -127,16 +127,16 @@ const Feed = () => {
     currentHour >= 12 && currentHour < 18 ? ["afternoon"] :
     ["evening"];
 
-  var target = firstName;
+  // var target = firstName;
 
-  if (firstName.trim() === '') {
-    target = "chef";
-  }
+  // if (firstName.trim() === '') {
+  //   target = "chef";
+  // }
   
   return (
     <div className='container'>
       <div className='title'>
-        Good {time}, {target}
+        Good {time}, chef
       </div>
       <br/><br/><br/><br/><br/>
       <div className='feed_title'>
