@@ -52,35 +52,37 @@ const Info = (props) => {
         
     return (
         <div className='profile_container'>
-            <div align='center' className='sub_title'> My Profile </div>
-            <div align='center' className='sub_title'> General Information </div>
+          <div className='sub_title'> My Profile </div>
+          <div className='sub_title'> General Information </div>
+          <div className='info_container'>
             <div className='saved_title'> Username: </div>
             <div className='saved_info'> {username} </div> 
-            <br />
+            <br/>
             <div className='saved_title'> First Name: </div> 
             <div className='saved_info'> {firstName} </div> 
-            <br />
+            <br/>
             <div className='saved_title'> Last Name: </div> 
             <div className='saved_info'> {lastName} </div> 
-            <br />
-
-            <div className='saved_title'> Bio: </div>
-            <div className='saved_info'> {bio} </div> 
-            <br />
-            <br />
-            <br />
-
-            <div align='center' className='sub_title'> Dietary Preferences </div>
-            <div className='saved_title'> Favorite Cuisines: </div> 
-            <div className='list_info'> {favoriteCuisines?.map((favoriteCuisine) => <li>{favoriteCuisine}</li>) }</div>
-            <br />
-
-            <div className='saved_title'> Dietary Restrictions: </div> 
-            <div className='list_info'> {dietaryRestrictions?.map((dietaryRestriction) => <li>{dietaryRestriction}</li>) } </div>
-            <br />
-
-            <div className='saved_title'> Allergic Ingredients: </div> 
-            <div className='list_info'> {allergicIngredients?.map((allergicIngredient) => <li>{allergicIngredient}</li>) } </div>
+            <br/>
+          </div>
+          <div className='saved_title'> Bio: </div>
+          <div className='saved_bio'> {bio} </div> 
+          
+          <br/>
+          <br/>
+          <br/>
+          <div className='sub_title'> Dietary Preferences </div>
+          <div className='saved_title'> Favorite Cuisines: </div> 
+          <br/>
+          <div className='list_info'> {favoriteCuisines?.map((favoriteCuisine) => <ul>{favoriteCuisine}</ul>) }</div>
+          <br/>
+          <div className='saved_title'> Dietary Restrictions: </div> 
+          <br/>
+          <div className='list_info'> {dietaryRestrictions?.map((dietaryRestriction) => <ul>{dietaryRestriction}</ul>) } </div>
+          <br/>
+          <div className='saved_title'> Allergic Ingredients: </div>
+          <br/>
+          <div className='list_info'> {allergicIngredients?.map((allergicIngredient) => <ul>{allergicIngredient}</ul>) } </div>
         </div>
     )
 }
