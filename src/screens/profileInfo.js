@@ -34,13 +34,11 @@ const Info = (props) => {
         url = url + username
 
         axios.get(url).then(response => {
-            setName(response.data.name)
-            setBio(response.data.bio)
-            setDietaryRestrictions(response.data.dietaryRestrictions)
-            setAllergicIngredients(response.data.allergicIngredients)
-            setFavoriteCuisines(response.data.favoriteCuisines)      
-            
-            console.log(response.data.dietaryRestrictions)
+            setName(response.data.name);
+            setBio(response.data.bio);
+            setDietaryRestrictions(response.data.dietaryRestrictions);
+            setAllergicIngredients(response.data.allergicIngredients);
+            setFavoriteCuisines(response.data.favoriteCuisines);
             setMessage('Info Updated');
         }).catch(error => {
             if (error.response?.status === 401) {
