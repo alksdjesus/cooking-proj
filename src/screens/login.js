@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { setUserSession } from '../service/AuthService'
 import { Link, useNavigate } from 'react-router-dom';
@@ -11,7 +11,16 @@ const Login = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
+  const [user, setUser] = useState()
   const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   const loggedInUser = localStorage.getItem("user");
+  //   if (loggedInUser) {
+  //     const foundUser = JSON.parse(loggedInUser);
+  //     setUser(foundUser);
+  //   }
+  // }, []);
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -28,7 +37,11 @@ const Login = (props) => {
 
     axios.post(loginAPIUrl, requestBody).then((response) => {
       setUserSession(response.data.user, response.data.token);
+      setUser(response.data)
+      localStorage.setItem('user', response.data)
+      console.log(response.data)
       // getData();
+
       navigate('/profile');
     }).catch((error) => {
       // console.log(error)
