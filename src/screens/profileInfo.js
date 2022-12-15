@@ -52,40 +52,33 @@ const Info = (props) => {
         
     return (
         <div className='profile_container'>
-            <div className='profile_title'> My Profile </div>
-            <div className='sub_title'> General Information </div>
-            {username}
-            <div className='saved_title'> Username:</div>
+          <div className='profile_title'> My Profile </div>
+          <div className='sub_title'> General Information </div>
+          <div className='info_container'>
+            <div className='saved_title'> Username: </div>
+            <div className='saved_info'> {username} </div> 
             <br/>
+            <div className='saved_title'> First Name: </div> 
+            <div className='saved_info'> {firstName} </div> 
             <br/>
-            {firstName}
-            <div className='saved_title'> First Name:  </div> 
-            <br/>
-            <br/>
-            {lastName} 
             <div className='saved_title'> Last Name: </div> 
+            <div className='saved_info'> {lastName} </div> 
             <br/>
-            <br/>
-            {bio}
             <div className='saved_title'> Bio: </div>
-            {/* <div className='saved_bio'> {bio} </div>  */}
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-
-            <div className='sub_title'> Dietary Preferences </div>
-            <div className='saved_title'> Dietary Restrictions: </div> 
-            <br/>
-            <div className='list_info'> {dietaryRestrictions?.map((dietaryRestriction) => <ul>{dietaryRestriction}</ul>) } </div>
-            <br/>
-            <div className='saved_title'> Favorite Cuisines: </div> 
-            <br/>
-            <div className='list_info'> {favoriteCuisines?.map((favoriteCuisine) => <ul>{favoriteCuisine}</ul>) }</div>
-            <br/>
-            <div className='saved_title'> Favorite Ingredients: </div>
-            <br/>
-            <div className='list_info'> {favoriteIngredients?.map((favoriteIngredient) => <ul>{favoriteIngredient}</ul>) } </div>
+            <div className='saved_bio'> {bio} </div> 
+          </div>
+          <div className='sub_title'> Dietary Preferences </div>
+          <div className='saved_title'> Dietary Restrictions: </div> 
+          <br/>
+          <div className='list_info'> {dietaryRestrictions?.map((dietaryRestriction) => <ul>{dietaryRestriction}</ul>) } </div>
+          <br/>
+          <div className='saved_title'> Favorite Cuisines: </div> 
+          <br/>
+          <div className='list_info'> {favoriteCuisines?.map((favoriteCuisine) => <ul>{favoriteCuisine}</ul>) }</div>
+          <br/>
+          <div className='saved_title'> Favorite Ingredients: </div>
+          <br/>
+          <div className='list_info'> {favoriteIngredients?.map((favoriteIngredient) => <ul>{favoriteIngredient}</ul>) } </div>
         </div>
     )
 }

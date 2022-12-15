@@ -1,6 +1,8 @@
 .profile_container {
     height: 100%;
+    width: 30%;
     margin-left: 8%;
+    margin-bottom: 100px;
    /*background-image: url("../images/login.jpg");
     background-size: cover;*/
 }
@@ -11,7 +13,11 @@
     text-align: left;
     font-family: 'Raleway';
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.info_container {
+    margin-bottom: 50px;
 }
  
 .saved_title {
@@ -23,13 +29,13 @@
 }
  
 .saved_info {
-    font-family: 'Raleway';
+    font-family: 'Inter';
     font-size: 18px;
     font-weight: 400;
 }
  
 .saved_bio {
-    font-family: 'Raleway';
+    font-family: 'Inter';
     font-size: 18px;
     font-weight: 400;
     width: 325px;
