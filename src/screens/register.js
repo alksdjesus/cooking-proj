@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { setUserSession } from '../service/AuthService';
 import '../css/allpages.css';
 import '../css/login.css'
 
 const registerUrl = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/register';
+const loginAPIUrl = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/login';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -12,6 +14,8 @@ const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState(null);
+  const navigate = useNavigate();
+
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -21,14 +25,16 @@ const Register = () => {
     }
     setMessage(null);
     
-    const requestBody = {
+    const registerBody = {
       username: username,
       email: email,
       name: name,
       password: password
     }
-    axios.post(registerUrl, requestBody).then(response => {
+    
+    axios.post(registerUrl, registerBody).then(response => {
       setMessage('Registration Successful');
+      navigate('/information')
     }).catch(error => {
       if (error.response.status === 401) {
         setMessage(error.response.data.message);
@@ -36,6 +42,7 @@ const Register = () => {
         setMessage('sorry....the backend server is down!! please try again later');
       }
     })
+    
   }
 
   return (
@@ -53,8 +60,8 @@ const Register = () => {
             <input type="password" placeholder="Password" value={password} onChange={event => setPassword(event.target.value)} /> <br/>
             <input type="submit" value="Register" />
           </form>
+          {message && <p className="message">{message}</p>}
         </div>
-        {message && <p className="message">{message}</p>}
       </div>
     </div>
   )

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { setUserSession } from '../service/AuthService'
+import { setUserSession } from '../service/AuthService';
 import { Link, useNavigate } from 'react-router-dom';
 import '../css/allpages.css'
 import '../css/login.css'

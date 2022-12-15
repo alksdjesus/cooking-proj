@@ -16,6 +16,7 @@ const Information = () => {
 
   const user = getUser();
   const username = user !== 'undefined' && user ? user.username : '';
+  const navigate = useNavigate();
 
   const [selectedDiets, setSelectedDiets] = useState([]);
   const [selectedAllergicIngredients, setSelectedAllergicIngredients] = useState([]);
@@ -46,6 +47,7 @@ const Information = () => {
     submitSelectedDiets();
     submitSelectedAllergicIngredients();
     submitSelectedCuisine();
+    navigate('/login')
   }
 
   const submitSelectedDiets = () => {
