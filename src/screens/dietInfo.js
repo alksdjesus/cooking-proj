@@ -1,11 +1,106 @@
 import React, { Component, useState } from 'react';
 import '../css/allpages.css';
 import '../css/profile.css';
+import axios from 'axios';
 import { SaveButton } from '../components/navbarElements.js';
 import Select from 'react-select';
+import { getUser } from '../service/AuthService';
+
+const updateAPIURL = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo';
 
 const Diet = (props) => {
 
+  //getting loggind in user
+  const user = getUser();
+  const username = user !== 'undefined' && user ? user.username : '';
+
+  const [selectedDiets, setSelectedDiets] = useState([]);
+  const [selectedAllergicIngredients, setSelectedAllergicIngredients] = useState([]);
+  const [selectedCuisine, setSelectedCuisine] = useState([]);
+  const [message, setMessage] = useState(null);
+  const listsOfSelectedDiets = []
+  const listsOfSelectedAllergicIngredients = []
+  const listsOfSelectedCuisine = []
+
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+    // console.log(listsOfSelectedDiets)
+    // console.log(listsOfSelectedCuisine)
+
+
+    for (let i = 0; i < selectedDiets.length; i++) {
+      listsOfSelectedDiets.push(selectedDiets[i].label);
+    }
+
+    for (let i = 0; i < selectedAllergicIngredients.length; i++) {
+      listsOfSelectedAllergicIngredients.push(selectedAllergicIngredients[i].label);
+    }
+
+    for (let i = 0; i < selectedCuisine.length; i++) {
+      listsOfSelectedCuisine.push(selectedCuisine[i].label);
+    }
+    submitSelectedDiets();
+    submitSelectedAllergicIngredients();
+    submitSelectedCuisine();
+  }
+
+  const submitSelectedDiets = () => {
+    console.log(listsOfSelectedDiets)
+    const requestBody = {
+      username: username,
+      updateKey: "dietaryRestrictions",
+      updateValue: listsOfSelectedDiets
+    }
+
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+    })
+  }
+
+  const submitSelectedAllergicIngredients = () => {
+    const requestBody = {
+      username: username,
+      updateKey: "allergicIngredients",
+      updateValue: listsOfSelectedAllergicIngredients
+    }
+
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+    })
+  }
+
+  const submitSelectedCuisine = () => {
+    console.log(listsOfSelectedCuisine)
+    const requestBody = {
+      username: username,
+      updateKey: "favoriteCuisines",
+      updateValue: listsOfSelectedCuisine
+    }
+    
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+    })
+  }
+  
   const dietOptions = [
     { value: 'dairy', label: 'Lactose Intolerance' },
     { value: 'egg', label: 'Egg-Free' },
@@ -1099,23 +1194,23 @@ const Diet = (props) => {
 
   return (
     <div className='profile_container'>
-      <form align="left">
+      <form align="left" onSubmit={submitHandler} >
         <div className='sub_title'>
           Diet Preferences
         </div><div className='option_title'>
           Dietary Restrictions:
         </div>
-        <Select options={dietOptions} isMulti name="diets" styles={optionStyles}/>
+        <Select options={dietOptions} isMulti name="diets" styles={optionStyles} onChange={event => setSelectedDiets(event)}/>
         <br/>
         <div className='option_title'>
           Allergies:
         </div>
-        <Select options={ingredientOptions} isMulti name="ingredients" styles={optionStyles}/>
+        <Select options={ingredientOptions} isMulti name="ingredients" styles={optionStyles} onChange={event => setSelectedAllergicIngredients(event)}/>
         <br/>
         <div className='option_title'>
           Favorite Cuisines:
         </div>
-        <Select options={cuisineOptions} isMulti name="cuisines" styles={optionStyles}/>
+        <Select options={cuisineOptions} isMulti name="cuisines" styles={optionStyles} onChange={event => setSelectedCuisine(event)}/>
         <br/>
         <SaveButton input type="submit">
           Save
@@ -1123,6 +1218,7 @@ const Diet = (props) => {
       </form>
     </div>
   )
+
 }
 
 export default Diet;

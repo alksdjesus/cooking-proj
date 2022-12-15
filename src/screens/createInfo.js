@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import '../css/allpages.css';
 import '../css/profile.css';
 import React, {Component, useState} from 'react';
-import { getUser, resetUserSession } from '../service/AuthService';
+import { getUser } from '../service/AuthService';
 import { SaveButton } from '../components/navbarElements.js';
 import axios from 'axios';
 

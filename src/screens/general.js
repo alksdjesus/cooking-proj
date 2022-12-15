@@ -1,8 +1,8 @@
-import Info from './profileInfo';
+import Info from './generalInfo';
 import '../css/allpages.css';
 import Menu from '../components/profileMenu.js';
 
-function Profile () {
+function General () {
 
   return (
     <div className='container'>
@@ -16,4 +16,4 @@ function Profile () {
 
 //onClick={logoutHandler}
 
-export default Profile;
+export default General;

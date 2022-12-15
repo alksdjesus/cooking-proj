@@ -30,7 +30,7 @@ function Saved () {
 
     idquery.slice(0, -1)
 
-    console.log(idquery)
+    // console.log(idquery)
     
     const saved = "https://api.spoonacular.com/recipes/informationBulk?ids=" + idquery + apiKey
     // setLink(someLink = (baseSearchURL + meal.id + apiKey))
@@ -51,7 +51,7 @@ function Saved () {
     url = url + username
 
     axios.get(url).then(response => {
-      console.log(response.data.saved);
+      // console.log(response.data.saved);
       getRecipes(response.data.saved);
       setMessage('Info Updated');
     }).catch(error => {

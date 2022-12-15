@@ -21,12 +21,16 @@ const Menu = () => {
       <br></br>
       <br></br>
       <br></br>
+
       <div className='menu'>
         <Link to="/profile">
-          <div className='selection'>General Information</div>
+          <div className='selection'>My Profile</div>
+        </Link>
+        <Link to="/general">
+          <div className='selection'>Edit General Information</div>
         </Link>
         <Link to="/diet">
-          <div className='selection'>Diet Preferences</div>
+          <div className='selection'>Edit Diet Preferences</div>
         </Link>
         <Link to="/create">
           <div className='selection'>Create Recipe</div>

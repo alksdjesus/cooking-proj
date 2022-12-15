@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Feed from "./screens/feed";
 import Search from "./screens/search";
+import General from "./screens/general";
 import Profile from "./screens/profile";
 import Saved from "./screens/saved";
 import Recipe from "./screens/recipe";
@@ -77,6 +78,7 @@ function App() {
           <Route path='/' element={<Feed/>}/>
           <Route path='/feed' element={<Feed/>}/>
           <Route path='/search' element={<Search/>}/>
+          <Route path='/general' element={<General/>}/>
           <Route path='/profile' element={<Profile/>}/>
           <Route path='/saved' element={<Saved/>}/>
           <Route path='/recipe' element={<Recipe/>}/>
