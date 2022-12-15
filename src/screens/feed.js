@@ -16,7 +16,7 @@ const Feed = () => {
   const [firstName, setFirstName] = useState('');
   const [message, setMessage] = useState(null);
 
-  const [apiKey, setKey] = useState('&apiKey=893a373691f84a3c998659d1b2971344')
+  const [apiKey, setKey] = useState('&apiKey=7df346c383f54f7b95bbfcae16642c20')
   const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/random?number=1')
   var [someLink, setLink] = useState('test')
 

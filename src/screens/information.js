@@ -8,45 +8,29 @@ import { getUser } from '../service/AuthService';
 import '../css/allpages.css';
 import '../css/login.css';
 import '../css/information.css'
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const updateAPIURL = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo';
 const Information = () => {
 
   const user = getUser();
   const username = user !== 'undefined' && user ? user.username : '';
-  const navigate = useNavigate();
-  const location = useLocation();
-
   const [selectedDiets, setSelectedDiets] = useState([]);
   const [selectedFavoriteIngredients, setSelectedFavoriteIngredients] = useState([]);
   const [selectedCuisine, setSelectedCuisine] = useState([]);
   const [message, setMessage] = useState(null);
+  const listsOfSelectedDiets = {};
+  const listsOfSelectedFavoriteIngredients = {};
+  const listsOfSelectedCuisine = {};
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [bio, setBio] = useState('');
+  const [feed, setFeed] = useState('');
   const [rated, setRated] = useState('');
   const [saved, setSaved] = useState('');
-  const listsOfSelectedDiets = []
-  const listsOfSelectedFavoriteIngredients = []
-  const listsOfSelectedCuisine = []
-
-  function getData() {
-    axios({
-      method: "GET",
-      url:"http://127.0.0.1:5000/users/" + location.state.uname,
-    })
-    .then((response) => {
-      console.log(response)
-    }).catch((error) => {
-      if (error.response) {
-        console.log(error.response)
-        console.log(error.response.status)
-        console.log(error.response.headers)
-        }
-    })}
-
+  const navigate = useNavigate();
+  // console.log(username)
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -66,25 +50,27 @@ const Information = () => {
     if (email !== '') {
       submitEmail();
     }
+    submitFeed();
     submitRated();
     submitSaved();
 
+
     for (let i = 0; i < selectedDiets.length; i++) {
-      listsOfSelectedDiets.push(selectedDiets[i].value);
+      listsOfSelectedDiets[selectedDiets[i].label] = selectedDiets[i].value;
     }
 
     for (let i = 0; i < selectedFavoriteIngredients.length; i++) {
-      listsOfSelectedFavoriteIngredients.push(selectedFavoriteIngredients[i].value);
+      listsOfSelectedFavoriteIngredients[selectedFavoriteIngredients[i].label] = selectedFavoriteIngredients[i].value;
     }
 
     for (let i = 0; i < selectedCuisine.length; i++) {
-      listsOfSelectedCuisine.push(selectedCuisine[i].label);
+      listsOfSelectedCuisine[selectedCuisine[i].label] = selectedCuisine[i].value;
     }
 
     submitSelectedDiets();
     submitSelectedFavoriteIngredients();
     submitSelectedCuisine();
-    navigate('/feed')
+    navigate('/profile')
   }
 
   const submitFirstName = () => {
@@ -121,8 +107,6 @@ const Information = () => {
         setMessage('sorry....the backend server is down!! please try again later');
       }
     })
-    getData();
-    navigate('/login')
   }
 
   const submitBio = () => {
@@ -162,18 +146,14 @@ const Information = () => {
   }
 
   const submitSelectedDiets = () => {
+    console.log(listsOfSelectedDiets)
     const requestBody = {
-      pk: location.state.uname,
-      sk: "profileInfo",
-      dietaryRestrictions: listsOfSelectedDiets,
-      favoriteCuisine: listsOfSelectedCuisine,
-      ingredients: listsOfSelectedFavoriteIngredients,
-      rated: new Array(),
-      saved: new Array(),
-      feed: new Array()
+      username: username,
+      updateKey: "dietaryRestrictions",
+      updateValue: listsOfSelectedDiets
     }
 
-    axios.post(updateAPIURL, requestBody).then(response => {
+    axios.patch(updateAPIURL, requestBody).then(response => {
       setMessage('Info Updated');
     }).catch(error => {
       if (error.response.status === 401) {
@@ -184,78 +164,94 @@ const Information = () => {
     })
   }
 
-  // const submitSelectedFavoriteIngredients = () => {
-  //   const requestBody = {
-  //     username: username,
-  //     updateKey: "favoriteIngredients",
-  //     updateValue: listsOfSelectedFavoriteIngredients
-  //   }
+  const submitSelectedFavoriteIngredients = () => {
+    const requestBody = {
+      username: username,
+      updateKey: "favoriteIngredients",
+      updateValue: listsOfSelectedFavoriteIngredients
+    }
 
-  //   axios.patch(updateAPIURL, requestBody).then(response => {
-  //     setMessage('Info Updated');
-  //   }).catch(error => {
-  //     if (error.response.status === 401) {
-  //       setMessage(error.response.data.message);
-  //     } else {
-  //       setMessage('sorry....the backend server is down!! please try again later');
-  //     }
-  //   })
-  // }
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+    })
+  }
 
-  // const submitSelectedCuisine = () => {
-  //   console.log(listsOfSelectedCuisine)
-  //   const requestBody = {
-  //     username: username,
-  //     updateKey: "favoriteCuisines",
-  //     updateValue: listsOfSelectedCuisine
-  //   }
+  const submitSelectedCuisine = () => {
+    console.log(listsOfSelectedCuisine)
+    const requestBody = {
+      username: username,
+      updateKey: "favoriteCuisines",
+      updateValue: listsOfSelectedCuisine
+    }
     
-  //   axios.post(updateAPIURL, requestBody).then(response => {
-  //     setMessage('Info Updated');
-  //   }).catch(error => {
-  //     if (error.response.status === 401) {
-  //       setMessage(error.response.data.message);
-  //     } else {
-  //       setMessage('sorry....the backend server is down!! please try again later');
-  //     }
-  //   })
-  // }
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+    })
+  }
+  const submitFeed = () => {
+    const requestBody = {
+      username: username,
+      updateKey: "feed",
+      updateValue: []
+    }
 
-  // const submitRated = () => {
-  //   const requestBody = {
-  //     username: username,
-  //     updateKey: "rated",
-  //     updateValue: {}
-  //   }
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+    })
+  }
+  const submitRated = () => {
+    const requestBody = {
+      username: username,
+      updateKey: "rated",
+      updateValue: {}
+    }
 
-  //   axios.patch(updateAPIURL, requestBody).then(response => {
-  //     setMessage('Info Updated');
-  //   }).catch(error => {
-  //     if (error.response.status === 401) {
-  //       setMessage(error.response.data.message);
-  //     } else {
-  //       setMessage('sorry....the backend server is down!! please try again later');
-  //     }
-  //   })
-  // }
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+    })
+  }
 
-  // const submitSaved = () => {
-  //   const requestBody = {
-  //     username: username,
-  //     updateKey: "saved",
-  //     updateValue: []
-  //   }
+  const submitSaved = () => {
+    const requestBody = {
+      username: username,
+      updateKey: "saved",
+      updateValue: []
+    }
 
-  //   axios.patch(updateAPIURL, requestBody).then(response => {
-  //     setMessage('Info Updated');
-  //   }).catch(error => {
-  //     if (error.response.status === 401) {
-  //       setMessage(error.response.data.message);
-  //     } else {
-  //       setMessage('sorry....the backend server is down!! please try again later');
-  //     }
-  //   })
-  // }
+    axios.patch(updateAPIURL, requestBody).then(response => {
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+    })
+  }
   
   const dietOptions = [
     { value: 'dairy', label: 'Lactose Intolerance' },
@@ -1296,7 +1292,7 @@ const Information = () => {
     { value: "southern", label: "Southern" },
     { value: "spanish", label: "Spanish" },
     { value: "thai", label: "Thai" },
-    { value: "vietnamese", label: "Vietnamese" }
+    { value: "vietname", label: "Vietname" }
   ]
 
   const optionStyles = {
@@ -1351,53 +1347,54 @@ const Information = () => {
 
   return (
     <div className='login_background'>
-      <div className='inform_container'>
+      <div className='title_container'>
         <img className="login_title" src={require("../images/logo.png")}/>
         <div className='information_container'>
-          <div className='general_container'>
-            <div className='info_title'>
-              User Settings
-            </div>
+          <div className='sub_title'>
+            General Information
+          </div>
+          <br/>
+          <div className='option_title'>
+            First Name:
+          </div>
+          <input type="profile" placeholder="First Name"value={firstName} onChange={event => setFirstName(event.target.value)}/> <br/>
+          <div className='option_title'>
+            Last Name:
+          </div>
+          <input type="profile" placeholder="Last Name"value={lastName} onChange={event => setLastName(event.target.value)}/> <br/>
+          <div className='option_title'>
+            Email:
+          </div>
+          <input type="profile" placeholder="Email" value={email} onChange={event => setEmail(event.target.value)}/> <br/>
+          <div className='option_title'>
+            Bio:
+          </div>
+          <textarea type="bio" placeholder="Bio" value={bio} onChange={event => setBio(event.target.value)} /> <br/>
+          <br/>
+          <div className='login'>
+            Diet Preferences
+          </div>
+          <form className='info_form' align="left" onSubmit={submitHandler} >
             <div className='option_title'>
-              First Name:
+              Dietary Restrictions:
             </div>
-            <input type="profile" placeholder="First Name"value={firstName} onChange={event => setFirstName(event.target.value)}/> <br/>
-            <div className='option_title'>
-              Last Name:
-            </div>
-            <input type="profile" placeholder="Last Name"value={lastName} onChange={event => setLastName(event.target.value)}/> <br/>
-            <div className='option_title'>
-              Email:
-            </div>
-            <input type="profile" placeholder="Email" value={email} onChange={event => setEmail(event.target.value)}/> <br/>
-            <div className='option_title'>
-              Bio:
-            </div>
-            <textarea type="bio" placeholder="Bio" value={bio} onChange={event => setBio(event.target.value)} /> <br/>
+            <Select options={dietOptions} isMulti name="diets" styles={optionStyles} onChange={event => setSelectedDiets(event)}/>
             <br/>
-          </div>
-          <div className='diet_container'>
-            <form className='info_form' align="left" onSubmit={submitHandler} >
-              <div className='option_title'>
-                Dietary Restrictions:
-              </div>
-              <Select options={dietOptions} isMulti name="diets" styles={optionStyles} onChange={event => setSelectedDiets(event)}/>
-              <br/>
-              <div className='option_title'>
-                Favorite Ingredients:
-              </div>
-              <Select options={ingredientOptions} isMulti name="ingredients" styles={optionStyles} onChange={event => setSelectedFavoriteIngredients(event)}/>
-              <br/>
-              <div className='option_title'>
-                Favorite Cuisines:
-              </div>
-              <Select options={cuisineOptions} isMulti name="cuisines" styles={optionStyles} onChange={event => setSelectedCuisine(event)}/>
-              <br/>
-              <SaveButton input type="submit" onClick={submitHandler}>
-                Save Information
-              </SaveButton>
-            </form>
-          </div>
+            <div className='option_title'>
+              Favorite Ingredients:
+            </div>
+            <Select options={ingredientOptions} isMulti name="ingredients" styles={optionStyles} onChange={event => setSelectedFavoriteIngredients(event)}/>
+            <br/>
+            <div className='option_title'>
+              Favorite Cuisines:
+            </div>
+            <Select options={cuisineOptions} isMulti name="cuisines" styles={optionStyles} onChange={event => setSelectedCuisine(event)}/>
+            <br/>
+            <SaveButton input type="submit">
+              Save Information
+            </SaveButton>
+            
+          </form>
         </div>
         {message && <p className="message">{message}</p>}
       </div>
