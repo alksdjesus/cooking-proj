@@ -29,6 +29,13 @@
     font-weight: 400;
 }
 
+.saved_bio {
+    font-family: 'Raleway';
+    font-size: 18px;
+    font-weight: 400;
+    width: 325px;
+}
+
 .list_info {
     font-family: 'Raleway';
     font-size: 18px;
