@@ -32,7 +32,7 @@ const Information = () => {
   function getData() {
     axios({
       method: "GET",
-      url:"/users/" + location.state.uname,
+      url:"http://127.0.0.1:5000/users/" + location.state.uname,
     })
     .then((response) => {
       console.log(response)

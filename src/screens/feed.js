@@ -23,7 +23,7 @@ const Feed = () => {
   function genRecipes() {
     axios({
       method: "GET",
-      url:"/random/" + username,
+      url:"http://127.0.0.1:5000/random/" + username,
     })
     .then((response) => {
       console.log(response)
