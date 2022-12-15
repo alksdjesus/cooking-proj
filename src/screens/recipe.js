@@ -147,11 +147,11 @@ export default function Recipe() {
   }
 
   var desc = mealData.summary
-  desc = desc.replace(/\s*\<.*?\>\s*/g, ' ');
+  desc = desc?.replace(/\s*\<.*?\>\s*/g, ' ');
   //desc = desc.split('.')[0] + '.';
 
   var inst = mealData.instructions
-  inst = inst.replace(/\s*\<.*?\>\s*/g, ' ');
+  inst = inst?.replace(/\s*\<.*?\>\s*/g, ' ');
   // inst = inst.replaceAll('\n', '\n\n')
 
   // var ingredients = mealData.extendedIngredients.original
@@ -183,12 +183,17 @@ export default function Recipe() {
           <div className='part_title'>
             Ingredients:
           </div>
-          {mealData.extendedIngredients.map((ingredient) => {
-            return (<h1>
-              {ingredient.original}
-              </h1>
+          <div className='part_info'>
+            {mealData.extendedIngredients?.map((ingredient) => {
+              return (
+              <div>
+                {ingredient.original}
+              </div>
               );
-          })}
+            })}
+          </div>
+          
+
 
           {/* {ingredients} */}
           <br/><br/><br/>
