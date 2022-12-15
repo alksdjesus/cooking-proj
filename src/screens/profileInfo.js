@@ -38,7 +38,7 @@ const Info = (props) => {
             setBio(response.data.bio);
             setDietaryRestrictions(Object.keys(response.data.dietaryRestrictions));
             setFavoriteIngredients(Object.keys(response.data.favoriteIngredients));
-            setFavoriteCuisines(Object.values(response.data.favoriteCuisines));
+            setFavoriteCuisines(Object.keys(response.data.favoriteCuisines));
             setMessage('Info Updated');
         }).catch(error => {
             if (error.response?.status === 401) {
