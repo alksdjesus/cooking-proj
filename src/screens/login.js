@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { setUserSession } from '../service/AuthService'
-import { Link } from 'react-router-dom';
+import { setUserSession } from '../service/AuthService';
+import { Link, useNavigate } from 'react-router-dom';
 import '../css/allpages.css'
 import '../css/login.css'
 
@@ -11,6 +11,7 @@ const Login = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
+  const navigate = useNavigate();
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -27,8 +28,10 @@ const Login = (props) => {
 
     axios.post(loginAPIUrl, requestBody).then((response) => {
       setUserSession(response.data.user, response.data.token);
-      props.history.push('/profile');
+      // getData();
+      navigate('/feed');
     }).catch((error) => {
+      // console.log(error)
       if (error.response.status === 401 || error.response.status === 403) {
         setErrorMessage(error.response.data.message);
       } else {
@@ -36,6 +39,24 @@ const Login = (props) => {
       }
     })
   }
+
+  // function getData() {
+  //   axios.get({
+  //     // method: "GET",
+  //     url:"/users/" + username,
+  //   })
+  //   .then((response) => {
+  //     const res = response
+  //     // setUserData(({
+  //     //   userData : res
+  //     // }))
+  //   }).catch((error) => {
+  //     if (error.response) {
+  //       console.log(error.response)
+  //       console.log(error.response.status)
+  //       console.log(error.response.headers)
+  //       }
+  //   })}
 
   return (
     <div className='login_background'>
@@ -50,12 +71,12 @@ const Login = (props) => {
             <input type="password" placeholder="Password" value={password} onChange={event => setPassword(event.target.value)} /> <br/>
             <input type="submit" value="Log In" />
             <Link to="/register">
-              <input type="button" value="Register" />
+              <input type="submit" value="Register" />
             </Link>
           </form>
+          {errorMessage && <p className="message">{errorMessage}</p>}
         </div>
       </div>
-      {errorMessage && <p className="message">{errorMessage}</p>}
     </div>
   )
 }

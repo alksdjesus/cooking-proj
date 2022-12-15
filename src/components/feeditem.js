@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from 'react-router-dom';
 import '../css/item.css';
 
-export default function Meal({ meal }) {
+export default function FeedMeal({ meal }) {
 
   return (
-      <div className="recipe_container">
+      <div className="feed_container">
         <Link to="/recipe" state={{ meal }}>
           <img className="recipe_img" src={meal.image}/>
         </Link>

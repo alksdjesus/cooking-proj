@@ -1,28 +1,47 @@
 import React, { useEffect, useState } from 'react';
 import MealList from '../components/itemlist';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../css/allpages.css';
 import '../css/item.css';
+import '../css/feed.css';
+import { getUser } from '../service/AuthService';
 
 const Feed = () => {
 
   const [mealData, setMealData] = useState(null);
 
-  const [apiKey, setKey] = useState('&apiKey=affe55df0130465780b612e83f9b8895')
-  const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/random?number=10')
+  const user = getUser();
+  const username = user !== 'undefined' && user ? user.username : '';
+  const [firstName, setFirstName] = useState('');
+  const [message, setMessage] = useState(null);
+
+  const [apiKey, setKey] = useState('&apiKey=893a373691f84a3c998659d1b2971344')
+  const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/random?number=1')
   var [someLink, setLink] = useState('test')
-
-
-  // old: https://api.spoonacular.com/recipes/random?number=1&apiKey=539b28b197f8412eba867c3356a8d6a6
-  // new: https://api.spoonacular.com/recipes/random?number=1&apiKey=539b28b197f8412eba867c3356a8d6a6
-
 
   useEffect(() => {
     // Run! Like go get some data from an API.
     getRecipes()
+    getProfileInfo()
   }, []);
 
-   async function getRecipes()  {
+  async function getProfileInfo(){
+    var url = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo?username='
+    url = url + username
+
+    axios.get(url).then(response => {
+        setFirstName(response.data.firstName);
+    }).catch(error => {
+        if (error.response?.status === 401) {
+            setMessage(error.response.data.message);
+        } else {
+            setMessage('sorry....the backend server is down!! please try again later');
+        }
+    })
+  }
+
+  async function getRecipes()  {
     setLink(someLink = (baseSearchURL + apiKey))
      try {
       const response = await fetch(someLink)
@@ -34,21 +53,32 @@ const Feed = () => {
     } finally {
       // setLoading(false)
     }
-    
   }
 
-  /*<div>
-    <FeedButton onClick={getRecipes}>Refresh</FeedButton>
-  </div>*/
+  console.log(mealData);
 
+  const currentHour = new Date().getHours();
+  
+  const [time] = 
+    currentHour < 12 && currentHour >= 5 ? ["morning"] : 
+    currentHour >= 12 && currentHour < 18 ? ["afternoon"] :
+    ["evening"];
+
+  var target = firstName;
+
+  if (firstName.trim() === '') {
+    target = "chef";
+  }
+  
   return (
     <div className='container'>
       <div className='title'>
-        Feed
+        Good {time}, {target}
       </div>
-      <br></br>
-      <br></br>
-      <br></br>
+      <br/><br/><br/><br/><br/>
+      <div className='feed_title'>
+        Recipes you might like:
+      </div>
       <div >
         {mealData && <MealList mealData={mealData} sender={"feed"}/>}
       </div>
@@ -57,15 +87,3 @@ const Feed = () => {
 };
 
 export default Feed;
-
-// import React from 'react';
-
-// const Feed = () => {
-//   return (
-//     <div>
-//       This is the Feed page!
-//     </div>
-//   )
-// }
-
-// export default Feed;

@@ -1,57 +1,69 @@
+.recipe_page {
+    display: inline-block;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: 3.75%;
+    margin-right: 3.75%;
+    text-align: center;
+    background-color: white;
+}
 
 .recipe_title {
     font-size: 44px;
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
     color: #000;
-    text-align: left;
+    text-align: center;
     font-family: 'Raleway', sans-serif;
     font-weight: 700;
-    float: left;
-    margin-right: 30px;
-    margin-bottom: 30px;
+    float: center;
+    margin-bottom: 0px;
+    background-color: white;
 }
 
-.sum_img {
-    display: flex;
+/*.sum_img {
+    display: inline-block;
     align-items: center;
-    width: 85%;
     margin-bottom: 30px;
-}
-
-.summary_container {
-    flex: 1;
-    width: 100%;
-}
-
-.summary {
-    font-size: 17px;
-    color: #000;
-    text-align: left;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 400;
-    float: left;
-    margin-right: 50px;
-}
-
-img {
-    float: right;
-}
-
-/*.ingredients {
-    font-size: 17px;
-    color: #000;
-    text-align: left;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 400;
-    float: left;
-    margin-right: 50px;
-}
-
-.directions {
-    font-size: 17px;
-    color: #000;
-    text-align: left;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 400;
-    float: left;
-    margin-right: 50px;
 }*/
+
+.text_container {
+    width: 50%;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text {
+    font-size: 18px;
+    color: #000;
+    text-align: left;
+    font-family: 'Alexandria', sans-serif;
+    font-weight: 300;
+    float: left;
+    background-color: white;
+}
+
+.part_title {
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.recipe_page img {
+    margin: 30px 0 0 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+    border-radius: 20px;
+}
+
+select {
+    border-width: 2px;
+    border-color: black;
+    font-family: 'Alexandria';
+    font-size: 16px;
+    padding: 8px 10px;
+    width: 135px;
+}

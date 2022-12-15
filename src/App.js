@@ -1,20 +1,25 @@
 import './App.css';
-import { BrowserRouter as Router, NavLink, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Feed from "./screens/feed";
 import Search from "./screens/search";
+import General from "./screens/general";
 import Profile from "./screens/profile";
 import Saved from "./screens/saved";
-import Settings from "./screens/settings";
 import Recipe from "./screens/recipe";
 import Create from "./screens/create";
+import Diet from "./screens/diet";
 import Register from "./screens/register";
+import Information from "./screens/information";
 import Navbar from './components/navbar';
 import Login from "./screens/login";
-import PublicRoute from "./routes/PublicRoute";
-import PrivateRoute from "./routes/PrivateRoute";
+import PublicRoutes from "./routes/PublicRoutes";
+import PrivateRoutes from "./routes/PrivateRoutes";
 import React, { useState, useEffect } from "react";
 import { getUser, getToken, setUserSession, resetUserSession } from "./service/AuthService";
 import axios from "axios";
+import Layout from './components/layout.js';
+import { Nav } from './components/navbarElements';
+//import Loading from './components/loading.js';
 
 const verifyTokenAPIURL = 'https://gzcxszjnze.execute-api.us-east-1.amazonaws.com/prod/verify';
 
@@ -47,43 +52,36 @@ function App() {
     return <div className="content">Authenicating...</div>
   }
 
-  /*const LoginContainer = () => (
-    <div className="container">
-      <Route exact path="/" render={() => <Redirect to="/login" />} />
-      <Route path="/login" component={ Login } />
-    </div>
-  )
-
-  const DefaultContainer = () => (
-    <div>
-      <Route exact path="/" render={() => <Redirect to="/login" />} />
-      <Route path="/login" component={ Login } />
-    </div>
-  )*/
-
   return (
-    <div className='App'>
-      <Router>
-        <Switch>
-          <Route exact path="/" component={ Login }/>
-          <PublicRoute path="/login" component={ Login }/>
-          <div>
-            <Navbar />
-            <Route exact path="/" component={ Login }/>
-            <PublicRoute path="/register" component={ Register }/>
-            <PublicRoute path="/login" component={ Login }/>
-            <PrivateRoute path="/feed" component={ Feed }/>
-            <PrivateRoute path="/search" component={ Search }/>
-            <PrivateRoute path="/profile" component={ Profile }/>
-            <PrivateRoute path="/saved" component={ Saved }/>
-            <PrivateRoute path="/settings" component={ Settings }/>
-            <PrivateRoute path="/recipe" component={ Recipe }/>
-            <PrivateRoute path="/create" component={ Create }/>
-          </div>
-        </Switch>
-      </Router>
-    </div>
+   
+    <Router> 
+      <Navbar />
+      <Routes>
+        <Route element={<PublicRoutes />}>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/register' element={<Register/>}/>
+        </Route>
+        <Route element={<PrivateRoutes />}>
+          <Route path='/' element={<Feed/>}/>
+          <Route path='/feed' element={<Feed/>}/>
+          <Route path='/search' element={<Search/>}/>
+          <Route path='/general' element={<General/>}/>
+          <Route path='/profile' element={<Profile/>}/>
+          <Route path='/saved' element={<Saved/>}/>
+          <Route path='/general' element={<General/>}/>
+          <Route path='/recipe' element={<Recipe/>}/>
+          <Route path='/create' element={<Create/>}/>
+          <Route path='/diet' element={<Diet/>}/>
+          <Route path='/information' element={<Information/>}/>
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
+/* <Route path='/general' element={<General/>}/>
+
+
+
+*/
 export default App;

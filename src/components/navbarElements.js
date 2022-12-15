@@ -6,7 +6,7 @@ export const Nav = styled.nav`
   position: fixed;
   top: 0;
   background: orange;
-  height: 5.5%;
+  height: 5vh;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -18,7 +18,7 @@ export const Nav = styled.nav`
 
 export const NavLink = styled(Link)`
   font-color: #000;
-  font-size: 24px;
+  font-size: 2.25vh;
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -26,14 +26,14 @@ export const NavLink = styled(Link)`
   height: 100%;
   cursor: pointer;
   font-family: 'Alexandria', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   //transition: all 0.2s ease-in-out;
   &.active {
     //font-weight: 700;
     //background: #e69500;
     //transition: all 0.2s ease-in-out;
     border-bottom: 2.5px solid black;
-    height: 90%;
+    height: 88%;
     margin-top: 2.5px;
   }
   &:hover {
@@ -50,26 +50,12 @@ export const NavTitle = styled(Link)`
   align-items: center;
   text-decoration: none;
   padding: 0 0rem;
-  padding-right: 23.7%;
+  padding-right: 4%;
   height: 100%;
   cursor: pointer;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   margin-left: 3.75%;
-`;
-
-export const Bars = styled(FaBars)`
-  display: none;
-  color: #000;
-  @media screen and (max-width: 768px) {
-    display: block;
-    position: absolute;
-    top: -6px;
-    right: 0;
-    transform: translate(-100%, 75%);
-    font-size: 1.8rem;
-    cursor: pointer;
-  }
 `;
 
 export const NavMenu = styled.div`
@@ -127,53 +113,27 @@ export const RecipeBtn = styled(Link)`
   margin-top: 90;
 `;
 
-export const FeedButton = styled.button`
-  background-color: #FFA500;
-  color: #000;
-  font-family: 'Montserrat';
-  font-weight: 500;
+export const SaveButton = styled.button`
+  background-color: white;
+  color: black;
+  font-family: Alexandria, sans-serif;
+  font-weight: 400;
   width: auto;
-  height: auto;
-  font-size: 14px;
-  padding: 8px 10px;
-  border-radius: 30px;
-  border-width: 0px;
-  margin: 11px 2px;
+  font-size: 17px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border-width: 2px;
+  border-color: black;
+  outline: none;
+  border-style: solid;
+  margin: 0px 0px 30px 0px;
   cursor: pointer;
-  align-content: center;
-  float: left;
   transition: all 0.2s ease-in-out;
   &:hover {
     transition: all 0.2s ease-in-out;
-    background: #C5C5C5;
-    color: #000;
+    background-color: black;
+    color: white;
   }
-`;
-
-export const SearchButton = styled.button`
-  background-color: #FFA500;
-  color: #000;
-  font-family: Montserrat;
-  width: 120px;
-  font-size: 18px;
-  padding: 10px 10px;
-  border-radius: 30px;
-  border-width: 0px;
-  margin: 10px 0px;
-  cursor: pointer;
-`;
-
-export const SaveButton = styled.button`
-  background-color: #FFA500;
-  color: #000;
-  font-family: Montserrat_500Medium;
-  width: 90px;
-  font-size: 18px;
-  padding: 10px 10px;
-  border-radius: 30px;
-  border-width: 0px;
-  margin: 10px 0px;
-  cursor: pointer;
 `;
 
 export const Recipe = styled.nav`

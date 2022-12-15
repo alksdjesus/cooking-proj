@@ -27,32 +27,75 @@ form {
 }
 
 input[type="submit"] {
-    background-color: #FFA500;
-    color: #000;
+    background-color: white;
+    color: black;
     font-family: 'Alexandria', sans-serif;
     font-weight: 400;
     width: auto;
     font-size: 15px;
-    padding: 10px 16px;
-    border-radius: 30px;
-    border-width: 0px;
-    margin: 15px 0px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: black;
+    outline: none;
+    border-style: solid;
+    margin: 10px 10px;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+input[type="submit"]:hover {
+    transition: all 0.2s ease-in-out;
+    background-color: black;
+    color: white;
+}
+
+input[type="register"] {
+    background-color: white;
+    color: black;
+    font-family: 'Alexandria', sans-serif;
+    font-weight: 400;
+    width: auto;
+    font-size: 15px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: black;
+    outline: none;
+    border-style: solid;
+    margin: 10px 0px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+input[type="register"]:hover {
+    transition: all 0.2s ease-in-out;
+    background-color: black;
+    color: white;
 }
 
 input[type="button"] {
-    background-color: #FFA500;
-    color: #000;
+    background-color: white;
+    color: black;
     font-family: 'Alexandria', sans-serif;
     font-weight: 400;
     width: auto;
     font-size: 15px;
-    padding: 10px 16px;
-    border-radius: 30px;
-    border-width: 0px;
-    margin: 0px 10px;
-    align-content: left;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: black;
+    outline: none;
+    border-style: solid;
+    margin: 10px 10px;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+input[type="button"]:hover {
+    transition: all 0.2s ease-in-out;
+    background-color: black;
+    color: white;
 }
 
 a:link { 

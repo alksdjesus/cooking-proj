@@ -1,0 +1,52 @@
+
+.login_background {
+    height: 150vh;
+    background-image: url("../images/login.jpg");
+    background-size: cover;
+}
+
+.inform_container {
+    padding-top: 90px;
+}
+
+.general_container {
+    float: left;
+}
+
+.diet_container {
+    float: left;
+    margin-left: 50px;
+    text-align: left;
+}
+
+.info_title {
+    font-size: 42px;
+    color: #000;
+    text-align: left;
+    font-family: 'Raleway';
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.login_title {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 300px;
+    height: 52px;
+    justify-content: center;
+    align-items: center;
+}
+
+.information_container {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    border-radius: 50px;
+    width: 875px;
+    padding: 40px 60px 25px 60px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: white;
+}
