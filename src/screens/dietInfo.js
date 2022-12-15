@@ -18,6 +18,7 @@ const Diet = (props) => {
   const [selectedFavoriteIngredients, setSelectedFavoriteIngredients] = useState([]);
   const [selectedCuisine, setSelectedCuisine] = useState([]);
   const [message, setMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
   const listsOfSelectedDiets = {};
   const listsOfSelectedFavoriteIngredients = {};
   const listsOfSelectedCuisine = {};
@@ -40,6 +41,7 @@ const Diet = (props) => {
     submitSelectedDiets();
     submitSelectedFavoriteIngredients();
     submitSelectedCuisine();
+    setSuccessMessage("Successfully updated Diet Preferences")
   }
 
   const submitSelectedDiets = () => {
@@ -1212,6 +1214,7 @@ const Diet = (props) => {
           Save
         </SaveButton>
       </form>
+      {successMessage && <p className="message">{successMessage}</p>}
     </div>
   )
 

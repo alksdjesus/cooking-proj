@@ -31,6 +31,8 @@ const Info = (props) => {
   const [rated, setRated] = useState('');
   const [saved, setSaved] = useState('');
   const [message, setMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
+
 
   // const logoutHandler = () => {
   //   resetUserSession();
@@ -61,20 +63,24 @@ const Info = (props) => {
     //   submitName();
     // }
 
-    if (firstName !== '') {
-      submitFirstName();
-    }
-    if (lastName !== '') {
-      submitLastName();
-    }
-    if (bio !== '') {
-      submitBio();
-    }
-    if (email !== '') {
-      submitEmail();
-    }
+    // if (firstName !== '') {
+    //   submitFirstName();
+    // }
+    // if (lastName !== '') {
+    //   submitLastName();
+    // }
+    // if (bio !== '') {
+    //   submitBio();
+    // }
+    // if (email !== '') {
+    //   submitEmail();
+    // }
     // submitIngredients();
     // submitDietaryRestrictions();
+    submitFirstName();
+    submitLastName();
+    submitEmail();
+    submitBio();
     submitRated();
     submitSaved();
     // submitCuisines();
@@ -91,6 +97,7 @@ const Info = (props) => {
     // if (saved !== '') {
     //   submitSaved();
     // }
+    setSuccessMessage("Successfully Updated General Information")
   }
 
 //   const submitName = () => {
@@ -345,6 +352,8 @@ const Info = (props) => {
         </SaveButton>
          <br/>
       </form>
+      {successMessage && <p className="message">{successMessage}</p>}
+
     </div>
   )
 }
