@@ -18,7 +18,7 @@ export default function Recipe() {
   const updateAPIURL = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo';
 
   var [mealData, setMealData] = useState({});
-  const [apiKey, setKey] = useState('/information?apiKey=e0ba8f96837748dc9473f52b42c3b8a8')
+  const [apiKey, setKey] = useState('/information?apiKey=2ac299ba2179456ca04f8ace7a414166')
   const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/')
   const [message, setMessage] = useState(null);
   var [someLink, setLink] = useState('test')

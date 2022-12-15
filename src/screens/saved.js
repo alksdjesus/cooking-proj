@@ -7,7 +7,7 @@ import '../css/allpages.css';
 
 
 function Saved () {
-  const [apiKey, setKey] = useState('&apiKey=e0ba8f96837748dc9473f52b42c3b8a8')
+  const [apiKey, setKey] = useState('&apiKey=2ac299ba2179456ca04f8ace7a414166')
   const [mealData, setMealData] = useState(null);
   const [message, setMessage] = useState(null);
 
@@ -21,8 +21,6 @@ function Saved () {
 
   async function getRecipes(list)  {
     var idquery = ""
-
-    var list = list.reversed()
 
     for (var i = 0; i < list.length; i++)
     { 

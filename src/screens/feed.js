@@ -16,7 +16,7 @@ const Feed = () => {
   const [firstName, setFirstName] = useState('');
   const [message, setMessage] = useState(null);
 
-  const [apiKey, setKey] = useState('&apiKey=e0ba8f96837748dc9473f52b42c3b8a8')
+  const [apiKey, setKey] = useState('&apiKey=2ac299ba2179456ca04f8ace7a414166')
   const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/random?number=1')
   var [someLink, setLink] = useState('test')
 
@@ -77,7 +77,10 @@ const Feed = () => {
 
   async function getRecipes(list)  {
     console.log(list)
+    list = [...new Set(list)];
     var idquery = ""
+
+    // list.reverse();
 
     for (var i = 0; i < list.length; i++)
     { 
