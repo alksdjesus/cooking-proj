@@ -58,20 +58,6 @@ export const NavTitle = styled(Link)`
   margin-left: 3.75%;
 `;
 
-/*export const Bars = styled(FaBars)`
-  display: none;
-  color: #000;
-  @media screen and (max-width: 768px) {
-    display: block;
-    position: absolute;
-    top: -25%;
-    right: 0;
-    transform: translate(-100%, 75%);
-    font-size: 1.8rem;
-    cursor: pointer;
-  }
-`;*/
-
 export const NavMenu = styled.div`
   display: flex;
   align-items: center;
@@ -125,42 +111,6 @@ export const RecipeBtn = styled(Link)`
   margin-vertical: 10;
   margin-horizontal: 20;
   margin-top: 90;
-`;
-
-export const FeedButton = styled.button`
-  background-color: #FFA500;
-  color: #000;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  width: auto;
-  height: auto;
-  font-size: 14px;
-  padding: 8px 10px;
-  border-radius: 30px;
-  border-width: 0px;
-  margin: 11px 2px;
-  cursor: pointer;
-  align-content: center;
-  float: left;
-  transition: all 0.2s ease-in-out;
-  &:hover {
-    transition: all 0.2s ease-in-out;
-    background: #C5C5C5;
-    color: #000;
-  }
-`;
-
-export const SearchButton = styled.button`
-  background-color: #FFA500;
-  color: #000;
-  font-family: Montserrat;
-  width: 120px;
-  font-size: 18px;
-  padding: 10px 10px;
-  border-radius: 30px;
-  border-width: 0px;
-  margin: 10px 0px;
-  cursor: pointer;
 `;
 
 export const SaveButton = styled.button`

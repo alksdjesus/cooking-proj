@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getUser } from '../service/AuthService';
-import {useLocation} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import axios from 'axios';
 import '../css/allpages.css'
 import '../css/recipe.css'
@@ -18,7 +18,7 @@ export default function Recipe() {
   const updateAPIURL = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo';
 
   var [mealData, setMealData] = useState({});
-  const [apiKey, setKey] = useState('/information?apiKey=affe55df0130465780b612e83f9b8895')
+  const [apiKey, setKey] = useState('/information?apiKey=893a373691f84a3c998659d1b2971344')
   const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/')
   const [message, setMessage] = useState(null);
   var [someLink, setLink] = useState('test')
@@ -149,17 +149,16 @@ export default function Recipe() {
       <img className="img" src={mealData.image} alt={mealData.title}/>
       <br/>
       <SaveButton onClick={() => getSaved()}>Save Recipe</SaveButton>
-      {/* <SaveButton>Save Recipe</SaveButton> */}
         <select id="rating" onChange={() => getRated()}>
-          <option value="">Select Rating</option>
-          <option value="1">Rating 1/5</option>
-          <option value="2">Rating 2/5</option>
-          <option value="3">Rating 3/5</option>
-          <option value="4">Rating 4/5</option>
-          <option value="5">Rating 5/5</option>
+          <option value="">Rating</option>
+          <option value="1">Rating: 1/5</option>
+          <option value="2">Rating: 2/5</option>
+          <option value="3">Rating: 3/5</option>
+          <option value="4">Rating: 4/5</option>
+          <option value="5">Rating: 5/5</option>
         </select>
       <div className='text_container'>
-        <div className='summary'>
+        <div className='text'>
           <div className='part_title'>
             Overview:
           </div>

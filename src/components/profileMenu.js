@@ -32,9 +32,6 @@ const Menu = () => {
         <Link to="/diet">
           <div className='selection'>Edit Diet Preferences</div>
         </Link>
-        <Link to="/create">
-          <div className='selection'>Create Recipe</div>
-        </Link>
         <Link to="/login" onClick={logoutHandler} className='selection'>
           Sign Out
         </Link>
