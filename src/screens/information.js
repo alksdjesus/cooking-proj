@@ -66,8 +66,7 @@ const Information = () => {
     if (email !== '') {
       submitEmail();
     }
-    submitRated();
-    submitSaved();
+    submitSelectedDiets();
 
     for (let i = 0; i < selectedDiets.length; i++) {
       listsOfSelectedDiets.push(selectedDiets[i].value);
@@ -89,12 +88,18 @@ const Information = () => {
 
   const submitFirstName = () => {
     const requestBody = {
-      username: username,
-      updateKey: "firstName",
-      updateValue: firstName
+      // username: username,
+      // updateKey: "firstName",
+      // updateValue: firstName
+      pk: username,
+      sk:"profileInfo",
+      firstName: firstName,
+      lastName: lastName,
+      email:email,
+      bio:bio
     }
 
-    axios.patch(updateAPIURL, requestBody).then(response => {
+    axios.post(updateAPIURL, requestBody).then(response => {
       setMessage('Info Updated');
     }).catch(error => {
       if (error.response.status === 401) {
@@ -105,61 +110,61 @@ const Information = () => {
     })
   }
 
-  const submitLastName = () => {
-    const requestBody = {
-      username: username,
-      updateKey: "lastName",
-      updateValue: lastName
-    }
+  // const submitLastName = () => {
+  //   const requestBody = {
+  //     username: username,
+  //     updateKey: "lastName",
+  //     updateValue: lastName
+  //   }
 
-    axios.patch(updateAPIURL, requestBody).then(response => {
-      setMessage('Info Updated');
-    }).catch(error => {
-      if (error.response.status === 401) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage('sorry....the backend server is down!! please try again later');
-      }
-    })
-    getData();
-    navigate('/login')
-  }
+  //   axios.post(updateAPIURL, requestBody).then(response => {
+  //     setMessage('Info Updated');
+  //   }).catch(error => {
+  //     if (error.response.status === 401) {
+  //       setMessage(error.response.data.message);
+  //     } else {
+  //       setMessage('sorry....the backend server is down!! please try again later');
+  //     }
+  //   })
+  //   getData();
+  //   navigate('/login')
+  // }
 
-  const submitBio = () => {
-    const requestBody = {
-      username: username,
-      updateKey: "bio",
-      updateValue: bio
-    }
+  // const submitBio = () => {
+  //   const requestBody = {
+  //     username: username,
+  //     updateKey: "bio",
+  //     updateValue: bio
+  //   }
 
-    axios.patch(updateAPIURL, requestBody).then(response => {
-      setMessage('Info Updated');
-    }).catch(error => {
-      if (error.response.status === 401) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage('sorry....the backend server is down!! please try again later');
-      }
-    })
-  }
+  //   axios.post(updateAPIURL, requestBody).then(response => {
+  //     setMessage('Info Updated');
+  //   }).catch(error => {
+  //     if (error.response.status === 401) {
+  //       setMessage(error.response.data.message);
+  //     } else {
+  //       setMessage('sorry....the backend server is down!! please try again later');
+  //     }
+  //   })
+  // }
 
-  const submitEmail = () => {
-    const requestBody = {
-      username: username,
-      updateKey: "email",
-      updateValue: email
-    }
+  // const submitEmail = () => {
+  //   const requestBody = {
+  //     username: username,
+  //     updateKey: "email",
+  //     updateValue: email
+  //   }
 
-    axios.patch(updateAPIURL, requestBody).then(response => {
-      setMessage('Info Updated');
-    }).catch(error => {
-      if (error.response.status === 401) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage('sorry....the backend server is down!! please try again later');
-      }
-    })
-  }
+  //   axios.post(updateAPIURL, requestBody).then(response => {
+  //     setMessage('Info Updated');
+  //   }).catch(error => {
+  //     if (error.response.status === 401) {
+  //       setMessage(error.response.data.message);
+  //     } else {
+  //       setMessage('sorry....the backend server is down!! please try again later');
+  //     }
+  //   })
+  // }
 
   const submitSelectedDiets = () => {
     const requestBody = {

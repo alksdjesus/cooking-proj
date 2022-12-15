@@ -41,8 +41,8 @@ const Diet = (props) => {
     if (listsOfSelectedDiets.length != 0) {
       submitSelectedDiets();
     }
-    if (listsOfSelectedAllergicIngredients.length != 0) {
-      submitSelectedAllergicIngredients();
+    if (listsOfSelectedFavoriteIngredients.length != 0) {
+      submitSelectedFavoriteIngredients();
     }
     if (listsOfSelectedCuisine.length != 0) {
       submitSelectedCuisine();
