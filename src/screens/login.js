@@ -74,9 +74,9 @@ const Login = (props) => {
               <input type="submit" value="Register" />
             </Link>
           </form>
+          {errorMessage && <p className="message">{errorMessage}</p>}
         </div>
       </div>
-      {errorMessage && <p className="message">{errorMessage}</p>}
     </div>
   )
 }
