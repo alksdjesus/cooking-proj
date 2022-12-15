@@ -90,7 +90,7 @@ const Diet = (props) => {
     // console.log(listsOfSelectedCuisine)
     const requestBody = {
       username: username,
-      updateKey: "favoriteCuisine",
+      updateKey: "favoriteCuisines",
       updateValue: listsOfSelectedCuisine
     }
     
