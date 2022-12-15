@@ -28,27 +28,28 @@ export default function Recipe() {
     getRecipes()
   }, []);
 
+  // async function getRecipes()  {
+  //   setLink(someLink = (baseSearchURL + meal.id + apiKey))
+  //    try {
+  //     const response = await fetch(someLink)
+  //     const json = await response.json()
+  //     setMealData(json)
+      
+
+  //   } catch (error) {
+  //     console.error(error)
+  //   } finally {
+  //     // setLoading(false)
+  //   }
+  // }
+
   async function getRecipes()  {
     setLink(someLink = (baseSearchURL + meal.id + apiKey))
      try {
       const response = await fetch(someLink)
       const json = await response.json()
       setMealData(json)
-
-    } catch (error) {
-      console.error(error)
-    } finally {
-      // setLoading(false)
-    }
-  }
-
-  async function getRecipes()  {
-    setLink(someLink = (baseSearchURL + meal.id + apiKey))
-     try {
-      const response = await fetch(someLink)
-      const json = await response.json()
-      setMealData(json)
-
+      console.log(json)
     } catch (error) {
       console.error(error)
     } finally {
@@ -145,15 +146,15 @@ export default function Recipe() {
   })
   }
 
-  var desc = meal.summary
+  var desc = mealData.summary
   desc = desc.replace(/\s*\<.*?\>\s*/g, ' ');
   //desc = desc.split('.')[0] + '.';
 
-  var inst = meal.instructions
+  var inst = mealData.instructions
   inst = inst.replace(/\s*\<.*?\>\s*/g, ' ');
-  inst = inst.replaceAll('\n', '\n\n')
+  // inst = inst.replaceAll('\n', '\n\n')
 
-  var ingredients = meal.extendedIngredients.original
+  // var ingredients = mealData.extendedIngredients.original
 
   return (
     <div className='recipe_page'>
@@ -182,7 +183,14 @@ export default function Recipe() {
           <div className='part_title'>
             Ingredients:
           </div>
-          {ingredients}
+          {mealData.extendedIngredients.map((ingredient) => {
+            return (<h1>
+              {ingredient.original}
+              </h1>
+              );
+          })}
+
+          {/* {ingredients} */}
           <br/><br/><br/>
           <div className='part_title'>
             Instructions:
