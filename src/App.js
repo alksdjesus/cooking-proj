@@ -2,12 +2,14 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Feed from "./screens/feed";
 import Search from "./screens/search";
+import General from "./screens/general";
 import Profile from "./screens/profile";
 import Saved from "./screens/saved";
 import Recipe from "./screens/recipe";
 import Create from "./screens/create";
 import Diet from "./screens/diet";
 import Register from "./screens/register";
+import Information from "./screens/information";
 import Navbar from './components/navbar';
 import Login from "./screens/login";
 import PublicRoutes from "./routes/PublicRoutes";
@@ -50,20 +52,6 @@ function App() {
     return <div className="content">Authenicating...</div>
   }
 
-  /*const LoginContainer = () => (
-    <div className="container">
-      <Route exact path="/" render={() => <Redirect to="/login" />} />
-      <Route path="/login" component={ Login } />
-    </div>
-  )
-
-  const DefaultContainer = () => (
-    <div>
-      <Route exact path="/" render={() => <Redirect to="/login" />} />
-      <Route path="/login" component={ Login } />
-    </div>
-  )*/
-
   return (
    
     <Router> 
@@ -72,6 +60,7 @@ function App() {
         <Route element={<PublicRoutes />}>
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
+          <Route path='/information' element={<Information/>}/>
         </Route>
         <Route element={<PrivateRoutes />}>
           <Route path='/' element={<Feed/>}/>
@@ -79,6 +68,7 @@ function App() {
           <Route path='/search' element={<Search/>}/>
           <Route path='/profile' element={<Profile/>}/>
           <Route path='/saved' element={<Saved/>}/>
+          <Route path='/general' element={<General/>}/>
           <Route path='/recipe' element={<Recipe/>}/>
           <Route path='/create' element={<Create/>}/>
           <Route path='/diet' element={<Diet/>}/>
@@ -88,4 +78,9 @@ function App() {
   );
 }
 
+/* <Route path='/general' element={<General/>}/>
+
+
+
+*/
 export default App;

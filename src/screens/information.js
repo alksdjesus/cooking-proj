@@ -5,12 +5,15 @@ import axios from 'axios';
 import { SaveButton } from '../components/navbarElements.js';
 import Select from 'react-select';
 import { getUser } from '../service/AuthService';
+import '../css/allpages.css';
+import '../css/login.css';
+import '../css/information.css'
+import { Link, useNavigate } from 'react-router-dom';
 
 const updateAPIURL = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo';
 
-const Diet = (props) => {
+const Information = () => {
 
-  //getting loggind in user
   const user = getUser();
   const username = user !== 'undefined' && user ? user.username : '';
 
@@ -1192,33 +1195,42 @@ const Diet = (props) => {
     }
   }
 
+
   return (
-    <div className='profile_container'>
-      <form align="left" onSubmit={submitHandler} >
-        <div className='sub_title'>
-          Diet Preferences
-        </div><div className='option_title'>
-          Dietary Restrictions:
+    <div className='login_background'>
+      <div className='title_container'>
+        <img className="login_title" src={require("../images/logo.png")}/>
+        <div className='information_container'>
+          <div className='login'>
+            Diet Preferences
+          </div>
+          <form className='info_form' align="left" onSubmit={submitHandler} >
+            <div className='option_title'>
+              Dietary Restrictions:
+            </div>
+            <Select options={dietOptions} isMulti name="diets" styles={optionStyles} onChange={event => setSelectedDiets(event)}/>
+            <br/>
+            <div className='option_title'>
+              Allergies:
+            </div>
+            <Select options={ingredientOptions} isMulti name="ingredients" styles={optionStyles} onChange={event => setSelectedAllergicIngredients(event)}/>
+            <br/>
+            <div className='option_title'>
+              Favorite Cuisines:
+            </div>
+            <Select options={cuisineOptions} isMulti name="cuisines" styles={optionStyles} onChange={event => setSelectedCuisine(event)}/>
+            <br/>
+            <Link to="/feed">
+              <SaveButton input type="submit">
+                Save Information
+              </SaveButton>
+            </Link>
+          </form>
         </div>
-        <Select options={dietOptions} isMulti name="diets" styles={optionStyles} onChange={event => setSelectedDiets(event)}/>
-        <br/>
-        <div className='option_title'>
-          Allergies:
-        </div>
-        <Select options={ingredientOptions} isMulti name="ingredients" styles={optionStyles} onChange={event => setSelectedAllergicIngredients(event)}/>
-        <br/>
-        <div className='option_title'>
-          Favorite Cuisines:
-        </div>
-        <Select options={cuisineOptions} isMulti name="cuisines" styles={optionStyles} onChange={event => setSelectedCuisine(event)}/>
-        <br/>
-        <SaveButton input type="submit">
-          Save
-        </SaveButton>
-      </form>
+        {message && <p className="message">{message}</p>}
+      </div>
     </div>
   )
-
 }
 
-export default Diet;
+export default Information;

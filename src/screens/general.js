@@ -1,10 +1,8 @@
-import Info from './profileInfo.js';
+import Info from './generalInfo';
 import '../css/allpages.css';
 import Menu from '../components/profileMenu.js';
-import Diet from './dietInfo.js';
-import Create from './createInfo.js';
 
-function Profile () {
+function General () {
 
   return (
     <div className='container'>
@@ -16,10 +14,6 @@ function Profile () {
   )
 }
 
-
-/*<div id="diet">
-          <Diet />
-        </div>*/
 //onClick={logoutHandler}
 
-export default Profile;
+export default General;

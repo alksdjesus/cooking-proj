@@ -1,5 +1,4 @@
-import React, { Component, useState, state } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { Component, useState, useEffect } from 'react';
 import '../css/allpages.css';
 import '../css/profile.css';
 import { getUser, getFirst, resetUserSession } from '../service/AuthService';
@@ -11,361 +10,142 @@ import { StyleSheetManager } from 'styled-components';
 const updateAPIURL = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo';
 
 const Info = (props) => {
-  const navigate = useNavigate();
-  var dietaryRestrictions = new Array();
-  var ingredients = new Array();
-  var cuisines = new Array();
-
-
-  //getting loggind in user
-  const user = getUser();
-  const username = user !== 'undefined' && user ? user.username : '';
-
-  // const [name, setName] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [bio, setBio] = useState('');
-  //const [ingredients, setIngredients] = useState('');
-  //const [dietaryRestrictions, setDietaryRestrictions] = useState('');
-  const [rated, setRated] = useState('');
-  const [saved, setSaved] = useState('');
-  const [message, setMessage] = useState(null);
-
-  const logoutHandler = () => {
-    resetUserSession();
-    navigate('/login');
-  }
-
-  const submitHandler = (event) => {
-    event.preventDefault();
+    //getting loggind in user
+    const user = getUser();
+    const username = user !== 'undefined' && user ? user.username : '';
+    const [name, setName] = useState('');
+    const [bio, setBio] = useState('');
+    const [dietaryRestrictions, setDietaryRestrictions] = useState([]);
+    const [allergicIngredients, setAllergicIngredients] = useState([]);
+    const [favoriteCuisines, setFavoriteCuisines] = useState([]);
+    const [receivedResponse, setReceivedResponse] = useState('');
     
-    setMessage(null);
+    const [message, setMessage] = useState(null);
+
+    useEffect(() => {
+        // Run! Like go get some data from an API.
+        getProfileInfo()
+    }, []);
+
     
-    // const requestBody = {
-    //   username: username,
-    //   updateKey: "name",
-    //   updateValue: name
-    // }
-    // axios.patch(updateAPIURL, requestBody).then(response => {
-    //   setMessage('Info Updated');
-    // }).catch(error => {
-    //   if (error.response.status === 401) {
-    //     setMessage(error.response.data.message);
-    //   } else {
-    //     setMessage('sorry....the backend server is down!! please try again later');
-    //   }
-    // })
 
-    // if (name !== '') {
-    //   submitName();
-    // }
+    async function getProfileInfo(){
+        var url = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo?username='
+        url = url + username
 
-    if (firstName !== '') {
-      submitFirstName();
+        axios.get(url).then(response => {
+            setName(response.data.name);
+            setBio(response.data.bio);
+            setDietaryRestrictions(response.data.dietaryRestrictions);
+            setAllergicIngredients(response.data.allergicIngredients);
+            setFavoriteCuisines(response.data.favoriteCuisines);
+            setMessage('Info Updated');
+        }).catch(error => {
+            if (error.response?.status === 401) {
+                setMessage(error.response.data.message);
+            } else {
+                setMessage('sorry....the backend server is down!! please try again later');
+            }
+        })
     }
-    if (lastName !== '') {
-      submitLastName();
-    }
-    if (bio !== '') {
-      submitBio();
-    }
-    if (email !== '') {
-      submitEmail();
-    }
-    submitIngredients();
-    submitDietaryRestrictions();
-    submitRated();
-    submitSaved();
-    submitCuisines();
+    
+        
+    return (
+        <div className='profile_container'>
+            <div align='center' className='sub_title'> 
+              My Profile 
+            </div>
+            <div align='center' className='sub_title'> 
+              General Information 
+            </div>
+            <div className='saved_title'> 
+              Username: 
+            </div>
+            <div className='saved_info'> 
+              {username} 
+            </div> 
+            <br />
+            <div className='saved_title'> 
+              Name: 
+            </div> 
+            <div className='saved_info'> 
+              {name} 
+            </div> 
+            <br/>
+            <br/>
+            <div className='saved_title'> 
+              Bio: 
+            </div>
+            <div className='saved_info'> 
+              {bio} 
+            </div> 
+            <br/>
+            <br/>
+            <div align='center' className='sub_title'> 
+              Dietary Preferences 
+            </div>
+            <div className='saved_title'> 
+              Favorite Cuisines: 
+            </div> 
+            <br/>
+            <div className='saved_info'> 
+              {favoriteCuisines?.map((favoriteCuisine) => <ul className='list_info'>{favoriteCuisine}</ul>)}
+            </div>
+            <br/>
+            <div className='saved_title'> 
+              Dietary Restrictions: 
+            </div> 
+            <div className='saved_info'> 
+              {dietaryRestrictions?.map((dietaryRestriction) => <li>{dietaryRestriction}</li>)} 
+            </div>
+            <br/>
+            <div className='saved_title'> 
+              Allergic Ingredients: 
+            </div> 
+            <div className='saved_info'> 
+              {allergicIngredients?.map((allergicIngredient) => <li>{allergicIngredient}</li>)} 
+            </div>
+            
 
-    // if (ingredients !== '') {
-    //   submitIngredients();
-    // }
-    // if (dietaryRestrictions !== '') {
-    //   submitDietaryRestrictions();
-    // }
-    // if (rated !== '') {
-    //   submitRated();
-    // }
-    // if (saved !== '') {
-    //   submitSaved();
-    // }
-  }
-
-//   const submitName = () => {
-//     const requestBody = {
-//       username: username,
-//       updateKey: "name",
-//       updateValue: name
-//     }
-
-//     axios.patch(updateAPIURL, requestBody).then(response => {
-//       setMessage('Info Updated');
-//     }).catch(error => {
-//       if (error.response.status === 401) {
-//         setMessage(error.response.data.message);
-//       } else {
-//         setMessage('sorry....the backend server is down!! please try again later');
-//       }
-//   })
-// }
-
-  const submitFirstName = () => {
-    const requestBody = {
-      username: username,
-      updateKey: "firstName",
-      updateValue: firstName
-    }
-
-    axios.patch(updateAPIURL, requestBody).then(response => {
-      setMessage('Info Updated');
-    }).catch(error => {
-      if (error.response.status === 401) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage('sorry....the backend server is down!! please try again later');
-      }
-    })
-  }
-
-  const submitLastName = () => {
-    const requestBody = {
-      username: username,
-      updateKey: "lastName",
-      updateValue: lastName
-    }
-
-    axios.patch(updateAPIURL, requestBody).then(response => {
-      setMessage('Info Updated');
-    }).catch(error => {
-      if (error.response.status === 401) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage('sorry....the backend server is down!! please try again later');
-      }
-    })
-  }
-
-  const submitBio = () => {
-    const requestBody = {
-      username: username,
-      updateKey: "bio",
-      updateValue: bio
-    }
-
-    axios.patch(updateAPIURL, requestBody).then(response => {
-      setMessage('Info Updated');
-    }).catch(error => {
-      if (error.response.status === 401) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage('sorry....the backend server is down!! please try again later');
-      }
-    })
-  }
-
-  const submitEmail = () => {
-    const requestBody = {
-      username: username,
-      updateKey: "email",
-      updateValue: email
-    }
-
-    axios.patch(updateAPIURL, requestBody).then(response => {
-      setMessage('Info Updated');
-    }).catch(error => {
-      if (error.response.status === 401) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage('sorry....the backend server is down!! please try again later');
-      }
-    })
-  }
-
-  const submitIngredients = () => {
-    const requestBody = {
-      username: username,
-      updateKey: "ingredients",
-      updateValue: []
-    }
-
-    axios.patch(updateAPIURL, requestBody).then(response => {
-      setMessage('Info Updated');
-    }).catch(error => {
-      if (error.response.status === 401) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage('sorry....the backend server is down!! please try again later');
-      }
-    })
-  }
-
-  const submitDietaryRestrictions = () => {
-    const requestBody = {
-      username: username,
-      updateKey: "dietaryRestrictions",
-      updateValue: []
-    }
-
-    axios.patch(updateAPIURL, requestBody).then(response => {
-      setMessage('Info Updated');
-    }).catch(error => {
-      if (error.response.status === 401) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage('sorry....the backend server is down!! please try again later');
-      }
-    })
-  }
-
-  const submitCuisines = () => {
-    const requestBody = {
-      username: username,
-      updateKey: "cuisines",
-      updateValue: []
-    }
-
-    axios.patch(updateAPIURL, requestBody).then(response => {
-      setMessage('Info Updated');
-    }).catch(error => {
-      if (error.response.status === 401) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage('sorry....the backend server is down!! please try again later');
-      }
-    })
-  }
-
-  const submitRated = () => {
-    const requestBody = {
-      username: username,
-      updateKey: "rated",
-      updateValue: {}
-    }
-
-    axios.patch(updateAPIURL, requestBody).then(response => {
-      setMessage('Info Updated');
-    }).catch(error => {
-      if (error.response.status === 401) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage('sorry....the backend server is down!! please try again later');
-      }
-    })
-  }
-
-  const submitSaved = () => {
-    const requestBody = {
-      username: username,
-      updateKey: "saved",
-      updateValue: []
-    }
-
-    axios.patch(updateAPIURL, requestBody).then(response => {
-      setMessage('Info Updated');
-    }).catch(error => {
-      if (error.response.status === 401) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage('sorry....the backend server is down!! please try again later');
-      }
-    })
-  }
-
-  const optionStyles = {
-    control: (styles) => ({ 
-      ...styles, 
-      backgroundColor: "white", 
-      borderRadius: 20, 
-      borderWidth: 2,
-      boxShadow: 'none',
-      borderColor: '#A6A6A6',
-      padding: 2.5,
-      width: 500,
-      outline: 'none',
-    }),
-    multiValue: (styles) => {
-      return {
-        ...styles,
-        borderRadius: 20,
-        borderWidth: 2,
-        padding: 2,
-        paddingLeft: 4,
-        fontSize: 16,
-        marginLeft: -4,
-        marginRight: 10,
-        onmouseover: "this.style.textDecoration = 'underline'",
-      }
-    },
-    menu: (styles) => {
-      return {
-        ...styles,
-        width: 500,
-        borderRadius: 10,
-      }
-    },
-    option: (styles) => {
-      return {
-        ...styles,
-        marginTop: -4,
-        marginBottom: -4,
-        width: 483,
-        borderRadius: 10,
-      }
-    },
-    multiValueRemove: (styles) => {
-      return {
-        ...styles,
-        borderRadius: 20,
-      }
-    }
-  }
-
-  /*async function getSaved() {
-    var url = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo?username='
-    url = url + username
-
-    axios.get(url).then(response => {
-      getRecipes(response.data.saved);
-      setMessage('Info Updated');
-    }).catch(error => {
-      if (error.response.status === 401) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage('sorry....the backend server is down!! please try again later');
-      }
-  })
-  }*/
-  
-  /*const onButtonClickHandler = () => {
-    window.alert('Hi')
-  };*/
-
-  return (
-    <div className='profile_container'>
-      <form onSubmit={submitHandler} align="left">
-        <div className='sub_title'>
-          General Information
+            
+        {/* <form onSubmit={submitHandler} align="left">
+            <div className='sub_title'>
+            Profile Information
+            </div>
+            <div className='saved_title'>
+            Username: 
+            </div>
+            <div className='saved_info'>
+            {username}
+            </div>
+            <br/>
+            <input type="profile" placeholder="First Name"value={firstName} onChange={event => setFirstName(event.target.value)}/> <br/>
+            <input type="profile" placeholder="Last Name"value={lastName} onChange={event => setLastName(event.target.value)}/> <br/>
+            <input type="profile" placeholder="Email" value={email} onChange={event => setEmail(event.target.value)}/> <br/>
+            <textarea type="bio" placeholder="Bio" value={bio} onChange={event => setBio(event.target.value)} /> <br/>
+            <br/>
+            <div className='option_title'>
+            Dietary Restrictions:
+            </div>
+            {/* <Select options={dietOptions} isMulti isClearable name="diets" styles={optionStyles}/>
+            <br/>
+            <div className='option_title'>
+            Favorite Cuisines:
+            </div>
+            <Select options={cuisineOptions} isMulti isClearable name="cuisines" styles={optionStyles} onChange/>
+            <br/>
+            <div className='option_title'>
+            Ingredients:
+            </div>
+            <Select options={ingredientOptions} isMulti isClearable name="ingredients" styles={optionStyles} onChange/> */}
+            {/* <br/>
+            <SaveButton input type="submit">
+            Save
+            </SaveButton>
+            <br/>
+        </form> */}
         </div>
-        <div className='saved_title'>
-          Username: 
-        </div>
-        <div className='saved_info'>
-          {username}
-        </div>
-        <br/>
-        <input type="profile" placeholder="First Name"value={firstName} onChange={event => setFirstName(event.target.value)}/> <br/>
-        <input type="profile" placeholder="Last Name"value={lastName} onChange={event => setLastName(event.target.value)}/> <br/>
-        <input type="profile" placeholder="Email" value={email} onChange={event => setEmail(event.target.value)}/> <br/>
-        <textarea type="bio" placeholder="Bio" value={bio} onChange={event => setBio(event.target.value)} /> <br/>
-        <SaveButton input type="submit">
-          Save
-        </SaveButton>
-         <br/>
-      </form>
-    </div>
-  )
+    )
 }
 
 //<input type="button" value="Logout" onClick={logoutHandler}/>

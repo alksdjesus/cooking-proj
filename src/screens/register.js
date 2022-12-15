@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import '../css/allpages.css';
 import '../css/login.css'
 
@@ -27,7 +28,7 @@ const Register = () => {
       password: password
     }
     axios.post(registerUrl, requestBody).then(response => {
-      setMessage('Registeration Successful');
+      setMessage('Registration Successful');
     }).catch(error => {
       if (error.response.status === 401) {
         setMessage(error.response.data.message);

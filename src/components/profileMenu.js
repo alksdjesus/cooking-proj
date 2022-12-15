@@ -21,7 +21,6 @@ const Menu = () => {
       <br></br>
       <br></br>
       <br></br>
-
       <div className='menu'>
         <Link to="/profile">
           <div className='selection'>My Profile</div>

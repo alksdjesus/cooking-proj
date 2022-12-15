@@ -7,7 +7,7 @@ import '../css/allpages.css';
 
 
 function Saved () {
-  const [apiKey, setKey] = useState('&apiKey=affe55df0130465780b612e83f9b8895')
+  const [apiKey, setKey] = useState('&apiKey=4c79dafa41b2490e8ee389c5a4b6583c')
   const [mealData, setMealData] = useState(null);
   const [message, setMessage] = useState(null);
 
@@ -30,7 +30,7 @@ function Saved () {
 
     idquery.slice(0, -1)
 
-    console.log(idquery)
+    // console.log(idquery)
     
     const saved = "https://api.spoonacular.com/recipes/informationBulk?ids=" + idquery + apiKey
     // setLink(someLink = (baseSearchURL + meal.id + apiKey))
@@ -51,7 +51,7 @@ function Saved () {
     url = url + username
 
     axios.get(url).then(response => {
-      console.log(response.data.saved);
+      // console.log(response.data.saved);
       getRecipes(response.data.saved);
       setMessage('Info Updated');
     }).catch(error => {
