@@ -60,7 +60,6 @@ function App() {
         <Route element={<PublicRoutes />}>
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
-          <Route path='/information' element={<Information/>}/>
         </Route>
         <Route element={<PrivateRoutes />}>
           <Route path='/' element={<Feed/>}/>
@@ -73,6 +72,7 @@ function App() {
           <Route path='/recipe' element={<Recipe/>}/>
           <Route path='/create' element={<Create/>}/>
           <Route path='/diet' element={<Diet/>}/>
+          <Route path='/information' element={<Information/>}/>
         </Route>
       </Routes>
     </Router>

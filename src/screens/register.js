@@ -14,6 +14,8 @@ const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+
   const navigate = useNavigate();
 
 
@@ -33,8 +35,22 @@ const Register = () => {
     }
     
     axios.post(registerUrl, registerBody).then(response => {
-      setMessage('Registration Successful');
-      navigate('/information')
+      // setMessage('Registration Successful');
+
+      // navigate('/information')
+      axios.post(loginAPIUrl, requestBody).then((response) => {
+        // getData();
+        setMessage('Registration Successful');
+        setUserSession(response.data.user, response.data.token);
+        navigate('/information')
+      }).catch((error) => {
+        // console.log(error)
+        if (error.response.status === 401 || error.response.status === 403) {
+          setErrorMessage(error.response.data.message);
+        } else {
+          setErrorMessage('sorry....the backend server is down. please try again later!!');
+        }
+      })
     }).catch(error => {
       if (error.response.status === 401) {
         setMessage(error.response.data.message);
@@ -42,6 +58,13 @@ const Register = () => {
         setMessage('sorry....the backend server is down!! please try again later');
       }
     })
+
+    const requestBody = {
+      username: username,
+      password: password
+    }
+
+    
     
   }
 

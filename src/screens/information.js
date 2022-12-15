@@ -17,37 +17,38 @@ const Information = () => {
   const user = getUser();
   const username = user !== 'undefined' && user ? user.username : '';
   const navigate = useNavigate();
-
+  console.log(user)
   const [selectedDiets, setSelectedDiets] = useState([]);
   const [selectedAllergicIngredients, setSelectedAllergicIngredients] = useState([]);
   const [selectedCuisine, setSelectedCuisine] = useState([]);
   const [message, setMessage] = useState(null);
-  const listsOfSelectedDiets = []
-  const listsOfSelectedAllergicIngredients = []
-  const listsOfSelectedCuisine = []
+  const listsOfSelectedDiets = {};
+  const listsOfSelectedAllergicIngredients = {};
+  const listsOfSelectedCuisine = {};
 
 
   const submitHandler = (event) => {
     event.preventDefault();
-    // console.log(listsOfSelectedDiets)
+    console.log(listsOfSelectedDiets)
     // console.log(listsOfSelectedCuisine)
 
 
     for (let i = 0; i < selectedDiets.length; i++) {
-      listsOfSelectedDiets.push(selectedDiets[i].label);
+      listsOfSelectedDiets[selectedDiets[i].label] = selectedDiets[i].value;
     }
 
     for (let i = 0; i < selectedAllergicIngredients.length; i++) {
-      listsOfSelectedAllergicIngredients.push(selectedAllergicIngredients[i].label);
+      listsOfSelectedAllergicIngredients[selectedAllergicIngredients[i].label] = selectedAllergicIngredients[i].value;
     }
 
     for (let i = 0; i < selectedCuisine.length; i++) {
-      listsOfSelectedCuisine.push(selectedCuisine[i].label);
+      listsOfSelectedCuisine[selectedCuisine[i].label] = selectedCuisine[i].value;
     }
+
     submitSelectedDiets();
     submitSelectedAllergicIngredients();
     submitSelectedCuisine();
-    navigate('/login')
+    navigate('/feed')
   }
 
   const submitSelectedDiets = () => {
@@ -1222,11 +1223,10 @@ const Information = () => {
             </div>
             <Select options={cuisineOptions} isMulti name="cuisines" styles={optionStyles} onChange={event => setSelectedCuisine(event)}/>
             <br/>
-            <Link to="/feed">
-              <SaveButton input type="submit">
-                Save Information
-              </SaveButton>
-            </Link>
+            <SaveButton input type="submit">
+              Save Information
+            </SaveButton>
+            
           </form>
         </div>
         {message && <p className="message">{message}</p>}
