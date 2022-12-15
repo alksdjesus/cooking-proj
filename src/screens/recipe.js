@@ -28,22 +28,6 @@ export default function Recipe() {
     getRecipes()
   }, []);
 
-  console.log(meal)
-
-  async function getRecipes()  {
-    setLink(someLink = (baseSearchURL + meal.id + apiKey))
-     try {
-      const response = await fetch(someLink)
-      const json = await response.json()
-      setMealData(json)
-
-    } catch (error) {
-      console.error(error)
-    } finally {
-      // setLoading(false)
-    }
-  }
-
   async function getRecipes()  {
     setLink(someLink = (baseSearchURL + meal.id + apiKey))
      try {
@@ -147,15 +131,15 @@ export default function Recipe() {
   })
   }
 
-  var desc = meal.summary
-  desc = desc.replace(/\s*\<.*?\>\s*/g, ' ');
+  var desc = mealData.summary
+  desc = desc?.replace(/\s*\<.*?\>\s*/g, ' ');
   //desc = desc.split('.')[0] + '.';
 
-  var inst = meal.instructions
-  inst = inst.replace(/\s*\<.*?\>\s*/g, ' ');
-  inst = inst.replaceAll('\n', '\n\n')
+  var inst = mealData.instructions
+  inst = inst?.replace(/\s*\<.*?\>\s*/g, ' ');
+  // inst = inst.replaceAll('\n', '\n\n')
 
-  var ingredients = meal.extendedIngredients.original
+  // var ingredients = mealData.extendedIngredients.original
 
   return (
     <div className='recipe_page'>
@@ -184,7 +168,19 @@ export default function Recipe() {
           <div className='part_title'>
             Ingredients:
           </div>
-          {ingredients}
+          <div className='part_info'>
+            {mealData.extendedIngredients?.map((ingredient) => {
+              return (
+              <div>
+                {ingredient.original}
+              </div>
+              );
+            })}
+          </div>
+          
+
+
+          {/* {ingredients} */}
           <br/><br/><br/>
           <div className='part_title'>
             Instructions:

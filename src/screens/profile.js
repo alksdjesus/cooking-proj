@@ -1,4 +1,4 @@
-import Info from './profileInfo.js';
+import Info from './profileInfo';
 import '../css/allpages.css';
 import Menu from '../components/profileMenu.js';
 import Diet from './dietInfo.js';

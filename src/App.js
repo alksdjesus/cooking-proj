@@ -66,6 +66,7 @@ function App() {
           <Route path='/' element={<Feed/>}/>
           <Route path='/feed' element={<Feed/>}/>
           <Route path='/search' element={<Search/>}/>
+          <Route path='/general' element={<General/>}/>
           <Route path='/profile' element={<Profile/>}/>
           <Route path='/saved' element={<Saved/>}/>
           <Route path='/general' element={<General/>}/>

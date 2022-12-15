@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import '../css/allpages.css';
 import '../css/profile.css';
 import { getUser, getFirst, resetUserSession } from '../service/AuthService';
@@ -13,13 +14,12 @@ const Info = (props) => {
     //getting loggind in user
     const user = getUser();
     const username = user !== 'undefined' && user ? user.username : '';
-    const [name, setName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [bio, setBio] = useState('');
     const [dietaryRestrictions, setDietaryRestrictions] = useState([]);
     const [allergicIngredients, setAllergicIngredients] = useState([]);
     const [favoriteCuisines, setFavoriteCuisines] = useState([]);
-    const [receivedResponse, setReceivedResponse] = useState('');
-    
     const [message, setMessage] = useState(null);
 
     useEffect(() => {
@@ -34,11 +34,12 @@ const Info = (props) => {
         url = url + username
 
         axios.get(url).then(response => {
-            setName(response.data.name);
+            setFirstName(response.data.firstName);
+            setLastName(response.data.lastName);
             setBio(response.data.bio);
-            setDietaryRestrictions(response.data.dietaryRestrictions);
-            setAllergicIngredients(response.data.allergicIngredients);
-            setFavoriteCuisines(response.data.favoriteCuisines);
+            setDietaryRestrictions(Object.keys(response.data.dietaryRestrictions));
+            setAllergicIngredients(Object.keys(response.data.allergicIngredients));
+            setFavoriteCuisines(Object.values(response.data.favoriteCuisines));
             setMessage('Info Updated');
         }).catch(error => {
             if (error.response?.status === 401) {
@@ -52,59 +53,35 @@ const Info = (props) => {
         
     return (
         <div className='profile_container'>
-            <div align='center' className='sub_title'> 
-              My Profile 
-            </div>
-            <div align='center' className='sub_title'> 
-              General Information 
-            </div>
-            <div className='saved_title'> 
-              Username: 
-            </div>
-            <div className='saved_info'> 
-              {username} 
-            </div> 
+            <div align='center' className='sub_title'> My Profile </div>
+            <div align='center' className='sub_title'> General Information </div>
+            <div className='saved_title'> Username: </div>
+            <div className='saved_info'> {username} </div> 
             <br />
-            <div className='saved_title'> 
-              Name: 
-            </div> 
-            <div className='saved_info'> 
-              {name} 
-            </div> 
-            <br/>
-            <br/>
-            <div className='saved_title'> 
-              Bio: 
-            </div>
-            <div className='saved_info'> 
-              {bio} 
-            </div> 
-            <br/>
-            <br/>
-            <div align='center' className='sub_title'> 
-              Dietary Preferences 
-            </div>
-            <div className='saved_title'> 
-              Favorite Cuisines: 
-            </div> 
-            <br/>
-            <div className='saved_info'> 
-              {favoriteCuisines?.map((favoriteCuisine) => <ul className='list_info'>{favoriteCuisine}</ul>)}
-            </div>
-            <br/>
-            <div className='saved_title'> 
-              Dietary Restrictions: 
-            </div> 
-            <div className='saved_info'> 
-              {dietaryRestrictions?.map((dietaryRestriction) => <li>{dietaryRestriction}</li>)} 
-            </div>
-            <br/>
-            <div className='saved_title'> 
-              Allergic Ingredients: 
-            </div> 
-            <div className='saved_info'> 
-              {allergicIngredients?.map((allergicIngredient) => <li>{allergicIngredient}</li>)} 
-            </div>
+            <div className='saved_title'> First Name: </div> 
+            <div className='saved_info'> {firstName} </div> 
+            <br />
+            <div className='saved_title'> Last Name: </div> 
+            <div className='saved_info'> {lastName} </div> 
+            <br />
+
+            <div className='saved_title'> Bio: </div>
+            <div className='saved_info'> {bio} </div> 
+            <br />
+            <br />
+            <br />
+
+            <div align='center' className='sub_title'> Dietary Preferences </div>
+            <div className='saved_title'> Favorite Cuisines: </div> 
+            <div className='saved_info'> {favoriteCuisines?.map((favoriteCuisine) => <li>{favoriteCuisine}</li>) }</div>
+            <br />
+
+            <div className='saved_title'> Dietary Restrictions: </div> 
+            <div className='saved_info'> {dietaryRestrictions?.map((dietaryRestriction) => <li>{dietaryRestriction}</li>) } </div>
+            <br />
+
+            <div className='saved_title'> Allergic Ingredients: </div> 
+            <div className='saved_info'> {allergicIngredients?.map((allergicIngredient) => <li>{allergicIngredient}</li>) } </div>
             
 
             
