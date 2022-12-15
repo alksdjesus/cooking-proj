@@ -9,6 +9,7 @@ const registerUrl = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta
 const loginAPIUrl = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/login';
 
 const Register = () => {
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
@@ -42,7 +43,7 @@ const Register = () => {
         // getData();
         setMessage('Registration Successful');
         setUserSession(response.data.user, response.data.token);
-        navigate('/information')
+        navigate('/information', {state:{uname: username}})
       }).catch((error) => {
         // console.log(error)
         if (error.response.status === 401 || error.response.status === 403) {

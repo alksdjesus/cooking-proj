@@ -38,9 +38,15 @@ const Diet = (props) => {
       listsOfSelectedCuisine[selectedCuisine[i].label] = selectedCuisine[i].value;
     }
 
-    submitSelectedDiets();
-    submitSelectedFavoriteIngredients();
-    submitSelectedCuisine();
+    if (listsOfSelectedDiets.length != 0) {
+      submitSelectedDiets();
+    }
+    if (listsOfSelectedAllergicIngredients.length != 0) {
+      submitSelectedAllergicIngredients();
+    }
+    if (listsOfSelectedCuisine.length != 0) {
+      submitSelectedCuisine();
+    }
     setSuccessMessage("Successfully updated Diet Preferences")
   }
 
@@ -84,7 +90,7 @@ const Diet = (props) => {
     // console.log(listsOfSelectedCuisine)
     const requestBody = {
       username: username,
-      updateKey: "favoriteCuisines",
+      updateKey: "favoriteCuisine",
       updateValue: listsOfSelectedCuisine
     }
     

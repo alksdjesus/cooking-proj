@@ -20,10 +20,27 @@ const Feed = () => {
   const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/random?number=1')
   var [someLink, setLink] = useState('test')
 
+  function genRecipes() {
+    axios({
+      method: "GET",
+      url:"http://127.0.0.1:5000/random/" + username,
+    })
+    .then((response) => {
+      console.log(response)
+    }).catch((error) => {
+      if (error.response) {
+        console.log(error.response)
+        console.log(error.response.status)
+        console.log(error.response.headers)
+        }
+    })}
+
   useEffect(() => {
     // Run! Like go get some data from an API.
-    getRecipes()
+    genRecipes()
+    getFeed()
     getProfileInfo()
+    // displayRecpies()
   }, []);
 
   async function getProfileInfo(){
@@ -41,19 +58,65 @@ const Feed = () => {
     })
   }
 
-  async function getRecipes()  {
-    setLink(someLink = (baseSearchURL + apiKey))
+  async function getFeed() {
+    var url = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo?username='
+    url = url + username
+
+    axios.get(url).then(response => {
+      // console.log(response.data.saved);
+      getRecipes(response.data.feed);
+      setMessage('Info Updated');
+    }).catch(error => {
+      if (error.response.status === 401) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('sorry....the backend server is down!! please try again later');
+      }
+  })
+  }
+
+  async function getRecipes(list)  {
+    console.log(list)
+    list = [...new Set(list)];
+    var idquery = ""
+
+    // list.reverse();
+
+    for (var i = 0; i < list.length; i++)
+    { 
+      if (list[i] == null) {continue;}
+      idquery = idquery + list[i].toString() + ",";
+    }
+
+    idquery.slice(0, -1)
+    
+    const feed = "https://api.spoonacular.com/recipes/informationBulk?ids=" + idquery + apiKey
+
      try {
-      const response = await fetch(someLink)
+      const response = await fetch(feed)
       const json = await response.json()
       setMealData(json)
-      // alert(mealData)
+
     } catch (error) {
       console.error(error)
     } finally {
       // setLoading(false)
     }
   }
+
+  // async function getRecipes()  {
+  //   setLink(someLink = (baseSearchURL + apiKey))
+  //    try {
+  //     const response = await fetch(someLink)
+  //     const json = await response.json()
+  //     setMealData(json)
+  //     // alert(mealData)
+  //   } catch (error) {
+  //     console.error(error)
+  //   } finally {
+  //     // setLoading(false)
+  //   }
+  // }
 
   console.log(mealData);
 
