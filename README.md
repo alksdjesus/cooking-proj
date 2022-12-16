@@ -1,3 +1,5 @@
+# Delete node_modules and type "npm install" in your terminal in this directory for a fresh installation
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

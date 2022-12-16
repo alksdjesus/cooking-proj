@@ -16,7 +16,7 @@ const Feed = () => {
   const [firstName, setFirstName] = useState('');
   const [message, setMessage] = useState(null);
 
-  const [apiKey, setKey] = useState('&apiKey=6a847610bc234f668b110cc2661d1d56')
+  const [apiKey, setKey] = useState('&apiKey=83ea555fc57845f19c8819f915ba02ba')
   const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/random?number=1')
   var [someLink, setLink] = useState('test')
 
@@ -62,13 +62,14 @@ const Feed = () => {
   // }
 
   async function getFeed() {
+    setMessage('Loading Feed');
     var url = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo?username='
     url = url + username
 
     axios.get(url).then(response => {
       // console.log(response.data.saved);
       getRecipes(response.data.feed);
-      setMessage('Info Updated');
+      // setMessage('Loading Feed');
     }).catch(error => {
       if (error.response.status === 401) {
         setMessage(error.response.data.message);
@@ -82,6 +83,10 @@ const Feed = () => {
     console.log(list)
     list = [...new Set(list)];
     var idquery = ""
+    if (list.length == 0) {
+      setMessage('Edit your preferences for more reccomendations!')
+      return;
+    }
 
     // list.reverse();
 
@@ -99,6 +104,7 @@ const Feed = () => {
       const response = await fetch(feed)
       const json = await response.json()
       setMealData(json)
+      setMessage('')
       // setTimeout(() => { getFeed(); }, 2500);
       // getFeed()
     } catch (error) {
@@ -148,6 +154,7 @@ const Feed = () => {
       </div>
       <div >
         {mealData && <MealList mealData={mealData} sender={"feed"}/>}
+        {message}
       </div>
     </div>
   );
