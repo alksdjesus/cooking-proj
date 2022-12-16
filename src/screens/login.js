@@ -14,6 +14,7 @@ const Login = (props) => {
   const navigate = useNavigate();
 
   const submitHandler = (event) => {
+    genTree();
     event.preventDefault();
     if (username.trim() === '' || password.trim() === '') {
       setErrorMessage('Both username and password are required');
@@ -28,7 +29,6 @@ const Login = (props) => {
 
     axios.post(loginAPIUrl, requestBody).then((response) => {
       setUserSession(response.data.user, response.data.token);
-      genTree();
       navigate('/feed');
     }).catch((error) => {
       // console.log(error)
@@ -41,7 +41,7 @@ const Login = (props) => {
   }
 
   function genTree() {
-    axios.get({
+    axios({
       method: "GET",
       url:"/users/" + username,
     })
@@ -67,10 +67,10 @@ const Login = (props) => {
             <input type="login" placeholder="Username" value={username} onChange={event => setUsername(event.target.value)} /> <br/>
             <input type="password" placeholder="Password" value={password} onChange={event => setPassword(event.target.value)} /> <br/>
             <input type="submit" value="Log In" />
-            <Link to="/register">
-              <input type="submit" value="Register" />
-            </Link>
           </form>
+          <Link to="/register">
+              <input type="submit" value="Register" />
+          </Link>
           {errorMessage && <p className="message">{errorMessage}</p>}
         </div>
       </div>

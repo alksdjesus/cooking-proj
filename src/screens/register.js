@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { setUserSession } from '../service/AuthService';
 import '../css/allpages.css';
 import '../css/login.css'
@@ -92,6 +92,9 @@ const Register = () => {
             <input type="password" placeholder="Password" value={password} onChange={event => setPassword(event.target.value)} /> <br/>
             <input type="submit" value="Register" />
           </form>
+          <Link to="/login">
+              <input type="submit" value="Log In" />
+            </Link>
           {message && <p className="message">{message}</p>}
         </div>
       </div>
