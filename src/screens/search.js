@@ -8,6 +8,10 @@ import { getUser } from '../service/AuthService';
 
 const Search = () => {
 
+  function onlyLettersAndSpaces(str) {
+    return /^[A-Za-z\s]*$/.test(str);
+  }
+
   const [mealData, setMealData] = useState(null);
   const [calories, setCalories] = useState(2000);
 
@@ -18,7 +22,7 @@ const Search = () => {
   var [searchText, setText] = useState(null)
   // var [data, setData] = useState([])
   const [apiKey, setKey] = useState('&apiKey=893a373691f84a3c998659d1b2971344')
-  const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/complexSearch?number=1&query=')
+  const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/complexSearch?number=10&query=')
   var [someLink, setLink] = useState('test')
 
   useEffect(() => {
@@ -27,6 +31,7 @@ const Search = () => {
   }, []);
 
   async function getSearchRecipes()  {
+    if (onlyLettersAndSpaces(searchText) == true) {
     setLink(someLink = (baseSearchURL + searchText + apiKey))
      try {
       const response = await fetch(someLink)
@@ -37,7 +42,8 @@ const Search = () => {
     } finally {
       // setLoading(false)
     }
-    
+  }
+  
   }
 
   function onTextChange (event) { 
