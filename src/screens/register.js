@@ -10,6 +10,10 @@ const loginAPIUrl = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta
 
 const Register = () => {
 
+  function onlyLetters(str) {
+    return /^[A-Za-z]*$/.test(str);
+  }
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
@@ -21,6 +25,10 @@ const Register = () => {
 
 
   const submitHandler = (event) => {
+    if (onlyLetters(username) == false || onlyLetters(name) == false) {
+      setMessage('Please only include letters');
+      return;
+    }
     event.preventDefault();
     if (username.trim() === '' || email.trim() === '' || name.trim() === '' || password.trim() === '') {
       setMessage('All fields are required');

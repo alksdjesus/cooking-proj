@@ -39,24 +39,24 @@ const Feed = () => {
     // Run! Like go get some data from an API.
     genRecipes()
     getFeed()
-    getProfileInfo()
+    // getProfileInfo()
     // displayRecpies()
   }, []);
 
-  async function getProfileInfo(){
-    var url = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo?username='
-    url = url + username
+  // async function getProfileInfo(){
+  //   var url = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo?username='
+  //   url = url + username
 
-    axios.get(url).then(response => {
-        setFirstName(response.data.firstName);
-    }).catch(error => {
-        if (error.response?.status === 401) {
-            setMessage(error.response.data.message);
-        } else {
-            setMessage('sorry....the backend server is down!! please try again later');
-        }
-    })
-  }
+  //   axios.get(url).then(response => {
+  //       setFirstName(response.data.firstName);
+  //   }).catch(error => {
+  //       if (error.response?.status === 401) {
+  //           setMessage(error.response.data.message);
+  //       } else {
+  //           setMessage('sorry....the backend server is down!! please try again later');
+  //       }
+  //   })
+  // }
 
   async function getFeed() {
     var url = 'https://5v7ysjln6j.execute-api.us-east-1.amazonaws.com/beta/profileinfo?username='
