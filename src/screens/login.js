@@ -28,7 +28,7 @@ const Login = (props) => {
 
     axios.post(loginAPIUrl, requestBody).then((response) => {
       setUserSession(response.data.user, response.data.token);
-      // getData();
+      genTree();
       navigate('/feed');
     }).catch((error) => {
       // console.log(error)
@@ -40,23 +40,20 @@ const Login = (props) => {
     })
   }
 
-  // function getData() {
-  //   axios.get({
-  //     // method: "GET",
-  //     url:"/users/" + username,
-  //   })
-  //   .then((response) => {
-  //     const res = response
-  //     // setUserData(({
-  //     //   userData : res
-  //     // }))
-  //   }).catch((error) => {
-  //     if (error.response) {
-  //       console.log(error.response)
-  //       console.log(error.response.status)
-  //       console.log(error.response.headers)
-  //       }
-  //   })}
+  function genTree() {
+    console.log(username)
+    axios.get({
+      url:"/users/" + username,
+    })
+    .then((response) => {
+      console.log(response)
+    }).catch((error) => {
+      if (error.response) {
+        console.log(error.response)
+        console.log(error.response.status)
+        console.log(error.response.headers)
+        }
+    })}
 
   return (
     <div className='login_background'>

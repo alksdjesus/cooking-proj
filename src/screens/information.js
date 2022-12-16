@@ -50,7 +50,7 @@ const Information = () => {
     }
 
     submission();
-    navigate('/profile')
+    navigate('/login')
   }
 
   const submission = () => {
