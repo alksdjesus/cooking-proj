@@ -19,23 +19,23 @@ const Diet = (props) => {
   const [selectedCuisine, setSelectedCuisine] = useState([]);
   const [message, setMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
-  const listsOfSelectedDiets = {};
-  const listsOfSelectedFavoriteIngredients = {};
-  const listsOfSelectedCuisine = {};
+  const listsOfSelectedDiets = [];
+  const listsOfSelectedFavoriteIngredients = [];
+  const listsOfSelectedCuisine = [];
 
   const submitHandler = (event) => {
     event.preventDefault();
 
     for (let i = 0; i < selectedDiets.length; i++) {
-      listsOfSelectedDiets[selectedDiets[i].label] = selectedDiets[i].value;
+      listsOfSelectedDiets.push(selectedDiets[i].value);
     }
 
     for (let i = 0; i < selectedFavoriteIngredients.length; i++) {
-      listsOfSelectedFavoriteIngredients[selectedFavoriteIngredients[i].label] = selectedFavoriteIngredients[i].value;
+      listsOfSelectedFavoriteIngredients.push(selectedFavoriteIngredients[i].value);
     }
 
     for (let i = 0; i < selectedCuisine.length; i++) {
-      listsOfSelectedCuisine[selectedCuisine[i].label] = selectedCuisine[i].value;
+      listsOfSelectedCuisine.push(selectedCuisine[i].label);
     }
 
     if (listsOfSelectedDiets.length != 0) {
@@ -47,8 +47,24 @@ const Diet = (props) => {
     if (listsOfSelectedCuisine.length != 0) {
       submitSelectedCuisine();
     }
+    genTree();
     setSuccessMessage("Successfully updated Diet Preferences")
   }
+
+  function genTree() {
+    axios({
+      method: "GET",
+      url:"http://127.0.0.1:5000/users/" + username,
+    })
+    .then((response) => {
+      console.log(response)
+    }).catch((error) => {
+      if (error.response) {
+        console.log(error.response)
+        console.log(error.response.status)
+        console.log(error.response.headers)
+        }
+    })}
 
   const submitSelectedDiets = () => {
     const requestBody = {
@@ -71,7 +87,7 @@ const Diet = (props) => {
   const submitSelectedFavoriteIngredients = () => {
     const requestBody = {
       username: username,
-      updateKey: "favoriteIngredients",
+      updateKey: "ingredients",
       updateValue: listsOfSelectedFavoriteIngredients
     }
 
@@ -90,7 +106,7 @@ const Diet = (props) => {
     // console.log(listsOfSelectedCuisine)
     const requestBody = {
       username: username,
-      updateKey: "favoriteCuisines",
+      updateKey: "favoriteCuisine",
       updateValue: listsOfSelectedCuisine
     }
     

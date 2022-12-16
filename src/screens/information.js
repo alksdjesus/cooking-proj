@@ -50,7 +50,8 @@ const Information = () => {
     }
 
     submission();
-    navigate('/login')
+    setTimeout(() => { navigate('/login'); }, 5000);
+    // navigate('/login')
   }
 
   const submission = () => {
@@ -70,6 +71,7 @@ const Information = () => {
     }
 
     axios.post(updateAPIURL, requestBody).then(response => {
+      genTree();
       setMessage('Info Updated');
     }).catch(error => {
       if (error.response.status === 401) {
@@ -79,6 +81,21 @@ const Information = () => {
       }
     })
   }
+
+  function genTree() {
+    axios({
+      method: "GET",
+      url:"http://127.0.0.1:5000/users/" + username,
+    })
+    .then((response) => {
+      console.log(response)
+    }).catch((error) => {
+      if (error.response) {
+        console.log(error.response)
+        console.log(error.response.status)
+        console.log(error.response.headers)
+        }
+    })}
   
   const dietOptions = [
     { value: 'dairy', label: 'Lactose Intolerance' },

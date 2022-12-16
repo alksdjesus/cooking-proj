@@ -16,7 +16,7 @@ const Feed = () => {
   const [firstName, setFirstName] = useState('');
   const [message, setMessage] = useState(null);
 
-  const [apiKey, setKey] = useState('&apiKey=7df346c383f54f7b95bbfcae16642c20')
+  const [apiKey, setKey] = useState('&apiKey=6a847610bc234f668b110cc2661d1d56')
   const [baseSearchURL, setBaseURL] = useState('https://api.spoonacular.com/recipes/random?number=1')
   var [someLink, setLink] = useState('test')
 
@@ -27,6 +27,8 @@ const Feed = () => {
     })
     .then((response) => {
       console.log(response)
+      // getFeed()
+      setTimeout(() => { getFeed(); }, 5000)
     }).catch((error) => {
       if (error.response) {
         console.log(error.response)
@@ -38,7 +40,8 @@ const Feed = () => {
   useEffect(() => {
     // Run! Like go get some data from an API.
     genRecipes()
-    getFeed()
+    setTimeout(() => { getFeed(); }, 5000);
+    // getFeed()
     // getProfileInfo()
     // displayRecpies()
   }, []);
@@ -96,7 +99,8 @@ const Feed = () => {
       const response = await fetch(feed)
       const json = await response.json()
       setMealData(json)
-
+      // setTimeout(() => { getFeed(); }, 2500);
+      // getFeed()
     } catch (error) {
       console.error(error)
     } finally {

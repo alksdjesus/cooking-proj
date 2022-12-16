@@ -14,7 +14,6 @@ const Login = (props) => {
   const navigate = useNavigate();
 
   const submitHandler = (event) => {
-    genTree();
     event.preventDefault();
     if (username.trim() === '' || password.trim() === '') {
       setErrorMessage('Both username and password are required');
@@ -29,6 +28,8 @@ const Login = (props) => {
 
     axios.post(loginAPIUrl, requestBody).then((response) => {
       setUserSession(response.data.user, response.data.token);
+      // genTree();
+      // setTimeout(() => { navigate('/feed'); }, 5000);
       navigate('/feed');
     }).catch((error) => {
       // console.log(error)
@@ -40,20 +41,20 @@ const Login = (props) => {
     })
   }
 
-  function genTree() {
-    axios({
-      method: "GET",
-      url:"/users/" + username,
-    })
-    .then((response) => {
-      console.log(response)
-    }).catch((error) => {
-      if (error.response) {
-        console.log(error.response)
-        console.log(error.response.status)
-        console.log(error.response.headers)
-        }
-    })}
+  // function genTree() {
+  //   axios({
+  //     method: "GET",
+  //     url:"http://127.0.0.1:5000/users/" + username,
+  //   })
+  //   .then((response) => {
+  //     console.log(response)
+  //   }).catch((error) => {
+  //     if (error.response) {
+  //       console.log(error.response)
+  //       console.log(error.response.status)
+  //       console.log(error.response.headers)
+  //       }
+  //   })}
 
   return (
     <div className='login_background'>
