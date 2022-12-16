@@ -41,15 +41,7 @@ const Information = () => {
     if (firstName !== '') {
       submitFirstName();
     }
-    if (lastName !== '') {
-      submitLastName();
-    }
-    if (bio !== '') {
-      submitBio();
-    }
-    if (email !== '') {
-      submitEmail();
-    }
+
     submitSelectedDiets();
 
 
