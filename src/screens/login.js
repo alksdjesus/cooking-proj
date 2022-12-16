@@ -41,8 +41,8 @@ const Login = (props) => {
   }
 
   function genTree() {
-    console.log(username)
     axios.get({
+      method: "GET",
       url:"/users/" + username,
     })
     .then((response) => {
